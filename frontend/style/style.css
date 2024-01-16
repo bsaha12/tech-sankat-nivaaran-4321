@@ -1,0 +1,423 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: .2s linear;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.main-container {
+    background: url(../images/background.png);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2rem 7%;
+    align-items: center;
+}
+
+.header .navbar a {
+    font-size: 1.7rem;
+    margin-left: 1rem;
+    color: white;
+    text-decoration: none;
+}
+
+.header .navbar a:hover {
+    background: #f0f9e2;
+    padding: .5rem 3rem;
+    border-radius: 15px;
+    color: black;
+}
+.header .navbar button{
+    background: #f0f9e2;
+    padding: .5rem 3rem;
+    border-radius: 15px;
+    color: black;
+}
+
+#menu-bars {
+    color: white;
+    font-size: 2rem;
+    display: none;
+}
+
+.navbar.active {
+    top: 10%;
+}
+.navbar1 {
+    display: none;
+}
+
+/* Show .navbar1 when .active class is present */
+.navbar1.active {
+    display: flex; /* Assuming you want it as a flex container */
+    flex-direction: column; /* Adjust this based on your layout */
+}
+
+/* Styles for the hamburger icon */
+#button-bar {
+    cursor: pointer;
+}
+
+.background-text h2 {
+    color: white;
+    font-size: 50px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.background-text h2 span {
+    color: #f0f9e2;
+}
+
+.taxi-image {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.taxi-image img {
+    width: 100%;
+    margin-top: 25%;
+}
+
+.home-container {
+    background: #f0f9e2;
+    padding: 2rem 7%;
+    width: 100%;
+    padding-top: 4rem;
+}
+
+.home-content {
+    padding-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-content {
+    flex: 1 1 45rem;
+    padding: 2rem;
+}
+
+.inner-content h3 {
+    font-size: 31px;
+}
+
+.inner-content h2 {
+    font-size: 38px;
+}
+
+.inner-content p {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.inner-content .booknow {
+    padding: 1rem 3rem;
+    color: black;
+    font-size: 1.5rem;
+    border: 1px solid black;
+}
+
+.inner-content .booknow:hover {
+    padding: 1.5rem 3rem;
+    border: 1px solid white;
+    border-radius: 15px;
+    background: white;
+}
+
+.form-heading {
+    text-align: center;
+    background: black;
+    padding: 2rem 0;
+}
+
+.form-heading h1 {
+    color: white;
+}
+
+.contact-form {
+    width: 100%; /* Adjusted width for responsiveness */
+    background: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin: 0 auto;
+}
+
+.form-fields input {
+    padding: 1rem; /* Adjusted padding for input fields */
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.contact-form a {
+    background: black;
+    width: 100%;
+    display: inline-block;
+    padding: 1rem 0; /* Adjusted padding for the link */
+    color: white;
+    font-size: 1.5rem;
+}
+
+.submit {
+    padding-top: 1rem; /* Adjusted padding for the submit button */
+}
+
+.main-tariff{
+    padding: 3rem 7%;
+   
+   
+}
+.main-tariff h1{
+    font-size: 38px;
+    text-align: center;
+    padding-bottom: 6rem;
+}
+.main-tariff h1 span{
+    color: #ffc61a;
+}
+.inner-tarrif{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+.tarrif-container{
+    flex: 1 1 250px;
+    text-align: center;
+    padding: 3rem 0;
+}
+.tarrif-container img{
+    width: 60%;
+    margin-top: -50px;
+}
+.tarrif-container .inner-box h2{
+    font-size: 30px;
+}
+.tarrif-container .inner-box p{
+    font-size: 1.5rem;
+    padding: 2rem;
+}
+.tarrif-container .inner-box h3{
+    color: #ffc61a;
+    font-size: 2rem;
+}
+.tarrif-container .inner-box a{
+    font-size: 1.5rem;
+    padding: 1rem 3rem;
+
+}
+.tarrif-container:nth-child(2){
+    background: #ffc61a;
+}
+.heading-yellow{
+    color: black;
+}
+.yellw-section{
+    color: black !important;
+}
+.tarrif-container a{
+    color: white;
+    padding: 1rem 3rem;
+    background: black;
+    display: inline-block;
+    margin-top: 1rem;
+
+}
+.fast-booking {
+    background: url(../images/secbg.png);
+    background-size: cover;
+    width: 100%;
+    background-position: center;
+}
+
+.fast-booking .fast-hading {
+    color: #ffc61a;
+    font-size: 38px;
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.fast-booking h2 {
+    font-size: 31px;
+    color: white;
+    text-align: center;
+}
+
+.inner-fast {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 2rem; /* Adjusted padding for responsiveness */
+    align-items: center;
+}
+
+.booking-content {
+    flex: 1 1 100%; /* Adjusted width for responsiveness */
+}
+
+.booking-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.inner-fast-text h1 {
+    font-size: 22px;
+    color: #f0f9e2;
+    padding: 1rem; /* Adjusted padding for responsiveness */
+}
+
+.inner-fast-text p {
+    font-size: 1.5rem;
+    padding: 1rem; /* Adjusted padding for responsiveness */
+}
+
+.icon-fast {
+    background-color: #f0f9e2;
+    width: 50px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.icon-fast span i {
+    line-height: 40px;
+    font-size: 1.5rem;
+}
+
+.testimonials {
+    background: url(../images/testimonial\ back.png);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+}
+
+.testimonials .heading-test {
+    color: #ffc61a;
+    font-size: 38px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.main-testimonials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 2rem 7%;
+}
+
+.inner-test {
+    flex: 1 1 100%; /* Adjusted width for responsiveness */
+    color: white;
+    background: black;
+    padding: 1rem; /* Adjusted padding for responsiveness */
+}
+
+.inner-test p {
+    font-size: 1.5rem;
+    padding: 1rem; /* Adjusted padding for responsiveness */
+}
+
+.clients {
+    display: flex;
+    align-items: center;
+}
+
+.clients h1 {
+    color: #ffc61a;
+    margin-left: 1rem;
+}
+#button-bar {
+    display: initial;
+}
+
+
+@media ((max-width: 950px) and (min-width: 250px)) {
+    #logo{
+        display: none;
+    }
+    html {
+        font-size: 50%;
+    }
+
+    #menu-bars {
+        display: initial;
+    }
+
+    .navbar {
+        position: absolute;
+        top: -100%;
+        right: 0;
+        left: 0;
+    }
+
+    .navbar a {
+        display: block;
+        font-size: 1.5rem;
+        background: #f0f9e2;
+        margin: 1rem;
+        padding: 1rem;
+    }
+    .navbar button{
+        display: inline;
+        background: #f0f9e2;
+    padding: .5rem 3rem;
+    border-radius: 15px;
+    color: black;
+    }
+    
+
+    .header {
+        padding: 2rem;
+    }
+
+    .tarrif-container {
+        padding-bottom: 2rem; /* Adjusted padding for responsiveness */
+    }
+
+    .tarrif-container img {
+        width: 60%;
+        margin-top: 0;
+    }
+
+    .background-text h2 {
+        width: 100%;
+        text-align: center;
+        font-size: 40px;
+        top: 15%;
+    }
+
+    .main-container {
+        height: 70%;
+    }
+
+    .background-text h2 {
+        color: white;
+        font-size: 40px;
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
