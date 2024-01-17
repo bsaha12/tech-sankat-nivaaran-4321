@@ -1,12 +1,12 @@
 const express = require("express");
 const { connection } = require("./db");
-const { carDataRouter } = require("./routes/carData.route");
+const { cardataRouter } = require("./routes/cardata.route");
 const app = express();
 
 const cors = require("cors")
-carDataRouter.use(cors())
+app.use(cors())
 
-app.use("/carData", carDataRouter)
+app.use("/carData", cardataRouter)
 // connecting to server and DB
 app.listen(8080, async () => {
   try {
