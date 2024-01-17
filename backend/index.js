@@ -1,7 +1,9 @@
 const express = require("express");
 const { connection } = require("./db");
-const { cardataRouter } = require("./routes/cardata.route");
+const { cardataRouter } = require("./routes/cartata.route");
 const app = express();
+
+app.use(express.json())
 
 const cors = require("cors")
 app.use(cors())

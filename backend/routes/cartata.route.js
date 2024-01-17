@@ -6,8 +6,8 @@ const cardataRouter = express.Router()
 
 cardataRouter.get("/",async(req, res)=>{
     try{
-        const book = await cardataModel.find(req.query)
-        res.status(200).json({books_data:book})
+        const car = await cardataModel.find(req.query)
+        res.status(200).json({cars_data:car})
     }
     catch(err){
         res.status(400).json({error:err})
@@ -17,19 +17,21 @@ cardataRouter.get("/",async(req, res)=>{
 cardataRouter.post("/add", async(req, res)=>{
     const payload = req.body
     try{
-        const book = new cardataModel(payload)
-        await book.save()
-        res.status(200).json({msg:"Book added", addedBook: payload})
+        const car = new cardataModel(payload)
+
+        await car.save()
+        res.status(200).json({msg:"car added", addedcar: payload})
     }
     catch(err){
         res.status(400).json({error:err})
     }
 })
 
-cardataRouter.patch("/update/:bookid",async(req, res)=>{
-    const bookid =req.params.bookid
+
+cardataRouter.patch("/update/:carid",async(req, res)=>{
+    const carid =req.params.carid
     try{
-        await cardataModel.findByIdAndUpdate({ _id: bookid }, req.body);
+        await cardataModel.findByIdAndUpdate({ _id: carid }, req.body);
        
         res.status(200).json({msg:"Book has been updated"})
     }
@@ -38,10 +40,10 @@ cardataRouter.patch("/update/:bookid",async(req, res)=>{
     }
 })
 
-cardataRouter.delete("/delete/:bookid", async(req, res)=>{
-    const bookid =req.params.bookid
+cardataRouter.delete("/delete/:carid", async(req, res)=>{
+    const carid =req.params.carid
     try{
-        await cardataModel.findByIdAndDelete({ _id: bookid });
+        await cardataModel.findByIdAndDelete({ _id: carid });
         
         res.status(200).json({msg:"Book has been deleted"})
     }

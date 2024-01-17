@@ -1,19 +1,23 @@
 const { mongoose } = require("mongoose");
 const cardataSchema = mongoose.Schema({
-    title:{
+    image:{
         type : String,
         require : true
     },
-    genre:{
+    name:{
         type : String,
         require : true
     },
-    author:{
+    description:{
         type : String,
         require : true
     },
-    year:{
-        type : Number,
+    reason:{
+        type : String,
+        require : true
+    },
+    type:{
+        type : String,
         require : true
     }
 },{
