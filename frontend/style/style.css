@@ -354,6 +354,9 @@ html {
 
 
 @media ((max-width: 950px) and (min-width: 250px)) {
+    /* #button-bar {
+        display: none;
+    } */
     #logo{
         display: none;
     }
@@ -375,9 +378,9 @@ html {
     .navbar a {
         display: block;
         font-size: 1.5rem;
-        background: #f0f9e2;
-        margin: 1rem;
-        padding: 1rem;
+        background: transparent;
+        /* margin: 1rem; */
+        /* padding: 1rem; */
     }
     .navbar button{
         display: inline;
