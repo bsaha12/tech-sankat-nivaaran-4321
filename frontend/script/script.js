@@ -9,6 +9,7 @@ menubar.onclick = () => {
     mynav1.classList.remove('active'); // Close the other menu if open
 };
 
+
 buttonbar.onclick = () => {
     menubar.classList.toggle('fa-times');
     mynav1.classList.toggle('active');

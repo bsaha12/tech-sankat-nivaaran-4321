@@ -1,3 +1,6 @@
+.navButton{
+    display: none;
+}
 * {
     margin: 0;
     padding: 0;
@@ -27,6 +30,9 @@ html {
     width: 100%;
     padding: 2rem 7%;
     align-items: center;
+    box-shadow: 0 0 10px #000;
+     background: #00000083;
+     /* position: sticky; */
 }
 
 .header .navbar a {
@@ -85,10 +91,25 @@ html {
 .background-text h2 span {
     color: #f0f9e2;
 }
+
+.taxi-image {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.taxi-image img {
+    width: 100%;
+    margin-top: 25%;
+}
+
+@media (min-width: 950px){
+    .header{
+        position: fixed;
+    }
+}
+
 @media ((max-width: 950px) and (min-width: 250px)) {
-    /* #button-bar {
-        display: none;
-    } */
+    
     #logo{
         display: none;
     }
@@ -105,14 +126,27 @@ html {
         top: -100%;
         right: 0;
         left: 0;
+        box-shadow: 0 0 10px #000;
+        background: #00000083;
+    }
+    #button-bar{
+        display: none;
     }
 
     .navbar a {
         display: block;
         font-size: 1.5rem;
         background: transparent;
-        /* margin: 1rem; */
-        /* padding: 1rem; */
+        margin: 1rem;
+        padding: 1rem;
+    }
+    .navbar1 {
+        position: absolute;
+        top: -100%;
+        right: 0;
+        left: 0;
+        box-shadow: 0 0 10px #000;
+        background: #00000083;
     }
     .navbar button{
         display: inline;
