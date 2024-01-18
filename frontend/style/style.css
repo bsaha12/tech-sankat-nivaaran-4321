@@ -18,7 +18,7 @@ html {
     background-position: center;
     background-size: cover;
     width: 100%;
-    height: 90vh;
+    height: 78vh;
 }
 
 .header {
@@ -27,6 +27,9 @@ html {
     width: 100%;
     padding: 2rem 7%;
     align-items: center;
+    box-shadow: 0 0 10px #000;
+     background: #00000083;
+     /* position: sticky; */
 }
 
 .header .navbar a {
@@ -185,6 +188,9 @@ html {
    
    
 }
+#maintarifh1{
+    font-size: 24px;
+}
 .main-tariff h1{
     font-size: 38px;
     text-align: center;
@@ -209,7 +215,6 @@ html {
     border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s ease;
-    gap: 20px;
 }
 
 .tarrif-container:hover {
@@ -218,21 +223,31 @@ html {
 
 .tarrif-container img {
     width: 100%;
+    height: 200px;
     max-width: 200px;
     border-radius: 50%;
     margin-bottom: 20px;
 }
 
 .tarrif-container .inner-box h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     
     margin-bottom: 10px;
 }
 
 .tarrif-container .inner-box p {
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: #777;
     margin-bottom: 15px;
+    width: 100%;
+    height: 40%;
+    /* display: none; */
+}
+
+.tarrif-container .inner-box h3 {
+    color: #ffc61a;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
 }
 
 .tarrif-container .inner-box h3 {
@@ -242,13 +257,14 @@ html {
 }
 
 .tarrif-container .inner-box a {
-    font-size: 1rem;
+    font-size: 1.5rem;
     padding: 0.8rem 2rem;
     background: #000;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
     transition: background 0.3s ease;
+    cursor: pointer;
 }
 
 .tarrif-container .inner-box a:hover {
@@ -331,6 +347,9 @@ html {
     line-height: 40px;
     font-size: 1.5rem;
 }
+.navButton{
+    display: none;
+}
 
 .testimonials {
     background: url(../images/testimonial\ back.png);
@@ -378,12 +397,14 @@ html {
 #button-bar {
     display: initial;
 }
-
+@media (min-width: 950px){
+    .header{
+        position: fixed;
+    }
+}
 
 @media ((max-width: 950px) and (min-width: 250px)) {
-    /* #button-bar {
-        display: none;
-    } */
+    
     #logo{
         display: none;
     }
@@ -400,14 +421,27 @@ html {
         top: -100%;
         right: 0;
         left: 0;
+        box-shadow: 0 0 10px #000;
+        background: #00000083;
+    }
+    #button-bar{
+        display: none;
     }
 
     .navbar a {
         display: block;
         font-size: 1.5rem;
         background: transparent;
-        /* margin: 1rem; */
-        /* padding: 1rem; */
+        margin: 1rem;
+        padding: 1rem;
+    }
+    .navbar1 {
+        position: absolute;
+        top: -100%;
+        right: 0;
+        left: 0;
+        box-shadow: 0 0 10px #000;
+        background: #00000083;
     }
     .navbar button{
         display: inline;
@@ -506,11 +540,11 @@ html {
     }
 
     /* Individual slide */
-    .slide {
+    /* .slide {
         height: 50%;
         width: 50%;
-        
-    }
+        gap: 20px;
+    } */
 }
 /* Brands */
 .brands{
