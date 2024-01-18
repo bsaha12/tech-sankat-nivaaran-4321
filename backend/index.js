@@ -7,6 +7,9 @@ app.use(express.json())
 
 const cors = require("cors")
 app.use(cors())
+const cors = require("cors");
+const { userRouter } = require("./routes/user.route");
+carDataRouter.use(cors())
 
 app.use("/carData", cardataRouter)
 // connecting to server and DB
