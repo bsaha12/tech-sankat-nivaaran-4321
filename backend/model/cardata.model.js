@@ -1,6 +1,5 @@
-
 const { mongoose } = require("mongoose");
-const carDataSchema = mongoose.Schema({
+const cardataSchema = mongoose.Schema({
     image:{
         type : String,
         require : true
@@ -13,16 +12,20 @@ const carDataSchema = mongoose.Schema({
         type : String,
         require : true
     },
-    price:{
-        type : Number,
+    reason:{
+        type : String,
+        require : true
+    },
+    type:{
+        type : String,
         require : true
     }
 },{
     versionKey: false
 })
 
-const carDataModel= mongoose.model("car", carDataSchema)
+const cardataModel= mongoose.model("car", cardataSchema)
 
 module.exports={
-    carDataModel
+    cardataModel
 }
