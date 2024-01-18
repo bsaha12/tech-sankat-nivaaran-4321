@@ -10,7 +10,7 @@ body{
 	background-color: #01141f;
 	color: white;
 }
-.container{
+#container{
 	width: 100%;
 	min-height: 100vh;
 	display: flex;
@@ -18,7 +18,7 @@ body{
 	align-items: center;
 	padding: 30px 8%;
 }
-.container .row{
+#container .row{
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
@@ -221,7 +221,7 @@ textarea::-webkit-scrollbar-thumb{
 	}
 }
 @media(max-width: 900px){
-	.container .row{
+	#container .row{
 		flex-wrap: wrap;
 	}
 	.row section.left, .row section.right{
