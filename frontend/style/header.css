@@ -1,0 +1,192 @@
+.navButton{
+    display: none;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: .2s linear;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.main-container {
+    /* background: url(../images/background.png); */
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2rem 7%;
+    align-items: center;
+    box-shadow: 0 0 10px #000;
+     background: #00000083;
+     /* position: sticky; */
+}
+
+.header .navbar a {
+    font-size: 1.7rem;
+    margin-left: 1rem;
+    color: white;
+    text-decoration: none;
+}
+
+.header .navbar a:hover {
+    background: #f0f9e2;
+    padding: .5rem 3rem;
+    border-radius: 15px;
+    color: black;
+}
+.header .navbar button{
+    background: #f0f9e2;
+    padding: .5rem 3rem;
+    border-radius: 15px;
+    color: black;
+}
+
+#menu-bars {
+    color: white;
+    font-size: 2rem;
+    display: none;
+}
+
+.navbar.active {
+    top: 10%;
+}
+.navbar1 {
+    display: none;
+}
+
+/* Show .navbar1 when .active class is present */
+.navbar1.active {
+    display: flex; /* Assuming you want it as a flex container */
+    flex-direction: column; /* Adjust this based on your layout */
+}
+
+/* Styles for the hamburger icon */
+#button-bar {
+    cursor: pointer;
+}
+
+.background-text h2 {
+    color: white;
+    font-size: 50px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.background-text h2 span {
+    color: #f0f9e2;
+}
+
+.taxi-image {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.taxi-image img {
+    width: 100%;
+    margin-top: 25%;
+}
+
+@media (min-width: 950px){
+    .header{
+        position: fixed;
+    }
+}
+
+@media ((max-width: 950px) and (min-width: 250px)) {
+    
+    #logo{
+        display: none;
+    }
+    html {
+        font-size: 50%;
+    }
+
+    #menu-bars {
+        display: initial;
+    }
+
+    .navbar {
+        position: absolute;
+        top: -100%;
+        right: 0;
+        left: 0;
+        box-shadow: 0 0 10px #000;
+        background: #00000083;
+    }
+    #button-bar{
+        display: none;
+    }
+
+    .navbar a {
+        display: block;
+        font-size: 1.5rem;
+        background: transparent;
+        margin: 1rem;
+        padding: 1rem;
+    }
+    .navbar1 {
+        position: absolute;
+        top: -100%;
+        right: 0;
+        left: 0;
+        box-shadow: 0 0 10px #000;
+        background: #00000083;
+    }
+    .navbar button{
+        display: inline;
+        background: #f0f9e2;
+    padding: .5rem 3rem;
+    border-radius: 15px;
+    color: black;
+    }
+    
+
+    .header {
+        padding: 2rem;
+    }
+
+    .tarrif-container {
+        padding-bottom: 2rem; /* Adjusted padding for responsiveness */
+    }
+
+    .tarrif-container img {
+        width: 60%;
+        margin-top: 0;
+    }
+
+    .background-text h2 {
+        width: 100%;
+        text-align: center;
+        font-size: 40px;
+        top: 15%;
+    }
+
+    .main-container {
+        height: 70%;
+    }
+
+    .background-text h2 {
+        color: white;
+        font-size: 40px;
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
