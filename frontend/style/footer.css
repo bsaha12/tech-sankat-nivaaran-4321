@@ -23,8 +23,8 @@
 /* Footer */
 .footer{
     background: black;
-    color: #8a8a8a;
-    font-size: 14px;
+    color: #969595;
+    font-size: 18px;
     padding: 60px 0 20px;
 }
 .footer p{
@@ -55,7 +55,11 @@
 }
 ul{
     list-style-type: none;
+    padding: 0;
 }
+/* li{
+    display: block;
+} */
 .app-logo{
     margin-top: 20px;
 }
