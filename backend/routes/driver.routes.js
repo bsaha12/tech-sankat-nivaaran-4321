@@ -7,6 +7,19 @@ const { authLogout } = require("../middlewares/driver.auth");
 
 const driverroute = express.Router();
 
+driverroute.get("/",async(req, res)=>{
+  try{
+      const driver = await DriverModel.find()
+      res.status(200).json({drivers_data:driver})
+      console.log(driver)
+  }
+  catch(err){
+      res.status(400).json({error:err})
+  }
+})
+
+
+
 //register
 driverroute.post("/register", async (req, res) => {
   const {
