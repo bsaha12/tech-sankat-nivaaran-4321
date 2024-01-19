@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- *******  Link To CSS Style Sheet  ******* -->
+    <link rel="stylesheet" type="text/css" href="../style/contact.css" />
+    <link rel="stylesheet" type="text/css" href="../style/popup.css" />
+
+    <!-- *******  Font Awesome Icons Link  ******* -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+
+    <!-- *******  Link To Goggle Fonts  *******  -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,500;0,600;0,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- header css -->
+    <link rel="stylesheet" href="../style/justheader.css" />
+
+    <!-- footer css -->
+    <link rel="stylesheet" href="../style/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Contact Us</title>
+    <link
+      rel="shortcut icon"
+      href="../images/favicon.svg"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="main-container">
+      <div class="background-text">
+        <!-- <h2>book a <span>cab now</span></h2> -->
+      </div>
+      <header class="header">
+        <a href="./index.html" id="logo">
+          <img
+            style="height: 20%; width: 40%"
+            src="../images/output-onlinepngtools (1).png"
+            alt="car"
+          />
+        </a>
+        <nav class="navbar">
+          <a href="#">home</a>
+          <a href="#">blog</a>
+          <a href="#">about</a>
+          <a href="#">Contact</a>
+          <a href="#" id="button-bar" class="fas fa-bars"></a>
+          <div class="navbar1">
+            <button>signup</button>
+            <button>login</button>
+          </div>
+        </nav>
+
+        <a href="#" id="menu-bars" class="fas fa-bars"></a>
+      </header>
+      <!-- <div class="taxi-image">
+        <img src="../images/Car-Download-PNG.png" alt="">
+      </div> -->
+    </div>
+    <!-- header -->
+    <div id="container">
+      <main class="row">
+        <!--  *******   Left Section (Column) Starts   *******  -->
+
+        <section class="col left">
+          <!--  *******   Title Starts   *******  -->
+
+          <div class="contactTitle">
+            <h2>Get In Touch</h2>
+            <p>
+              If you want to contact with us then fill out this form we will get
+              back to you
+            </p>
+          </div>
+
+          <!--  *******   Title Ends   *******  -->
+
+          <!--  *******   Contact Info Starts   *******  -->
+
+          <div class="contactInfo">
+            <div class="iconGroup">
+              <div class="icon">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div class="details">
+                <span>Phone</span>
+                <span>+91 91234 23546</span>
+              </div>
+            </div>
+
+            <div class="iconGroup">
+              <div class="icon">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div class="details">
+                <span>Email</span>
+                <span>rider.riderX@gmail.com</span>
+              </div>
+            </div>
+
+            <div class="iconGroup">
+              <div class="icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="details">
+                <span>Location</span>
+                <span>Park Street, Kolkata</span>
+              </div>
+            </div>
+          </div>
+
+          <!--  *******   Contact Info Ends   *******  -->
+
+          <!--  *******   Social Media Starts   *******  -->
+
+          <div class="socialMedia">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+
+          <!--  *******   Social Media Ends   *******  -->
+        </section>
+
+        <!--  *******   Left Section (Column) Ends   *******  -->
+
+        <!--  *******   Right Section (Column) Starts   *******  -->
+
+        <section class="col right">
+          <!--  *******   Form Starts   *******  -->
+
+          <form class="messageForm">
+            <div class="inputGroup halfWidth">
+              <input type="text" name="" required="required" />
+              <label>Your Name</label>
+            </div>
+
+            <div class="inputGroup halfWidth">
+              <input type="email" name="" required="required" />
+              <label>Email</label>
+            </div>
+
+            <div class="inputGroup fullWidth">
+              <input type="text" name="" required="required" />
+              <label>Subject</label>
+            </div>
+
+            <div class="inputGroup fullWidth">
+              <textarea required="required"></textarea>
+              <label>Say Something</label>
+            </div>
+
+            <div class="inputGroup fullWidth">
+              <button id="send-message">Send Message</button>
+            </div>
+          </form>
+
+          <!--  *******   Form Ends   *******  -->
+        </section>
+
+        <!--  *******   Right Section (Column) Ends   *******  -->
+      </main>
+    </div>
+    <section id="popup" class="contact-invisible">
+      <span class="overlay"></span>
+
+      <div class="modal-box">
+        <i class="fa-regular fa-circle-check"></i>
+        <h2>Completed</h2>
+        <h3>You have successfully filled out the form</h3>
+
+        <div class="buttons">
+          <button class="close-btn" id="popup-close">Ok, Close</button>
+        </div>
+      </div>
+    </section>
+    <!-- footer -->
+    <!-- brands -->
+    <div class="brands">
+      <div class="small-container">
+        <div class="row">
+          <div class="col-5">
+            <img src="../images/logo-godrej.png" />
+          </div>
+          <div class="col-5">
+            <img src="../images/logo-oppo.png" />
+          </div>
+          <div class="col-5">
+            <img src="../images/logo-coca-cola.png" />
+          </div>
+          <div class="col-5">
+            <img src="../images/logo-paypal.png" />
+          </div>
+          <div class="col-5">
+            <img src="../images/logo-philips.png" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col-1">
+            <h3>Download Our App</h3>
+            <p>Download App for Android and ios mobile phone.</p>
+            <div class="app-logo">
+              <img src="../images/play-store.png" />
+              <img src="../images/app-store.png" />
+            </div>
+          </div>
+          <div class="footer-col-2">
+            <img src="../images/output-onlinepngtools (1).png" />
+            <p>
+              Our Purpose is we ignite opportunity by setting the world in
+              motion
+            </p>
+          </div>
+          <div class="footer-col-3">
+            <h3>Useful Links</h3>
+            <ul>
+              <li>Coupons</li>
+              <li>Blog Post</li>
+              <li>Return Policy</li>
+              <li>Join Affiliate</li>
+            </ul>
+          </div>
+          <div class="footer-col-4">
+            <h3>Follow Us</h3>
+            <ul>
+              <li>Facebook</li>
+              <li>Twitter</li>
+              <li>Instagram</li>
+              <li>Youtube</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <p class="copyright">
+          <i class="fa-regular fa-copyright"></i> RideShareX Made with
+          <i class="heart fa-solid fa-heart"></i> tech-Sankat-Nivran
+        </p>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <script>
+      const sendbtn = document.getElementById("send-message");
+      const section = document.querySelector("#popup");
+      const container = document.querySelector("#container");
+      const overlay = document.querySelector("#popup .overlay");
+      const closeBtn = document.querySelector("#popup .close-btn");
+
+      sendbtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        section.classList.add("active");
+        section.classList.remove("contact-invisible");
+        container.classList.add("contact-invisible");
+      });
+
+      overlay.addEventListener("click", (e) => {
+        e.preventDefault();
+        section.classList.remove("active");
+        section.classList.add("contact-invisible");
+      });
+
+      closeBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        section.classList.add("contact-invisible");
+        section.classList.remove("active");
+      });
+
+      const closebtn = document.getElementById("popup-close");
+      closebtn.addEventListener("click", () => {
+        location.reload();
+      });
+    </script>
+  </body>
+</html>
