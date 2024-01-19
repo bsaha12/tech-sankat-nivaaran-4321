@@ -7,16 +7,40 @@ const { authLogout } = require("../middlewares/driver.auth");
 
 const driverroute = express.Router();
 
-driverroute.get("/",async(req, res)=>{
-  try{
-      const driver = await DriverModel.find()
-      res.status(200).json({drivers_data:driver})
-      console.log(driver)
+driverroute.get("/", async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    const skip = (page - 1) * limit;
+
+    const drivers = await DriverModel.find().skip(skip).limit(limit);
+
+    const totalDrivers = await DriverModel.countDocuments();
+
+    const totalPages = Math.ceil(totalDrivers / limit);
+
+    res.status(200).json({
+      drivers_data: drivers,
+      page: page,
+      limit: limit,
+      totalDrivers: totalDrivers,
+      totalPages: totalPages
+    });
+
+    console.log(drivers);
+  } catch (err) {
+    res.status(400).json({ error: err });
   }
-  catch(err){
-      res.status(400).json({error:err})
-  }
-})
+});
+
+function broadcastNewRideRequest(rideRequest, drivers) {
+  drivers.forEach((driverWs) => {
+    if (driverWs.readyState === WebSocket.OPEN) {
+      driverWs.send(JSON.stringify({ type: "newRideRequest", data: rideRequest }));
+    }
+  });
+}
 
 
 
@@ -112,4 +136,5 @@ driverroute.post("/logout", authLogout, (req, res) => {
 
 module.exports = {
   driverroute,
+  broadcastNewRideRequest
 };
