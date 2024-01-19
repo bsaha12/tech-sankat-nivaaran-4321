@@ -577,6 +577,31 @@ html[data-bs-theme="dark"] .theme-toggle .fa-moon {
 html[data-bs-theme="light"] .theme-toggle .fa-sun {
     display: none;
 }
+#pagination {
+    display: flex;
+    list-style: none;
+    padding-top:20px;
+    justify-content: center;
+  }
+  
+  #pagination button {
+    background-color: var(--main-color);
+    color: #fff;
+    border: 1px solid var(--main-color);
+    padding: 8px 12px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+  #pagination button:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+  }
+  
+  #pagination button.active {
+    background-color: #2980b9;
+    border-color: #2980b9;
+  }
 
 
 

@@ -7,16 +7,38 @@ const { authLogout } = require("../middlewares/driver.auth");
 
 const driverroute = express.Router();
 
-driverroute.get("/",async(req, res)=>{
-  try{
-      const driver = await DriverModel.find()
-      res.status(200).json({drivers_data:driver})
-      console.log(driver)
+driverroute.get("/", async (req, res) => {
+  try {
+    // Set default values for page and limit
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    // Calculate the skip value based on page and limit
+    const skip = (page - 1) * limit;
+
+    // Use the skip and limit values in the find query
+    const drivers = await DriverModel.find().skip(skip).limit(limit);
+
+    // Get the total count of drivers
+    const totalDrivers = await DriverModel.countDocuments();
+
+    // Calculate total pages based on the limit
+    const totalPages = Math.ceil(totalDrivers / limit);
+
+    res.status(200).json({
+      drivers_data: drivers,
+      page: page,
+      limit: limit,
+      totalDrivers: totalDrivers,
+      totalPages: totalPages
+    });
+
+    console.log(drivers);
+  } catch (err) {
+    res.status(400).json({ error: err });
   }
-  catch(err){
-      res.status(400).json({error:err})
-  }
-})
+});
+
 
 
 
