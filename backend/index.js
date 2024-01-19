@@ -1,38 +1,46 @@
 const express = require("express");
 const { connection } = require("./db");
-const {driverroute}=require("./routes/driver.routes")
-const { cardataRouter } = require("./routes/cartata.route");
-const swaggerJsDoc=require("swagger-jsdoc");
-const swaggerUi=require("swagger-ui-express")
+const { driverroute } = require("./routes/driver.routes");
+const { userRouter } = require("./routes/user.route");
+const { cardataRouter } = require("./routes/cardata.route");
+const cors = require("cors");
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 
 const app = express();
 
-app.use(express.json())
+//middlewares
+app.use(cors());
+app.use(express.json());
 
-const cors = require("cors");
-app.use(cors())
-const options={
-  definition:{
-    openapi:"2.0.0",
-    info:{
-      title:"CAB BOOKING",
-      version:"1.0.0"
+// swagger UI
+// my requirements
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "RiderX APIs",
+      version: "1.0.0",
     },
-    servers:[
+    servers: [
       {
-        url:"http://localhost:8080"
-      }
-    ]
+        url: "http://localhost:8080",
+      },
+    ],
   },
-  apis:["./routes/*.js"]
-}
-const openapispec=swaggerJsDoc(options)
-app.use("/documentation",swaggerUi.serve,swaggerUi.setup(openapispec))
+  apis: ["./routes/*.js"],
+};
+// building OpenApi Specifications
+const openApiSpec = swaggerJsDoc(options);
 
-// module.exports=swaggerJsDoc(options);
+//Building complete UI
+app.use("/apidocs", swaggerUi.serve, swaggerUi.setup(openApiSpec));
 
-app.use("/driver",driverroute);
-app.use("/carData", cardataRouter)
+//routes
+app.use("/driver", driverroute);
+app.use("/carData", cardataRouter);
+app.use("/users", userRouter);
+
 // connecting to server and DB
 app.listen(8080, async () => {
   try {
