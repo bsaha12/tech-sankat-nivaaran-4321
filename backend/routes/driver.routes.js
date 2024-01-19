@@ -7,18 +7,15 @@ const { authLogout } = require("../middlewares/driver.auth");
 
 const driverroute = express.Router();
 
-driverroute.get("/",async(req, res)=>{
-  try{
-      const driver = await DriverModel.find()
-      res.status(200).json({drivers_data:driver})
-      console.log(driver)
+driverroute.get("/", async (req, res) => {
+  try {
+    const driver = await DriverModel.find();
+    res.status(200).json({ drivers_data: driver });
+    console.log(driver);
+  } catch (err) {
+    res.status(400).json({ error: err });
   }
-  catch(err){
-      res.status(400).json({error:err})
-  }
-})
-
-
+});
 
 //register
 driverroute.post("/register", async (req, res) => {
@@ -109,6 +106,74 @@ driverroute.post("/login", async (req, res) => {
 driverroute.post("/logout", authLogout, (req, res) => {
   res.status(200).json({ message: "Logout successful" });
 });
+
+
+// update
+// driverroute.patch("/update/:id", async (req, res) => {
+//   const { id } = req.params;
+
+//   try {
+//     const updatedDriver = await DriverModel.findByIdAndUpdate(
+//       id,
+//       { $set: req.body },
+//       { new: true }
+//     );
+
+//     if (updatedDriver) {
+//       res.status(200).json({ message: "Driver updated successfully", driver: updatedDriver });
+//     } else {
+//       res.status(404).json({ message: "Driver not found" });
+//     }
+//   } catch (error) {
+//     console.error("Update failure:", error);
+//     res.status(400).json({ message: "Update failure", error });
+//   }
+// });
+
+
+//update
+driverroute.patch("/update/:id", async (req, res) => {
+  const { id } = req.params;
+  const payload=req.body
+
+  try {
+    if(payload.driverId===req.body.driverId){
+    const updatedDriver = await DriverModel.findByIdAndUpdate({ _id:id},payload);
+res.status(200).json({ message: "Driver updated successfully", driver: updatedDriver });
+  }
+      else {
+      res.status(404).json({ message: "Driver not found" });
+    }
+  }  
+    catch (error) {
+    console.error("Update failure:", error);
+    res.status(400).json({ message: "Update failure", error });
+  }
+});
+
+
+
+
+
+
+// delete
+driverroute.delete("/delete/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const deletedDriver = await DriverModel.findByIdAndDelete(id);
+
+    if (deletedDriver) {
+      res.status(200).json({ message: "Driver deleted successfully", driver: deletedDriver });
+    } else {
+      res.status(404).json({ message: "Driver not found" });
+    }
+  } catch (error) {
+    console.error("Delete failure:", error);
+    res.status(400).json({ message: "Delete failure", error });
+  }
+});
+
 
 module.exports = {
   driverroute,
