@@ -1,25 +1,43 @@
+
+
+
+
+
+
+
+.navButton{
+  display: none;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: 0.2s linear;
+  transition: .2s linear;
   text-transform: capitalize;
   text-decoration: none;
 }
 
 html {
-  /* font-size: 62.5%; */
+  font-size: 62.5%;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
-
-.main-container {
+/* .main-container {  */
   /* background: url(../images/background.png); */
   /* background-position: center; */
   /* background-size: cover; */
-  background-color: rgb(72, 66, 66);
+  /* background-color: rgb(72, 66, 66); */
   /* width: 100%; */
   /* height: 90vh; */
+/* }  */
+.main-container {
+  /* background: url(../images/background.png); */
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  /* background-color: rgb(72, 66, 66); */
+  height: 15vh;
+  z-index: 1000;
 }
 
 .header {
@@ -28,10 +46,13 @@ html {
   width: 100%;
   padding: 2rem 7%;
   align-items: center;
+  box-shadow: 0 0 10px #000;
+   background: #00000083;
+   /* position: sticky; */
 }
 
 .header .navbar a {
-  font-size: 1.1rem;
+  font-size: 1.7rem;
   margin-left: 1rem;
   color: white;
   text-decoration: none;
@@ -39,13 +60,13 @@ html {
 
 .header .navbar a:hover {
   background: #f0f9e2;
-  padding: 0.5rem 3rem;
+  padding: .5rem 3rem;
   border-radius: 15px;
   color: black;
 }
-.header .navbar button {
+.header .navbar button{
   background: #f0f9e2;
-  padding: 0.5rem 3rem;
+  padding: .5rem 3rem;
   border-radius: 15px;
   color: black;
 }
@@ -86,73 +107,104 @@ html {
 .background-text h2 span {
   color: #f0f9e2;
 }
+
+.taxi-image {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.taxi-image img {
+  width: 100%;
+  margin-top: 25%;
+}
+
+@media (min-width: 950px){
+  .header{
+      position: fixed;
+      /* z-index: 1000; */
+  }
+}
+
 @media ((max-width: 950px) and (min-width: 250px)) {
-  /* #button-bar {
-          display: none;
-      } */
-  #logo {
-    display: none;
+  
+  #logo{
+      display: none;
   }
   html {
-    font-size: 50%;
+      font-size: 50%;
   }
 
   #menu-bars {
-    display: initial;
+      display: initial;
   }
 
   .navbar {
-    position: absolute;
-    top: -100%;
-    right: 0;
-    left: 0;
+      position: absolute;
+      top: -100%;
+      right: 0;
+      left: 0;
+      box-shadow: 0 0 10px #000;
+      background: #00000083;
+  }
+  #button-bar{
+      display: none;
   }
 
   .navbar a {
-    display: block;
-    font-size: 1.5rem;
-    background: transparent;
-    /* margin: 1rem; */
-    /* padding: 1rem; */
+      display: block;
+      font-size: 1.5rem;
+      background: transparent;
+      margin: 1rem;
+      padding: 1rem;
   }
-  .navbar button {
-    display: inline;
-    background: #f0f9e2;
-    padding: 0.5rem 3rem;
-    border-radius: 15px;
-    color: black;
+  .navbar1 {
+      position: absolute;
+      top: -100%;
+      right: 0;
+      left: 0;
+      box-shadow: 0 0 10px #000;
+      background: #00000083;
   }
+  .navbar button{
+      display: inline;
+      background: #f0f9e2;
+  padding: .5rem 3rem;
+  border-radius: 15px;
+  color: black;
+  }
+  
 
   .header {
-    padding: 2rem;
+      padding: 2rem;
   }
 
   .tarrif-container {
-    padding-bottom: 2rem; /* Adjusted padding for responsiveness */
+      padding-bottom: 2rem; /* Adjusted padding for responsiveness */
   }
 
   .tarrif-container img {
-    width: 60%;
-    margin-top: 0;
+      width: 60%;
+      margin-top: 0;
   }
 
   .background-text h2 {
-    width: 100%;
-    text-align: center;
-    font-size: 40px;
-    top: 15%;
+      width: 100%;
+      text-align: center;
+      font-size: 40px;
+      top: 15%;
   }
 
   .main-container {
-    height: 70%;
+      height: 70%;
   }
 
   .background-text h2 {
-    color: white;
-    font-size: 40px;
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+      color: white;
+      font-size: 40px;
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translate(-50%, -50%);
   }
 }
+

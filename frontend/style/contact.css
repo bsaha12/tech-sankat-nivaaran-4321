@@ -228,4 +228,12 @@ textarea::-webkit-scrollbar-thumb{
 		flex-basis: 100%;
 		margin: 0px;
 	}
+	.contactInfo{
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+	.details{
+		display: none;
+	}
 }

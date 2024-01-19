@@ -18,7 +18,7 @@ register_btn.addEventListener("click", registerUser);
 login_btn.addEventListener("click", loginUser);
 
 // BaseURL
-const baseURL = "";
+const baseURL = "http://localhost:8080";
 
 // handling registration
 async function registerUser() {
@@ -67,8 +67,10 @@ async function loginUser() {
     });
     if (res.status == 200) {
       const data = await res.json();
+      console.log(data)
       localStorage.setItem("token", data.token);
-      // location.href
+      localStorage.setItem("name", username)
+      location.href = "../view/userdashboard.html"
     } else {
       checkCredentials("Invalid Credentials");
     }
