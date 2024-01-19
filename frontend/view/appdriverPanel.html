@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Page Title</title>
+  <link rel="stylesheet" href="../style/driver-panel.css">
+  <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl63QTmfYk3TROXtYhlDbB4KZ_lPe6EZE&libraries=places&callback=initMap"></script>
+    
+</head>
+<body>
+
+<div class="container">
+
+  
+
+  <div id="side-panel">
+    <div id="ride-requests">
+      <h2>Ride Requests</h2>
+      <ul id="ride-list">
+        <!-- Ride requests will be dynamically added here -->
+        <li>User 1: A to B</li>
+        <li>User 2: C to D</li>
+        <!-- Add more ride requests as needed -->
+      </ul>
+    </div>
+
+    <div id="driver-status">
+      <h2>Driver Status</h2>
+      <p id="status">Available</p>
+      <button id="toggle-status">Toggle Status</button>
+    </div>
+  </div>
+  <div id="map-container">
+    <!-- Display Map Here (You can integrate with Google Maps or any other map library) -->
+    <div id="map"></div>
+  </div>
+
+</div>
+
+<script src="../script/driver-panel.js"></script>
+</body>
+</html>

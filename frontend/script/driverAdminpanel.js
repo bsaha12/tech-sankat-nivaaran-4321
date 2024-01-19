@@ -27,7 +27,8 @@ profilePhoto1.append(imagephoto1);
 let currentPage = 1;
 const itemsPerPage = 10;
 let paginationWrapper = document.getElementById("pagination");
-function getData(url, data_param, page) {
+
+function getData() {
   fetch(
     `${baseURL}Driver/?page=${currentPage}&perPage=${itemsPerPage}`,
     {
@@ -36,17 +37,11 @@ function getData(url, data_param, page) {
       },
     }
   )
-  .then((res) => {
-    let total = res.headers.get(("x-total-count"));
-    let numberOfButtons = Math.ceil(total/ itemsPerPage);
-    createButtons(numberOfButtons, data_param);
-    return res.json();
-  })
+    .then((res) => res.json())
     .then((data) => {
       console.log(data.drivers_data);
-      drivers = data.drivers_data;
-      
       displayUsers(data);
+      createPaginationControls(data.totalDrivers);
     })
     .catch((err) => console.log(err));
 }
@@ -55,14 +50,16 @@ function displayUsers(data) {
     
   const tableBody = document.querySelector("tbody");
   const drivers = data.drivers_data;
-
+  tableBody.innerHTML = "";
   drivers.forEach((driver, index) => {
     
       const newRow = document.createElement("tr");
-      newRow.id = `tablerow_${index + 1}`;
+      const displayedIndex = (currentPage - 1) * itemsPerPage + index + 1; // Calculate the correct index
+
+    newRow.id = `tablerow_${displayedIndex}`;
 
       const entryNoCell = document.createElement("td");
-      entryNoCell.textContent = index + 1;
+      entryNoCell.textContent = displayedIndex;
 
       const userInfoCell = document.createElement("td");
       userInfoCell.classList.add("u_info");
@@ -132,18 +129,22 @@ function displayUsers(data) {
   });
 //   createPaginationControls();
 }
+function createPaginationControls(totalDrivers) {
+  const totalPages = Math.ceil(totalDrivers / itemsPerPage);
 
-function createButtons(number, query) {
-    paginationWrapper.innerHTML = "";
-    for (let i = 1; i <= number; i++) {
-      const pageButtons = document.createElement("button");
-      pageButtons.textContent = i;
-      pageButtons.addEventListener("click", (e) => {
-        getData(baseURL, query, i);
-      })
-      paginationWrapper.append(pageButtons);
-    }
+  paginationWrapper.innerHTML = "";
+
+  for (let i = 1; i <= totalPages; i++) {
+    const button = document.createElement("button");
+    button.textContent = i;
+    button.addEventListener("click", () => {
+      currentPage = i;
+      getData();
+    });
+    paginationWrapper.appendChild(button);
   }
+}
+
 function createIcon(iconSet, iconName, clickHandler) {
   const icon = document.createElement("span");
   icon.classList.add(iconSet, iconName);
@@ -151,17 +152,86 @@ function createIcon(iconSet, iconName, clickHandler) {
   return icon;
 }
 
-// Call getData initially to fetch and display the data
 getData();
 
 function editUser(userId) {
-  // Logic for editing user with the given userId
   console.log("Edit user with ID:", userId);
 }
 
 function deleteUser(userId) {
-  // Logic for deleting user with the given userId
-  console.log("Delete user with ID:", userId);
+  if (confirm("Are you sure you want to delete this user?")) {
+    fetch(`${baseURL}Driver/delete/${userId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          getData();
+        } else {
+          console.error("Delete operation failed:", data.error);
+        }
+      })
+      .catch((err) => console.error("Error during delete operation:", err));
+  }
 }
 
-// getData();
+
+
+
+// logoutButton.addEventListener("click", () => {
+//   logoutUser();
+// });
+
+// function logoutUser() {
+
+//   fetch(`${baseURL}user/logout`, {
+//     method: "GET",
+//     headers: {
+//       Authorization: `Bearer ${localStorage.getItem("token")}`, 
+//        "Content-Type": "application/json",
+//     },
+//   })
+//     .then((res) => res.json())
+//     .then((data) => {
+//       console.log(data.msg); 
+//     })
+//     .catch((err) => console.error("Error during logout:", err));
+// }
+const logoutButton = document.getElementById("logoutButton");
+
+logoutButton.addEventListener('click', (e) => {
+
+    e.preventDefault();
+
+    const accessToken = localStorage.getItem("token");
+    
+    fetch(`${baseURL}users/logout`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`,
+        },
+        
+    })
+    .then((response) => {
+        if (response.ok) {
+            localStorage.removeItem("token")
+            return response.json();
+            
+        } else {
+            throw new Error(`Logout failed: ${response.statusText}`);
+        }
+    })
+    .then((result) => {
+        console.log(result.msg); 
+        location.href = '../view/index.html';
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+});
+
+
