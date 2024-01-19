@@ -7,6 +7,200 @@ const { authLogout } = require("../middlewares/driver.auth");
 
 const driverroute = express.Router();
 
+/**
+ * @swagger
+ * tags:
+ *   name: Driver
+ *   description: Operations related to drivers
+ */
+
+/**
+ * @swagger
+ * /driver:
+ *   get:
+ *     summary: Get all drivers
+ *     tags: [Driver]
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             example:
+ *               drivers_data: []
+ */
+
+/**
+ * @swagger
+ * /driver/register:
+ *   post:
+ *     summary: Register a new driver
+ *     tags: [Driver]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               drivername:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *               experience:
+ *                 type: string
+ *               latitude:
+ *                 type: string
+ *               longitude:
+ *                 type: string
+ *               phoneNumber:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Successful registration
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: New driver registered
+ *       '400':
+ *         description: Registration failure
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Registration failure
+ */
+
+/**
+ * @swagger
+ * /driver/login:
+ *   post:
+ *     summary: Login as a driver
+ *     tags: [Driver]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Successful login
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Authentication successful
+ *               token: "your_jwt_token"
+ *       '400':
+ *         description: Authentication failure
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Authentication failed. User not found.
+ */
+
+/**
+ * @swagger
+ * /driver/logout:
+ *   post:
+ *     summary: Logout a driver
+ *     tags: [Driver]
+ *     responses:
+ *       '200':
+ *         description: Successful logout
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Logout successful
+ */
+
+/**
+ * @swagger
+ * /driver/update/{id}:
+ *   patch:
+ *     summary: Update driver information
+ *     tags: [Driver]
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Driver ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               driverId:
+ *                 type: string
+ *               drivername:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *               experience:
+ *                 type: string
+ *               latitude:
+ *                 type: string
+ *               longitude:
+ *                 type: string
+ *               phoneNumber:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Successful update
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Driver updated successfully
+ *               driver: {}
+ *       '400':
+ *         description: Update failure
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Update failure
+ */
+
+/**
+ * @swagger
+ * /driver/delete/{id}:
+ *   delete:
+ *     summary: Delete a driver
+ *     tags: [Driver]
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Driver ID
+ *     responses:
+ *       '200':
+ *         description: Successful deletion
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Driver deleted successfully
+ *               driver: {}
+ *       '400':
+ *         description: Delete failure
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Delete failure
+ */
+
+
 driverroute.get("/", async (req, res) => {
   try {
     const driver = await DriverModel.find();
