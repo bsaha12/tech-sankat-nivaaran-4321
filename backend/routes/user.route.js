@@ -2,6 +2,7 @@ const express= require("express");
 const bcrypt =require("bcrypt");
 const {UserModel}=require("../model/user.model");
 const {blacklistModel}=require("../model/blacklist");
+const{rideRequestSchema}=require("../model/riderequest.model")
 const userRouter=express.Router();
 const jwt=require("jsonwebtoken");
 //registration
@@ -60,6 +61,26 @@ userRouter.get("/logout",async(req,res)=>{
                 res.status(400).json({error:err});
         }
 });
+
+
+userroute.post("/requestRide", async (req, res) => {
+        const { userId, startLocation, destinationLocation } = req.body;
+      
+        try {
+          // Save the user's ride request to the database (if needed)
+          // You can use the RideRequestModel mentioned earlier
+          const newRideRequest = new RideRequestModel({ userId, startLocation, destinationLocation });
+          await newRideRequest.save();
+      
+          // Notify nearby drivers about the new ride request
+          broadcastNewRideRequest({ userId, startLocation, destinationLocation });
+      
+          res.status(200).json({ message: "Ride request sent successfully" });
+        } catch (error) {
+          console.error("Failed to process ride request:", error);
+          res.status(500).json({ message: "Internal Server Error" });
+        }
+      });
 module.exports={
         userRouter
 }
