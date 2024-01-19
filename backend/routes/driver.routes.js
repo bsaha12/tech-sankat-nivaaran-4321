@@ -200,7 +200,6 @@ const driverroute = express.Router();
  *               message: Delete failure
  */
 
-
 driverroute.get("/", async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
