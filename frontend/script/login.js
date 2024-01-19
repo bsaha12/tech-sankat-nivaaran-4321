@@ -68,7 +68,7 @@ async function loginUser() {
     if (res.status == 200) {
       const data = await res.json();
       localStorage.setItem("token", data.token);
-      // location.href
+      location.href = "../view/index.html";
     } else {
       checkCredentials("Invalid Credentials");
     }
