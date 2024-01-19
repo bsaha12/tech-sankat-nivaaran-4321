@@ -159,6 +159,79 @@ function editUser(userId) {
 }
 
 function deleteUser(userId) {
-  console.log("Delete user with ID:", userId);
+  if (confirm("Are you sure you want to delete this user?")) {
+    fetch(`${baseURL}Driver/delete/${userId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          getData();
+        } else {
+          console.error("Delete operation failed:", data.error);
+        }
+      })
+      .catch((err) => console.error("Error during delete operation:", err));
+  }
 }
+
+
+
+
+// logoutButton.addEventListener("click", () => {
+//   logoutUser();
+// });
+
+// function logoutUser() {
+
+//   fetch(`${baseURL}user/logout`, {
+//     method: "GET",
+//     headers: {
+//       Authorization: `Bearer ${localStorage.getItem("token")}`, 
+//        "Content-Type": "application/json",
+//     },
+//   })
+//     .then((res) => res.json())
+//     .then((data) => {
+//       console.log(data.msg); 
+//     })
+//     .catch((err) => console.error("Error during logout:", err));
+// }
+const logoutButton = document.getElementById("logoutButton");
+
+logoutButton.addEventListener('click', (e) => {
+
+    e.preventDefault();
+
+    const accessToken = localStorage.getItem("token");
+    
+    fetch(`${baseURL}users/logout`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`,
+        },
+        
+    })
+    .then((response) => {
+        if (response.ok) {
+            localStorage.removeItem("token")
+            return response.json();
+            
+        } else {
+            throw new Error(`Logout failed: ${response.statusText}`);
+        }
+    })
+    .then((result) => {
+        console.log(result.msg); 
+        location.href = '../view/index.html';
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+});
+
 

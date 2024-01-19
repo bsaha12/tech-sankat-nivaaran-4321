@@ -1,5 +1,6 @@
 const express = require("express");
 const { connection } = require("./db");
+const {userRouter}=require("./routes/user.route")
 const {driverroute}=require("./routes/driver.routes")
 const { cardataRouter } = require("./routes/cartata.route");
 
@@ -9,7 +10,7 @@ app.use(express.json())
 
 const cors = require("cors");
 app.use(cors())
-
+app.use("/users",userRouter);
 app.use("/driver",driverroute);
 app.use("/carData", cardataRouter)
 // connecting to server and DB

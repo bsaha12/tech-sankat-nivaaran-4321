@@ -602,7 +602,28 @@ html[data-bs-theme="light"] .theme-toggle .fa-sun {
     background-color: #2980b9;
     border-color: #2980b9;
   }
-
+  #logoutButton {
+    background-color: var(--main-color); /* Red color, you can change it to match your design */
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  #logoutButton:hover {
+    background-color: #c0392b; /* Darker red color on hover */
+  }
+  
+  #logoutButton span {
+    margin-left: 8px;
+  }
+  
+  .las.la-power-off {
+    /* You may need to include a font library (like Font Awesome) for the icon styles */
+    font-size: 18px;
+  }
 
 
 
