@@ -11,7 +11,7 @@
    <input type="checkbox" id="menu-toggle">
     <div class="sidebar">
         <div class="side-header">
-            <h3>L<span>ogo</span></h3>
+            <img style="width: 110%; margin-top: 20px;" src="../images/output-onlinepngtools.png" alt="">
         </div>
         
         <div class="side-content">
@@ -36,13 +36,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="usersAdminpanel.html"  class="active">
+                        <a href="usersAdminpanel.html" class="active">
                              <span class="las la-user-friends"></span>
                              <small>Users</small>
                          </a>
                      </li>
                      <li>
-                        <a href="">
+                        <a href="driverAdminpanel.html">
                              <span class="las la-taxi"></span>
                              <small>Drivers</small>
                          </a>
@@ -115,7 +115,7 @@
             
             <div class="page-header">
                 <h1>Dashboard</h1>
-                <small>Home / Dashboard</small>
+                <small>Home / Users</small>
             </div>
             
             <div class="page-content">
@@ -210,33 +210,35 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>#5033</td>
-                                    <td>
-                                        <div class="client">
-                                           <div class="client-img bg-img" style="background-image: url(img/3.jpeg)"></div>
-                                            <div class="client-info">
-                                                <h4 id="u_name">Andrew Bruno</h4>
-                                                <small>bruno@crossover.org</small>
+                                <tr id="tablerow">
+                                    <td id="entryNo"></td>
+                                    <td id="u_info">
+                                        <div id="info_div" class="client">
+                                           <div id="imagediv" class="client-img bg-img">
+                                            <img id="u_image" src="" alt="">
+                                           </div>
+                                            <div id="info_div2" class="client-info">
+                                                <h4 id="u_name"></h4>
+                                                <small id="u_email"></small>
                                             </div>
                                         </div>
                                     </td>
                                     <td id="u_username">
-                                        john
+                                       
                                     </td>
                                     <td id="u_mobileNo">
-                                        1234567891
+                                        
+                                    </td>
+                                    <td id="u_regDate">
+                                        
+                                    </td>
+                                    <td id="u_totalRides">
+                                        
                                     </td>
                                     <td>
-                                        19 April, 2022
-                                    </td>
-                                    <td>
-                                        -$205
-                                    </td>
-                                    <td>
-                                        <div class="actions">
-                                            <span class="la la-edit"></span>
-                                            <span class="la la-trash-alt"></span>
+                                        <div id="u_operations" class="actions">
+                                            <span id="u_edit" class="la la-edit"></span>
+                                            <span id="u_delete" class="la la-trash-alt"></span>
                                             <span class="las la-ellipsis-v"></span>
                                         </div>
                                     </td>

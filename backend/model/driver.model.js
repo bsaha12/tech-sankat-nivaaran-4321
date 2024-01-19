@@ -15,7 +15,11 @@ const driverSchema = mongoose.Schema({
       },
       message: props => `${props.value} is not a valid 10-digit phone number!`
     },
-  }
+  },
+  registeredDate: {
+    type: Date,
+    default: Date.now, 
+  },
 }, {
   versionKey: false
 });
