@@ -19,6 +19,10 @@ const cardataSchema = mongoose.Schema({
     type:{
         type : String,
         require : true
+    },
+    registeredDate:{
+        type:Date,
+        default:Date.now
     }
 },{
     versionKey: false

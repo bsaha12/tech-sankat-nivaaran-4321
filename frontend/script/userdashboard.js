@@ -1,3 +1,29 @@
+const parent = document.getElementById("container1");
+
+const header1 = document.getElementById("header1");
+header1.innerText = `Hello ${localStorage.getItem("name")}!`;
+parent.append(header1);
+
+const profile = document.getElementById("profile");
+const profilePhoto = document.getElementById("profileimg");
+
+const imagephoto = document.createElement("img");
+imagephoto.src = localStorage.getItem("image") || "../images/default.jpg";
+
+const adminname = document.createElement("h4");
+adminname.innerText = localStorage.getItem("name");
+
+const position = document.createElement("small");
+position.innerText = localStorage.getItem("position") || "admin";
+
+profilePhoto.append(imagephoto);
+profile.append(profilePhoto, adminname, position);
+// const Welcome = document.getElementById("Welcome");
+// Welcome.innerText = "Welcome to SwiftNote";
+// parent.append(Welcome);
+
+
+
 function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 20.5937, lng: 78.9629 },

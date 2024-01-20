@@ -13,6 +13,7 @@ html {
     scroll-behavior: smooth;
 }
 
+
 .main-container {
     background: url(../images/background.png);
     background-position: center;
@@ -37,19 +38,33 @@ html {
     margin-left: 1rem;
     color: white;
     text-decoration: none;
+    padding: 1rem;
 }
 
 .header .navbar a:hover {
     background: #f0f9e2;
-    padding: .5rem 3rem;
+    padding: .5rem 1rem;
     border-radius: 15px;
     color: black;
 }
-.header .navbar button{
-    background: #f0f9e2;
-    padding: .5rem 3rem;
+#openModalButton{
+    background: transparent;
+    padding: .5rem 1rem;
     border-radius: 15px;
+    color: white;
+}
+#openModalButton:hover{
     color: black;
+    padding: .7rem 2rem;
+    background: #f0f9e2;
+}
+.button2{
+border: solid 1px black;
+padding: 5rem;
+font-size: 3rem;
+margin: 1.5rem;
+font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+border-radius: 5px;
 }
 
 #menu-bars {
@@ -546,22 +561,56 @@ html {
         gap: 20px;
     } */
 }
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* Style the modal content */
+.modal-content {
+    background-color: transparent;
+    padding: 15% 20%;
+    border-radius: 15px;
+    text-align: center;
+    
+    /* border-radius: ; */
+}
+
+/* Style the close button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+
 /* Brands */
-.brands{
+.brands1{
     margin: 100px auto;
 }
-.col-5{
+.col-51{
     width: 160px;
 }
-.col-5 img{
+.col-51 img{
     width: 100%;
     cursor: pointer;
     filter: grayscale(100%);
 }
-.col-5 img:hover{
+.col-51 img:hover{
     filter: grayscale(0);
 }
-.small-container{
+.small-container11{
     max-width: 1080px;
     margin: auto;
     padding-left: 25px;
@@ -630,7 +679,7 @@ ul{
     padding-left: 25px;
     padding-right: 25px;
 }
-.row{
+.row1{
     display: flex;
     align-items: center;
     flex-wrap: wrap;

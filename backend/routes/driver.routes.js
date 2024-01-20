@@ -238,6 +238,8 @@ function broadcastNewRideRequest(rideRequest, drivers) {
 //register
 driverroute.post("/register", async (req, res) => {
   const {
+    image,
+    userName,
     drivername,
     email,
     password,
@@ -260,6 +262,8 @@ driverroute.post("/register", async (req, res) => {
             res.status(200).json({ message: "Hashing error" });
           } else {
             const newDriver = new DriverModel({
+              image,
+              userName,
               drivername,
               email,
               password: hash,

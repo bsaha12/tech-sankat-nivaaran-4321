@@ -150,3 +150,37 @@
     font-family: "Merriweather", serif;
   }
 }
+#container1 h2{
+  font-size: 24px;
+  color: rgb(5, 6, 6);
+  margin-left: 10px;
+}
+.profile {
+  text-align: center;
+  padding: 2rem 0rem;
+}
+
+.bg-img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.profile-img {
+  height: 80px;
+  width: 80px;
+  display: inline-block;
+  margin: 0 auto .5rem auto;
+  border: 3px solid #899DC1;
+}
+
+.profile h4 {
+  color: #fff;
+  font-weight: 500;
+}
+
+.profile small {
+  color: #899DC1;
+  font-weight: 600;
+}

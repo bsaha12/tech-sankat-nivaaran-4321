@@ -10,12 +10,12 @@ body,
 input {
   font-family: "Poppins", sans-serif;
 }
-
+/* radial-gradient( ); */
 .container-1 {
   position: relative;
   width: 100%;
-  background-color: #35544a;
-  /* background: radial-gradient(#faf2f2, #185742); */
+  background-color: #a3c1f7;
+  background: radial-gradient(circle, #333333, #454545);
   min-height: 100vh;
   overflow: hidden;
 }
@@ -63,7 +63,7 @@ form.sign-in-form {
 
 .title {
   font-size: 2.2rem;
-  color: #f0ebeb;
+  color: whitesmoke;
   margin-bottom: 10px;
 }
 
@@ -106,7 +106,7 @@ form.sign-in-form {
 .social-text {
   padding: 0.7rem 0;
   font-size: 1rem;
-  color: #eae5e5;
+  color: whitesmoke;
 }
 
 .social-media {
@@ -122,9 +122,9 @@ form.sign-in-form {
   align-items: center;
   margin: 0 0.45rem;
   /* color: #333; */
-  color: #dad6d6;
+  color: whitesmoke;
   border-radius: 50%;
-  border: 1px solid #333;
+  border: 1px solid whitesmoke;
   text-decoration: none;
   font-size: 1.1rem;
   transition: 0.3s;
@@ -172,7 +172,7 @@ form.sign-in-form {
   right: 48%;
   transform: translateY(-50%);
   /* background-image: linear-gradient(-45deg, #4481eb 0%, #04befe 100%); */
-  background-image: linear-gradient(-45deg, #fbf9c9 0%, #fbf9c9 100%);
+  background-image: linear-gradient(-45deg, #f6f6f6 0%, #d7e5fe 100%);
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;

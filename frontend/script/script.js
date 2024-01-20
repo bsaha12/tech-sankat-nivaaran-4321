@@ -15,6 +15,27 @@ buttonbar.onclick = () => {
     mynav.classList.remove('active'); // Close the other menu if open
 };
 
+document.getElementById("openModalButton").addEventListener("click", function() {
+        document.getElementById("customModal").style.display = "flex";
+    });
+    
+    document.getElementById("ridersignin").addEventListener("click", function() {
+      window.location.href = "../view/login.html";
+  });
+  document.getElementById("ridersignin").addEventListener("click", function() {
+    window.location.href = "../view/login.html";
+});
+    
+    document.querySelector(".modal .close").addEventListener("click", function() {
+        document.getElementById("customModal").style.display = "none";
+    });
+    
+    window.addEventListener("click", function(event) {
+        if (event.target.id === "customModal") {
+            document.getElementById("customModal").style.display = "none";
+        }
+    });
+
 
 function getData() {
     
@@ -76,7 +97,7 @@ function displayService(data) {
     const booknow = document.createElement('a');
     booknow.classList.add("btn-yellow")
     booknow.innerText = 'Book Now'
-
+    booknow.href = "../view/login.html"
     
     innerBox.append(name, image,  description, reason, type, booknow);
         tarrifContainer.append(innerBox);
