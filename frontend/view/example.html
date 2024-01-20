@@ -1,78 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        /* Style the modal */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    justify-content: center;
-    align-items: center;
-}
+      /* Style the modal */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+      }
 
-/* Style the modal content */
-.modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-}
+      /* Style the modal content */
+      .modal-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
+      }
 
-/* Style the close button */
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
+      /* Style the close button */
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+      }
     </style>
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
-</head>
-<body>
-
+  </head>
+  <body>
     <!-- Button trigger modal -->
     <button type="button" id="openModalButton" class="btn btn-primary">
-        Open Modal
+      Open Modal
     </button>
-    
+
     <div id="customModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Custom Modal</h2>
-            <p>This is a custom modal without Bootstrap.</p>
-            <button type="button" id="closeModalButton" class="btn btn-secondary">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Custom Modal</h2>
+        <p>This is a custom modal without Bootstrap.</p>
+        <button type="button" id="closeModalButton" class="btn btn-secondary">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
     <script></script>
-    <script>document.getElementById("openModalButton").addEventListener("click", function() {
-        document.getElementById("customModal").style.display = "flex";
-    });
-    
-    document.getElementById("closeModalButton").addEventListener("click", function() {
-        document.getElementById("customModal").style.display = "none";
-    });
-    
-    document.querySelector(".modal .close").addEventListener("click", function() {
-        document.getElementById("customModal").style.display = "none";
-    });
-    
-    window.addEventListener("click", function(event) {
+    <script>
+      document
+        .getElementById("openModalButton")
+        .addEventListener("click", function () {
+          document.getElementById("customModal").style.display = "flex";
+        });
+
+      document
+        .getElementById("closeModalButton")
+        .addEventListener("click", function () {
+          document.getElementById("customModal").style.display = "none";
+        });
+
+      document
+        .querySelector(".modal .close")
+        .addEventListener("click", function () {
+          document.getElementById("customModal").style.display = "none";
+        });
+
+      window.addEventListener("click", function (event) {
         if (event.target.id === "customModal") {
-            document.getElementById("customModal").style.display = "none";
+          document.getElementById("customModal").style.display = "none";
         }
-    });
+      });
     </script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
-</body>
+  </body>
 </html>

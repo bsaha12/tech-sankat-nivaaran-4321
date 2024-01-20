@@ -50,7 +50,7 @@ changeBtn.addEventListener("click", async (e) => {
     phone: profilePhone.value,
     website: profileWebsite.value,
   };
-//   console.log(payload)
+  //   console.log(payload)
   try {
     const res = await fetch(`${baseurl}/users/updateprofile/${username}`, {
       method: "PATCH",

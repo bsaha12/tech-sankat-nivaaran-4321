@@ -139,9 +139,13 @@ async function showCarsPanel(source, destination, distance) {
   }
 }
 
+<<<<<<< HEAD
+const baseurl = "http://localhost:8080";
+=======
 // showCarsPanel();
 let baseurl = "http://localhost:8080";
 
+>>>>>>> e2d5e6fa48de81c5dc8f78b766465bcec2754091
 async function addcars(source, destination, distance) {
   try {
     const carspanel = document.getElementById("cars-panel");
@@ -159,7 +163,6 @@ async function addcars(source, destination, distance) {
         bookbutton.innerHTML = `Request ${name}`;
         removemarkerfrompanelitems();
         paneldiv.classList.add("cars-panel-border-color");
-        sendnotificationToDriver(source, destination);
       });
       const carimage = document.createElement("img");
       carimage.src = image;
@@ -173,6 +176,9 @@ async function addcars(source, destination, distance) {
     const bookbtn = document.createElement("button");
     bookbtn.id = "book-ride";
     bookbtn.innerHTML = `Choose Ride`;
+    bookbtn.addEventListener("click", () => {
+      sendRequest(source, destination);
+    });
     carspanel.append(bookbtn);
   } catch (error) {
     console.log(error);
@@ -180,7 +186,6 @@ async function addcars(source, destination, distance) {
 }
 
 // removing markers
-// removemarkerfrompanelitems();
 function removemarkerfrompanelitems() {
   const panelItems = document.getElementsByClassName("cars-panel-item");
   const panelItemsarray = Array.prototype.slice.call(panelItems);
@@ -190,5 +195,29 @@ function removemarkerfrompanelitems() {
 }
 
 //sendNotification to driver
+<<<<<<< HEAD
+async function sendRequest(source, destination) {
+  const username = localStorage.getItem("name");
+  try {
+    await fetch(`${baseurl}/users/requestRide`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        username,
+        startLocation: JSON.stringify(source),
+        destinationLocation: JSON.stringify(destination),
+      }),
+
+      // location.href
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+=======
 async function sendnotificationToDriver(source, destination) {}
 
+>>>>>>> e2d5e6fa48de81c5dc8f78b766465bcec2754091

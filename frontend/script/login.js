@@ -69,8 +69,12 @@ async function loginUser() {
       const data = await res.json();
       console.log(data)
       localStorage.setItem("token", data.token);
+<<<<<<< HEAD
+      location.href = "../view/index.html";
+=======
       localStorage.setItem("name", username)
       location.href = "../view/userdashboard.html"
+>>>>>>> e2d5e6fa48de81c5dc8f78b766465bcec2754091
     } else {
       checkCredentials("Invalid Credentials");
     }
