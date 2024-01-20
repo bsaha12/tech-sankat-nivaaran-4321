@@ -170,6 +170,7 @@ async function sendRequest(source, destination) {
       method: "POST",
       headers: {
         "Content-type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
         username,

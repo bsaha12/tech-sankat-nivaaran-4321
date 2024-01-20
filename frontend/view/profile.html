@@ -30,40 +30,43 @@
   </head>
 
   <body>
- <!-- Header -->
- <div class="main-container">
-  <div class="background-text">
-    <!-- <h2>book a <span>cab now</span></h2> -->
-  </div>
-  <header class="header">
-    <a href="./index.html" id="logo">
-      <img
-        style="height: 20%; width: 40%"
-        src="../images/output-onlinepngtools (1).png"
-        alt="car"
-      />
-    </a>
-    <nav class="navbar">
-      <a href="#">home</a>
-      <a href="#">blog</a>
-      <a href="#">about</a>
-      <a href="#">Contact</a>
-      <a href="#" id="button-bar" class="fas fa-bars"></a>
-      <div class="navbar1">
-        <button>signup</button>
-        <button>login</button>
+    <!-- Header -->
+    <div class="main-container">
+      <div class="background-text">
+        <!-- <h2>book a <span>cab now</span></h2> -->
       </div>
-    </nav>
+      <header class="header">
+        <a href="./index.html" id="logo">
+          <img
+            style="height: 20%; width: 40%"
+            src="../images/output-onlinepngtools (1).png"
+            alt="car"
+          />
+        </a>
+        <nav class="navbar">
+          <a href="#">home</a>
+          <a href="#">blog</a>
+          <a href="#">about</a>
+          <a href="#">Contact</a>
+          <a href="#" id="button-bar" class="fas fa-bars"></a>
+          <div class="navbar1">
+            <button>signup</button>
+            <button>login</button>
+          </div>
+        </nav>
 
-    <a href="#" id="menu-bars" class="fas fa-bars"></a>
-  </header>
-  <!-- <div class="taxi-image">
+        <a href="#" id="menu-bars" class="fas fa-bars"></a>
+      </header>
+      <!-- <div class="taxi-image">
     <img src="../images/Car-Download-PNG.png" alt="">
   </div> -->
-</div>
-<!-- header -->
+    </div>
+    <!-- header -->
 
-    <div class="container light-style flex-grow-1 container-p-y">
+    <div
+      id="profile-container"
+      class="container light-style flex-grow-1 container-p-y"
+    >
       <h4 class="font-weight-bold py-3 mb-4">Account settings</h4>
       <div class="card overflow-hidden">
         <div class="row no-gutters row-bordered row-border-light">
@@ -112,9 +115,10 @@
               <div class="tab-pane fade active show" id="account-general">
                 <div class="card-body media align-items-center">
                   <img
-                    src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                    alt
+                    src="../images/profilepageimage.jpg"
+                    alt="avatar"
                     class="d-block ui-w-80"
+                    id="user-avatar"
                   />
                   <div class="media-body ml-4">
                     <label class="btn btn-outline-primary">
@@ -141,7 +145,8 @@
                     <input
                       type="text"
                       class="form-control mb-1"
-                      value="nmaxwell"
+                      value=""
+                      id="profile-username"
                     />
                   </div>
                   <div class="form-group">
@@ -149,7 +154,8 @@
                     <input
                       type="text"
                       class="form-control"
-                      value="Nelle Maxwell"
+                      value=""
+                      id="profile-name"
                     />
                   </div>
                   <div class="form-group">
@@ -157,7 +163,9 @@
                     <input
                       type="text"
                       class="form-control mb-1"
-                      value="nmaxwell@mail.com"
+                      value=""
+                      ,
+                      id="profile-email"
                     />
                   </div>
                 </div>
@@ -182,23 +190,23 @@
                 <div class="card-body pb-2">
                   <div class="form-group">
                     <label class="form-label">Bio</label>
-                    <textarea class="form-control" rows="5">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc arcu, dignissim sit amet sollicitudin iaculis, vehicula id urna. Sed luctus urna nunc. Donec fermentum, magna sit amet rutrum pretium, turpis dolor molestie diam, ut lacinia diam risus eleifend sapien. Curabitur ac nibh nulla. Maecenas nec augue placerat, viverra tellus non, pulvinar risus.</textarea
-                    >
+                    <textarea id="profile-bio" class="form-control" rows="5">
+                    </textarea>
                   </div>
                   <div class="form-group">
                     <label class="form-label">Birthday</label>
                     <input
                       type="text"
                       class="form-control"
-                      value="May 3, 1995"
+                      value=""
+                      id="profile-birthday"
                     />
                   </div>
                   <div class="form-group">
                     <label class="form-label">Country</label>
                     <select class="custom-select">
                       <option>USA</option>
-                      <option selected>Canada</option>
+                      <option selected>India</option>
                       <option>UK</option>
                       <option>Germany</option>
                       <option>France</option>
@@ -213,12 +221,18 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc arcu, digni
                     <input
                       type="text"
                       class="form-control"
-                      value="+0 (123) 456 7891"
+                      value=""
+                      id="profile-phone"
                     />
                   </div>
                   <div class="form-group">
                     <label class="form-label">Website</label>
-                    <input type="text" class="form-control" value />
+                    <input
+                      type="text"
+                      class="form-control"
+                      value
+                      id="profile-website"
+                    />
                   </div>
                 </div>
               </div>
@@ -226,19 +240,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc arcu, digni
                 <div class="card-body pb-2">
                   <div class="form-group">
                     <label class="form-label">Twitter</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      value="https://twitter.com/user"
-                    />
+                    <input type="text" class="form-control" value="" />
                   </div>
                   <div class="form-group">
                     <label class="form-label">Facebook</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      value="https://www.facebook.com/user"
-                    />
+                    <input type="text" class="form-control" value="" />
                   </div>
                   <div class="form-group">
                     <label class="form-label">Google+</label>
@@ -250,11 +256,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc arcu, digni
                   </div>
                   <div class="form-group">
                     <label class="form-label">Instagram</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      value="https://www.instagram.com/user"
-                    />
+                    <input type="text" class="form-control" value="" />
                   </div>
                 </div>
               </div>
@@ -375,12 +377,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc arcu, digni
         </div>
       </div>
       <div class="text-right mt-3">
-        <button type="button" class="btn btn-primary">Save changes</button
+        <button type="button" id="profile-change-btn" class="btn btn-primary">
+          Save changes</button
         >&nbsp;
         <button type="button" class="btn btn-default">Cancel</button>
       </div>
     </div>
-      <!-- footer -->
+    <!-- footer -->
     <!-- brands -->
     <!-- <div class="brands">
       <div class="small-container">

@@ -74,10 +74,10 @@ userRouter.get("/logout", async (req, res) => {
 
 //store riderequest in DB
 userRouter.post("/requestRide", async (req, res) => {
-  const { userId, startLocation, destinationLocation } = req.body;
+  const { username, startLocation, destinationLocation } = req.body;
   try {
     const newRideRequest = new RideRequestModel({
-      userId,
+      username,
       startLocation: startLocation,
       destinationLocation: destinationLocation,
     });
@@ -95,6 +95,30 @@ userRouter.get("/rides", async (req, res) => {
   try {
     const rideRequests = await RideRequestModel.find();
     res.status(200).json({ rideRequests });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+});
+
+// get specific user by username
+userRouter.get("/profile/:username", async (req, res) => {
+  const { username } = req.params;
+  try {
+    const user = await UserModel.findOne({ username });
+    res.status(200).json({ user });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+});
+
+// update profile of specific user by username
+userRouter.patch("/updateprofile/:username", async (req, res) => {
+  const { username } = req.params;
+  const { name, bio, birthday, phone, website } = req.body;
+  const payload = { name, bio, birthday, phone, website };
+  try {
+    const user = await UserModel.findOneAndUpdate({ username }, payload);
+    res.status(200).json({ msg: "profile updated succcessfully" });
   } catch (error) {
     res.status(500).json({ error });
   }

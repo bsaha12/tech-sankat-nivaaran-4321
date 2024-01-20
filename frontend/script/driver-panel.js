@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ul.id = "ride-list";
       ridediv.innerHTML = "";
       ridediv.append(h2, ul);
-      getrequests();
+      // getrequests();
     } else if (newStatus === "Unavailable") {
       flag = false;
       ridediv.innerHTML = "";
@@ -37,14 +37,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // getting list of available riders
 var nearbyRideRequests = [];
-let flag = true;
+let flag = false;
 var driver_lat = 22.572645;
 var driver_lng = 88.363892;
 var driverpos = { lat: driver_lat, lng: driver_lng };
 const baseurl = "http://localhost:8080";
 async function getrequests() {
   try {
-    const res = await fetch(`${baseurl}/users/rides`);
+    const res = await fetch(`${baseurl}/users/rides`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
     const { rideRequests } = await res.json();
     nearbyRideRequests = [];
     rideRequests.forEach((item) => {
@@ -86,6 +92,11 @@ function addRiders(nearbyRideRequests) {
       flag = false;
       rideList.innerHTML = "";
       rideList.append(listItem);
+      acceptbtn.innerHTML = "";
+      acceptbtn.innerHTML = `<span class="material-symbols-outlined">
+      check_circle
+      </span>`;
+      acceptbtn.classList.add("back-color-white");
       nearbyRideRequests = [item];
       roadmap({ source: driverpos, destination: loc });
       addToMap(nearbyRideRequests);
