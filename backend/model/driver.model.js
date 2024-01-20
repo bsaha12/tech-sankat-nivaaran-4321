@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const driverSchema = mongoose.Schema(
   {
     image:{type: String},
-    userName:{type: String, required: true},
-    drivername: { type: String, required: true },
+    username:{type: String, required: true},
+    drivername: { type: String},
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     experience: { type: Number },

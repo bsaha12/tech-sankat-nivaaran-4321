@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../style/userdashboard.css" />
 
     <!-- header css -->
-    <link rel="stylesheet" href="../style/justheader.css" />
+    <!-- <link rel="stylesheet" href="../style/justheader.css" /> -->
 
     <!-- footer css -->
     <link rel="stylesheet" href="../style/footer.css" />
@@ -34,45 +34,25 @@
       href="../images/favicon.svg"
       type="image/x-icon"
     />
+    <style>
+      .user{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: right;
+        padding-top: 1rem;
+        /* font-size: 16px; */
+      }
+    </style>
   </head>
   <body>
     <!-- Header -->
-    <div class="main-container">
-      <div class="background-text"></div>
-      <header class="header">
-        <a href="./index.html" id="logo">
-          <img
-            style="height: 20%; width: 40%"
-            src="../images/output-onlinepngtools (1).png"
-            alt="car"
-          />
-        </a>
-        <nav class="navbar">
-          <a href="#">home</a>
-          <a href="#">blog</a>
-          <a href="#">about</a>
-          <a href="#">Contact</a>
-          <!-- <a href="#" id="button-bar" class="fas fa-bars"></a> -->
-          
-          
-          <div id="container1">
-            <h2 id="header1"></h2>
-          </div>
-        </nav>
-        <button id="logoutButton" style="margin: 20px;">logout</button>
-          <a id="profile" style="border-radius: 50%;  height: 10;width: 10%;">
-            <img style="width:5% ;  border-radius: 50%;" src="../images/default.jpg" alt="">
-          </a>
-        
-
-        <a href="#" id="menu-bars" class="fas fa-bars"></a>
-      </header>
-      <!-- <div class="taxi-image">
-            <img src="../images/Car-Download-PNG.png" alt="">
-          </div> -->
-    </div>
+    <div id="externalContent"></div>
     <!-- header -->
-    
+    <div  class="user">
+      <div id="profileimg1" class="client-img bg-img">
+
+      </div>
+    </div>
     <div id="container">
       <div id="search">
         Get a Ride
@@ -133,27 +113,27 @@
     </div>
     <!-- footer -->
     <!-- brands -->
-    <div class="brands">
-      <div class="small-container">
-        <div class="row">
-          <div class="col-5">
-            <img src="../images/logo-godrej.png" />
+    <div class="brands1">
+      <div class="small-container11">
+          <div class="row1">
+              <div class="col-51">
+                  <img src="../images/logo-godrej.png">
+              </div>
+              <div class="col-51">
+                  <img src="../images/logo-oppo.png">
+              </div>
+              <div class="col-51">
+                  <img src="../images/logo-coca-cola.png">
+              </div>
+              <div class="col-51">
+                  <img src="../images/logo-paypal.png">
+              </div>
+              <div class="col-51">
+                  <img src="../images/logo-philips.png">
+              </div>
           </div>
-          <div class="col-5">
-            <img src="../images/logo-oppo.png" />
-          </div>
-          <div class="col-5">
-            <img src="../images/logo-coca-cola.png" />
-          </div>
-          <div class="col-5">
-            <img src="../images/logo-paypal.png" />
-          </div>
-          <div class="col-5">
-            <img src="../images/logo-philips.png" />
-          </div>
-        </div>
       </div>
-    </div>
+  </div>
 
     <!-- footer -->
     <div class="footer">
@@ -200,11 +180,18 @@
         </p>
       </div>
     </div>
-
+    <script >
+ 
+        
+        
+    </script>
     <!-- footer -->
     <!-- <input type="text" id="pac-input" placeholder="Search places" /> -->
     <script src="../script/userdashboard.js"></script>
-    <script src="../script/header.js"></script>
+    <script src="../script/joinhtml.js"></script>
     <script src="../script/userLogout.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    
   </body>
 </html>

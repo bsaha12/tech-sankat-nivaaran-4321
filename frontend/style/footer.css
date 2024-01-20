@@ -1,19 +1,19 @@
 /* Brands */
-.brands{
+.brands1{
     margin: 100px auto;
 }
-.col-5{
+.col-51{
     width: 160px;
 }
-.col-5 img{
+.col-51 img{
     width: 100%;
     cursor: pointer;
     filter: grayscale(100%);
 }
-.col-5 img:hover{
+.col-51 img:hover{
     filter: grayscale(0);
 }
-.small-container{
+.small-container11{
     max-width: 1080px;
     margin: auto;
     padding-left: 25px;
@@ -86,7 +86,7 @@ footer .container{
     padding-left: 25px;
     padding-right: 25px;
 }
-.row{
+.row1{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -126,7 +126,7 @@ footer .container{
 }
 @media only screen and (max-width: 600px){
 
-    .row{
+    .row1{
         text-align: center;
     }
     .col-2, .col-3, .col-4{

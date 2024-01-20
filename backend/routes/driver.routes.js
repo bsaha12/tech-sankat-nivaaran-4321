@@ -239,7 +239,7 @@ function broadcastNewRideRequest(rideRequest, drivers) {
 driverroute.post("/register", async (req, res) => {
   const {
     image,
-    userName,
+    username,
     drivername,
     email,
     password,
@@ -263,7 +263,7 @@ driverroute.post("/register", async (req, res) => {
           } else {
             const newDriver = new DriverModel({
               image,
-              userName,
+              username,
               drivername,
               email,
               password: hash,
@@ -290,10 +290,10 @@ driverroute.post("/register", async (req, res) => {
 
 //login
 driverroute.post("/login", async (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
   try {
-    const driver = await DriverModel.findOne({ email });
+    const driver = await DriverModel.findOne({ username });
 
     if (!driver) {
       res
@@ -309,7 +309,7 @@ driverroute.post("/login", async (req, res) => {
           .json({ message: "Authentication failed. Incorrect password." });
       } else {
         const token = jwt.sign(
-          { email: driver.email, driverId: driver._id },
+          { username: driver.username, driverId: driver._id },
           "sankat-nivaaran",
           { expiresIn: "1h" }
         );

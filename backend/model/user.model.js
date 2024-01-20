@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 const userSchema = mongoose.Schema({
+        image:{
+                type: String,
+        },
         username: {
                 type: String,
                 require: true
@@ -14,7 +17,8 @@ const userSchema = mongoose.Schema({
         },
         role: {
                 type: String,
-                enum: ["admin", "user"]
+                default : "user",
+                enum: ["admin", "user", "super Admin"]
         }
 }, {
         versionKey: false,

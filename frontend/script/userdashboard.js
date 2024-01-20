@@ -1,23 +1,23 @@
-const parent = document.getElementById("container1");
+const parent = document.getElementById("profileimg1");
 
-const header1 = document.getElementById("header1");
+const header1 = document.createElement("h4");
 header1.innerText = `Hello ${localStorage.getItem("name")}!`;
 parent.append(header1);
 
-const profile = document.getElementById("profile");
-const profilePhoto = document.getElementById("profileimg");
+// const profile = document.getElementById("profile");
+// const profilePhoto = document.getElementById("profileimg");
 
-const imagephoto = document.createElement("img");
-imagephoto.src = localStorage.getItem("image") || "../images/default.jpg";
+// const imagephoto = document.createElement("img");
+// imagephoto.src = localStorage.getItem("image") || "../images/default.jpg";
 
-const adminname = document.createElement("h4");
-adminname.innerText = localStorage.getItem("name");
+// const adminname = document.createElement("h4");
+// adminname.innerText = localStorage.getItem("name");
 
-const position = document.createElement("small");
-position.innerText = localStorage.getItem("position") || "admin";
+// const position = document.createElement("small");
+// position.innerText = localStorage.getItem("position") || "admin";
 
-profilePhoto.append(imagephoto);
-profile.append(profilePhoto, adminname, position);
+// profilePhoto.append(imagephoto);
+// profile.append(profilePhoto, adminname, position);
 // const Welcome = document.getElementById("Welcome");
 // Welcome.innerText = "Welcome to SwiftNote";
 // parent.append(Welcome);
@@ -140,12 +140,13 @@ async function showCarsPanel(source, destination, distance) {
 }
 
 // showCarsPanel();
-const baseurl = "http://localhost:8080";
+let baseurl = "http://localhost:8080";
+
 async function addcars(source, destination, distance) {
   try {
     const carspanel = document.getElementById("cars-panel");
     carspanel.innerHTML = "";
-    const res = await fetch(`${baseurl}/carData`);
+    const res = await fetch(`http://localhost:8080/carData`);
     const { cars_data: cars } = await res.json();
     cars.forEach((item, i, arr) => {
       const { image, name, price } = item;
@@ -190,3 +191,4 @@ function removemarkerfrompanelitems() {
 
 //sendNotification to driver
 async function sendnotificationToDriver(source, destination) {}
+

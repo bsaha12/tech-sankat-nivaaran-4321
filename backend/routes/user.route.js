@@ -2,7 +2,7 @@ const express= require("express");
 const bcrypt =require("bcrypt");
 const {UserModel}=require("../model/user.model");
 const {blacklistModel}=require("../model/blacklist");
-const{rideRequestSchema}=require("../model/riderequest.model")
+const{RideRequestModel}=require("../model/riderequest.model")
 const userRouter=express.Router();
 const jwt=require("jsonwebtoken");
 //registration
