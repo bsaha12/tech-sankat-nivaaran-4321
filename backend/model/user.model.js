@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 const userSchema = mongoose.Schema(
   {
+    image: {
+      type: String,
+    },
     username: {
       type: String,
       require: true,
@@ -11,7 +14,12 @@ const userSchema = mongoose.Schema(
     },
     password: {
       type: String,
-      required: true,
+      require: true,
+    },
+    role: {
+      type: String,
+      default: "user",
+      enum: ["admin", "user", "super Admin"],
     },
     name: String,
     bio: String,
@@ -19,6 +27,7 @@ const userSchema = mongoose.Schema(
     phone: String,
     website: String,
   },
+
   {
     versionKey: false,
   }

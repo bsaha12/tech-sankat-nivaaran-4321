@@ -2,7 +2,9 @@ const mongoose = require("mongoose");
 
 const driverSchema = mongoose.Schema(
   {
-    drivername: { type: String, required: true },
+    image: { type: String },
+    username: { type: String, required: true },
+    drivername: { type: String },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     experience: { type: Number },
@@ -27,6 +29,10 @@ const driverSchema = mongoose.Schema(
         message: (props) =>
           `${props.value} is not a valid 10-digit phone number!`,
       },
+    },
+    registeredDate: {
+      type: Date,
+      default: Date.now,
     },
   },
   {

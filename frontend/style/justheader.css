@@ -1,3 +1,6 @@
+.navButton {
+  display: none;
+}
 * {
   margin: 0;
   padding: 0;
@@ -8,18 +11,26 @@
 }
 
 html {
-  /* font-size: 62.5%; */
+  font-size: 62.5%;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
-
+/* .main-container {  */
+/* background: url(../images/background.png); */
+/* background-position: center; */
+/* background-size: cover; */
+/* background-color: rgb(72, 66, 66); */
+/* width: 100%; */
+/* height: 90vh; */
+/* }  */
 .main-container {
   /* background: url(../images/background.png); */
-  /* background-position: center; */
-  /* background-size: cover; */
-  background-color: rgb(72, 66, 66);
-  /* width: 100%; */
-  /* height: 90vh; */
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  /* background-color: rgb(72, 66, 66); */
+  height: 15vh;
+  z-index: 1000;
 }
 
 .header {
@@ -28,10 +39,13 @@ html {
   width: 100%;
   padding: 2rem 7%;
   align-items: center;
+  box-shadow: 0 0 10px #000;
+  background: #00000083;
+  /* position: sticky; */
 }
 
 .header .navbar a {
-  font-size: 1.1rem;
+  font-size: 1.7rem;
   margin-left: 1rem;
   color: white;
   text-decoration: none;
@@ -86,10 +100,25 @@ html {
 .background-text h2 span {
   color: #f0f9e2;
 }
+
+.taxi-image {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.taxi-image img {
+  width: 100%;
+  margin-top: 25%;
+}
+
+@media (min-width: 950px) {
+  .header {
+    position: fixed;
+    /* z-index: 1000; */
+  }
+}
+
 @media ((max-width: 950px) and (min-width: 250px)) {
-  /* #button-bar {
-          display: none;
-      } */
   #logo {
     display: none;
   }
@@ -106,14 +135,27 @@ html {
     top: -100%;
     right: 0;
     left: 0;
+    box-shadow: 0 0 10px #000;
+    background: #00000083;
+  }
+  #button-bar {
+    display: none;
   }
 
   .navbar a {
     display: block;
     font-size: 1.5rem;
     background: transparent;
-    /* margin: 1rem; */
-    /* padding: 1rem; */
+    margin: 1rem;
+    padding: 1rem;
+  }
+  .navbar1 {
+    position: absolute;
+    top: -100%;
+    right: 0;
+    left: 0;
+    box-shadow: 0 0 10px #000;
+    background: #00000083;
   }
   .navbar button {
     display: inline;

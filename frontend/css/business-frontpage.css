@@ -1,0 +1,8 @@
+
+body {
+  padding-top: 56px;
+}
+
+#contact .card:hover i,#contact .card:hover h4{
+	color: #1261A0;
+}

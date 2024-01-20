@@ -4,46 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../style/header.css">
+    <!-- <link rel="stylesheet" href="../style/header.css"> -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="../css/business-frontpage.css" rel="stylesheet">
     <link
       rel="stylesheet"
       href="../fontawesome-free-5.15.3-web/css/all.min.css"
     />
+    <style>
+      .nav-list {
+    display: flex;
+}
+
+.nav-end {
+    margin-right: 50px;
+}
+#button{
+  border-radius: 50%;
+  width: 3rem;
+}
+    </style>
 </head>
+
 <body>
-    <div class="main-container">
-        <!-- <div class="background-text">
-          <h2>book a <span>cab now</span></h2>
-        </div> -->
-        <header class="header">
-          <a href="./index.html" id="logo">
-            <img
-              style="height: 20%; width: 40%"
-              src="../images/output-onlinepngtools (1).png"
-              alt=""
-            />
-          </a>
-          <nav class="navbar ">
-            <a href="#">home</a>
-            <a href="#">blog</a>
-            <a href="#">about</a>
-            <a href="#">Contact</a>
-            <a href="#" id="button-bar" class="fas fa-bars"></a>
-            <div class="navbar1">
-              <button>signup</button>
-              <button>login</button>
-            </div>
-            <button class="navButton">signup</button>
-              <button class="navButton">login</button>
-          </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <!-- <a  class="navbar-brand" href="#"><img style="width: 10rem;" src="../images/output-onlinepngtools (1).png" alt=""></a> -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">My trips</a>
+          </li>
           
-          <a href="#" id="menu-bars" class="fas fa-bars"></a>
-        </header>
-        <!-- <div class="taxi-image">
-          <img src="../images/Car-Download-PNG.png" alt="" />
-        </div> -->
+          
+          
+         
+          
+        </ul>
+        
       </div>
-    <script src="../script/header.js"></script>
+      
+    </div>
+    
+    <button id="profile" type="button" class="btn btn-dark" onclick="goToProfile()"><img id="button" src="../images/default.jpg" alt=""></button>
+    <button id="logoutButton"  class="btn btn-outline-secondary" onclick="logout()">logout</button>
+    
+  
+  
+    
+    <!-- <script src="../script/header.js"></script> -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+ 
 </body>
 
 </html>

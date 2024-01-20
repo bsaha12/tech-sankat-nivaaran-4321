@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Your existing head content here -->
+  </head>
+  <body>
+    <input type="checkbox" id="menu-toggle" />
+    <!-- Your existing sidebar and main content structure here -->
+
+    <div class="main-content">
+      <header>
+        <!-- Your existing header content here -->
+      </header>
+
+      <main>
+        <div class="page-header">
+          <h1>Profile Update</h1>
+          <small>Home / Profile Update</small>
+        </div>
+
+        <div class="page-content">
+          <form id="profileUpdateForm" action="#" method="post">
+            <!-- Add form fields for profile update -->
+            <label for="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your name"
+              required
+            />
+
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+
+            <label for="profilePicture">Profile Picture URL:</label>
+            <input
+              type="text"
+              id="profilePicture"
+              name="profilePicture"
+              placeholder="Enter URL for profile picture"
+            />
+
+            <button type="submit">Update Profile</button>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <!-- Your existing script and theme toggle button here -->
+
+    <script>
+      // Add JavaScript to handle form submission and profile update
+      document
+        .getElementById("profileUpdateForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Fetch values from the form
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const profilePicture =
+            document.getElementById("profilePicture").value;
+
+          // Perform profile update logic, e.g., send a request to the server
+          // You can use fetch() or any other method to send the data to your server
+
+          // For illustration purposes, let's log the values to the console
+          console.log("Name:", name);
+          console.log("Email:", email);
+          console.log("Profile Picture:", profilePicture);
+
+          // You can add your logic here to update the profile information on the server
+        });
+    </script>
+  </body>
+</html>

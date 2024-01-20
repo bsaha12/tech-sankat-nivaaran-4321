@@ -1,3 +1,29 @@
+const parent = document.getElementById("profileimg1");
+
+const header1 = document.createElement("h4");
+header1.innerText = `Hello ${localStorage.getItem("name")}!`;
+parent.append(header1);
+
+// const profile = document.getElementById("profile");
+// const profilePhoto = document.getElementById("profileimg");
+
+// const imagephoto = document.createElement("img");
+// imagephoto.src = localStorage.getItem("image") || "../images/default.jpg";
+
+// const adminname = document.createElement("h4");
+// adminname.innerText = localStorage.getItem("name");
+
+// const position = document.createElement("small");
+// position.innerText = localStorage.getItem("position") || "admin";
+
+// profilePhoto.append(imagephoto);
+// profile.append(profilePhoto, adminname, position);
+// const Welcome = document.getElementById("Welcome");
+// Welcome.innerText = "Welcome to SwiftNote";
+// parent.append(Welcome);
+
+
+
 function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 20.5937, lng: 78.9629 },
@@ -113,12 +139,18 @@ async function showCarsPanel(source, destination, distance) {
   }
 }
 
+<<<<<<< HEAD
 const baseurl = "http://localhost:8080";
+=======
+// showCarsPanel();
+let baseurl = "http://localhost:8080";
+
+>>>>>>> e2d5e6fa48de81c5dc8f78b766465bcec2754091
 async function addcars(source, destination, distance) {
   try {
     const carspanel = document.getElementById("cars-panel");
     carspanel.innerHTML = "";
-    const res = await fetch(`${baseurl}/carData`);
+    const res = await fetch(`http://localhost:8080/carData`);
     const { cars_data: cars } = await res.json();
     cars.forEach((item, i, arr) => {
       const { image, name, price } = item;
@@ -163,6 +195,7 @@ function removemarkerfrompanelitems() {
 }
 
 //sendNotification to driver
+<<<<<<< HEAD
 async function sendRequest(source, destination) {
   const username = localStorage.getItem("name");
   try {
@@ -184,3 +217,7 @@ async function sendRequest(source, destination) {
     console.log(error);
   }
 }
+=======
+async function sendnotificationToDriver(source, destination) {}
+
+>>>>>>> e2d5e6fa48de81c5dc8f78b766465bcec2754091

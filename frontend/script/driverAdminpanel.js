@@ -30,7 +30,7 @@ let paginationWrapper = document.getElementById("pagination");
 
 function getData() {
   fetch(
-    `${baseURL}Driver/?page=${currentPage}&perPage=${itemsPerPage}`,
+    `${baseURL}driver/?page=${currentPage}&perPage=${itemsPerPage}`,
     {
       headers: {
         "Content-type": "application/json",
@@ -160,46 +160,29 @@ function editUser(userId) {
 
 function deleteUser(userId) {
   if (confirm("Are you sure you want to delete this user?")) {
-    fetch(`${baseURL}Driver/delete/${userId}`, {
+    fetch(`${baseURL}driver/delete/${userId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          getData();
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else if (res.status === 404) {
+          throw new Error("Driver not found");
         } else {
-          console.error("Delete operation failed:", data.error);
+          throw new Error("Delete operation failed");
         }
       })
-      .catch((err) => console.error("Error during delete operation:", err));
+      .then((data) => {
+        // Handle success
+        getData();
+      })
+      .catch((err) => console.error("Error during delete operation:", err.message));
   }
 }
 
-
-
-
-// logoutButton.addEventListener("click", () => {
-//   logoutUser();
-// });
-
-// function logoutUser() {
-
-//   fetch(`${baseURL}user/logout`, {
-//     method: "GET",
-//     headers: {
-//       Authorization: `Bearer ${localStorage.getItem("token")}`, 
-//        "Content-Type": "application/json",
-//     },
-//   })
-//     .then((res) => res.json())
-//     .then((data) => {
-//       console.log(data.msg); 
-//     })
-//     .catch((err) => console.error("Error during logout:", err));
-// }
 const logoutButton = document.getElementById("logoutButton");
 
 logoutButton.addEventListener('click', (e) => {

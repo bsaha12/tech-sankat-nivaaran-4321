@@ -9,11 +9,12 @@ const jwt = require("jsonwebtoken");
 //registration
 userRouter.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
+  console.log(req.body);
   try {
     const user = await UserModel.find({ email: email, username: username });
     console.log(user);
-    if (user) {
-      return res.status(400).json({ msg: "User is alreday existed" });
+    if (user.length > 0) {
+      return res.status(400).json({ msg: "User is already existed" });
     }
     bcrypt.hash(password, 5, async (err, hash) => {
       if (err) {
@@ -38,9 +39,9 @@ userRouter.post("/register", async (req, res) => {
 
 //login
 userRouter.post("/login", async (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
   try {
-    const user = await UserModel.findOne({ email });
+    const user = await UserModel.findOne({ username });
     if (user) {
       bcrypt.compare(password, user.password, (err, result) => {
         if (result) {
@@ -74,7 +75,7 @@ userRouter.get("/logout", async (req, res) => {
 
 //store riderequest in DB
 userRouter.post("/requestRide", async (req, res) => {
-  const { username, startLocation, destinationLocation } = req.body;
+  const { userId, username, startLocation, destinationLocation } = req.body;
   try {
     const newRideRequest = new RideRequestModel({
       username,
@@ -82,11 +83,10 @@ userRouter.post("/requestRide", async (req, res) => {
       destinationLocation: destinationLocation,
     });
     await newRideRequest.save();
-
+    broadcastNewRideRequest({ userId, startLocation, destinationLocation });
     res.status(200).json({ message: "Ride request sent successfully" });
   } catch (error) {
-    console.error("Failed to process ride request:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    res.status(500).json({ error });
   }
 });
 

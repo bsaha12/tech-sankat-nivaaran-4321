@@ -7,6 +7,199 @@ const { authLogout } = require("../middlewares/driver.auth");
 
 const driverroute = express.Router();
 
+/**
+ * @swagger
+ * tags:
+ *   name: Driver
+ *   description: Operations related to drivers
+ */
+
+/**
+ * @swagger
+ * /driver:
+ *   get:
+ *     summary: Get all drivers
+ *     tags: [Driver]
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             example:
+ *               drivers_data: []
+ */
+
+/**
+ * @swagger
+ * /driver/register:
+ *   post:
+ *     summary: Register a new driver
+ *     tags: [Driver]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               drivername:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *               experience:
+ *                 type: string
+ *               latitude:
+ *                 type: string
+ *               longitude:
+ *                 type: string
+ *               phoneNumber:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Successful registration
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: New driver registered
+ *       '400':
+ *         description: Registration failure
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Registration failure
+ */
+
+/**
+ * @swagger
+ * /driver/login:
+ *   post:
+ *     summary: Login as a driver
+ *     tags: [Driver]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Successful login
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Authentication successful
+ *               token: "your_jwt_token"
+ *       '400':
+ *         description: Authentication failure
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Authentication failed. User not found.
+ */
+
+/**
+ * @swagger
+ * /driver/logout:
+ *   post:
+ *     summary: Logout a driver
+ *     tags: [Driver]
+ *     responses:
+ *       '200':
+ *         description: Successful logout
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Logout successful
+ */
+
+/**
+ * @swagger
+ * /driver/update/{id}:
+ *   patch:
+ *     summary: Update driver information
+ *     tags: [Driver]
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Driver ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               driverId:
+ *                 type: string
+ *               drivername:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *               experience:
+ *                 type: string
+ *               latitude:
+ *                 type: string
+ *               longitude:
+ *                 type: string
+ *               phoneNumber:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Successful update
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Driver updated successfully
+ *               driver: {}
+ *       '400':
+ *         description: Update failure
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Update failure
+ */
+
+/**
+ * @swagger
+ * /driver/delete/{id}:
+ *   delete:
+ *     summary: Delete a driver
+ *     tags: [Driver]
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Driver ID
+ *     responses:
+ *       '200':
+ *         description: Successful deletion
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Driver deleted successfully
+ *               driver: {}
+ *       '400':
+ *         description: Delete failure
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Delete failure
+ */
+
 driverroute.get("/", async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
@@ -25,7 +218,7 @@ driverroute.get("/", async (req, res) => {
       page: page,
       limit: limit,
       totalDrivers: totalDrivers,
-      totalPages: totalPages
+      totalPages: totalPages,
     });
 
     console.log(drivers);
@@ -37,7 +230,9 @@ driverroute.get("/", async (req, res) => {
 function broadcastNewRideRequest(rideRequest, drivers) {
   drivers.forEach((driverWs) => {
     if (driverWs.readyState === WebSocket.OPEN) {
-      driverWs.send(JSON.stringify({ type: "newRideRequest", data: rideRequest }));
+      driverWs.send(
+        JSON.stringify({ type: "newRideRequest", data: rideRequest })
+      );
     }
   });
 }
@@ -45,6 +240,8 @@ function broadcastNewRideRequest(rideRequest, drivers) {
 //register
 driverroute.post("/register", async (req, res) => {
   const {
+    image,
+    username,
     drivername,
     email,
     password,
@@ -67,6 +264,8 @@ driverroute.post("/register", async (req, res) => {
             res.status(200).json({ message: "Hashing error" });
           } else {
             const newDriver = new DriverModel({
+              image,
+              username,
               drivername,
               email,
               password: hash,
@@ -93,10 +292,10 @@ driverroute.post("/register", async (req, res) => {
 
 //login
 driverroute.post("/login", async (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
   try {
-    const driver = await DriverModel.findOne({ email });
+    const driver = await DriverModel.findOne({ username });
 
     if (!driver) {
       res
@@ -112,7 +311,7 @@ driverroute.post("/login", async (req, res) => {
           .json({ message: "Authentication failed. Incorrect password." });
       } else {
         const token = jwt.sign(
-          { email: driver.email, driverId: driver._id },
+          { username: driver.username, driverId: driver._id },
           "sankat-nivaaran",
           { expiresIn: "1h" }
         );
@@ -131,7 +330,6 @@ driverroute.post("/login", async (req, res) => {
 driverroute.post("/logout", authLogout, (req, res) => {
   res.status(200).json({ message: "Logout successful" });
 });
-
 
 // update
 // driverroute.patch("/update/:id", async (req, res) => {
@@ -155,31 +353,31 @@ driverroute.post("/logout", authLogout, (req, res) => {
 //   }
 // });
 
-
 //update
 driverroute.patch("/update/:id", async (req, res) => {
   const { id } = req.params;
-  const payload=req.body
+  const payload = req.body;
 
   try {
-    if(payload.driverId===req.body.driverId){
-    const updatedDriver = await DriverModel.findByIdAndUpdate({ _id:id},payload);
-res.status(200).json({ message: "Driver updated successfully", driver: updatedDriver });
-  }
-      else {
+    if (payload.driverId === req.body.driverId) {
+      const updatedDriver = await DriverModel.findByIdAndUpdate(
+        { _id: id },
+        payload
+      );
+      res
+        .status(200)
+        .json({
+          message: "Driver updated successfully",
+          driver: updatedDriver,
+        });
+    } else {
       res.status(404).json({ message: "Driver not found" });
     }
-  }  
-    catch (error) {
+  } catch (error) {
     console.error("Update failure:", error);
     res.status(400).json({ message: "Update failure", error });
   }
 });
-
-
-
-
-
 
 // delete
 driverroute.delete("/delete/:id", async (req, res) => {
@@ -189,7 +387,12 @@ driverroute.delete("/delete/:id", async (req, res) => {
     const deletedDriver = await DriverModel.findByIdAndDelete(id);
 
     if (deletedDriver) {
-      res.status(200).json({ message: "Driver deleted successfully", driver: deletedDriver });
+      res
+        .status(200)
+        .json({
+          message: "Driver deleted successfully",
+          driver: deletedDriver,
+        });
     } else {
       res.status(404).json({ message: "Driver not found" });
     }
@@ -199,8 +402,7 @@ driverroute.delete("/delete/:id", async (req, res) => {
   }
 });
 
-
 module.exports = {
   driverroute,
-  broadcastNewRideRequest
+  broadcastNewRideRequest,
 };
