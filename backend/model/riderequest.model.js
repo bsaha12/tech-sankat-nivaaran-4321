@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const rideRequestSchema = mongoose.Schema({
-  userId: { type: String, ref: "User", required: true },
+  username: { type: String, ref: "User", required: true },
   startLocation: { type: String, required: true },
   destinationLocation: { type: String, required: true },
   status: { type: String, default: "pending" },

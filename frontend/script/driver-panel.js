@@ -48,7 +48,7 @@ async function getrequests() {
     const { rideRequests } = await res.json();
     nearbyRideRequests = [];
     rideRequests.forEach((item) => {
-      const { startLocation } = item;
+      const { startLocation, username } = item;
       const { lat: source_lat, lng: source_lng } = JSON.parse(startLocation);
       const radius = 2;
       var check1 =
@@ -56,10 +56,13 @@ async function getrequests() {
       var check2 =
         source_lat >= driver_lat - radius && source_lng >= driver_lng - radius;
       if (check1 && check2) {
-        nearbyRideRequests.push(JSON.parse(startLocation));
+        nearbyRideRequests.push({
+          startLocation: JSON.parse(startLocation),
+          username,
+        });
       }
     });
-    initMap();
+    // initMap();
     addToMap(nearbyRideRequests);
     addRiders(nearbyRideRequests);
   } catch (error) {
@@ -71,9 +74,10 @@ function addRiders(nearbyRideRequests) {
   // Display ride requests
   const rideList = document.getElementById("ride-list");
   rideList.innerHTML = "";
-  nearbyRideRequests.forEach((loc, i) => {
+  nearbyRideRequests.forEach((item, i) => {
+    const { startLocation: loc, username } = item;
     const listItem = document.createElement("li");
-    listItem.textContent = `Rider : ${i + 1}`;
+    listItem.textContent = `${username}'s request`;
     const acceptbtn = document.createElement("button");
     acceptbtn.innerHTML = "Accept";
     // acceptbtn.id = "ride-accept";
@@ -82,8 +86,8 @@ function addRiders(nearbyRideRequests) {
       flag = false;
       rideList.innerHTML = "";
       rideList.append(listItem);
-      nearbyRideRequests = [loc];
-      initMap();
+      nearbyRideRequests = [item];
+      roadmap({ source: driverpos, destination: loc });
       addToMap(nearbyRideRequests);
     });
     rideList.append(listItem);
@@ -111,15 +115,58 @@ function initMap() {
 // add icon to map
 function addToMap(nearbyRideRequests) {
   //   Display Riders markers on the map
-  nearbyRideRequests.forEach((loc, i) => {
+  nearbyRideRequests.forEach((item, i) => {
+    const { startLocation: loc, username } = item;
     const marker = new google.maps.Marker({
       position: loc,
       map: map,
-      title: `User ${i + 1}`,
+      title: username,
       draggable: false,
       icon: "../images/ridericon.png",
       animation: google.maps.Animation.DROP,
     });
+  });
+}
+
+// map function to generate road
+function roadmap({ source, destination }) {
+  // Rendering Direction
+  let directionsService = new google.maps.DirectionsService();
+  var directionsRenderer = new google.maps.DirectionsRenderer({
+    polylineOptions: {
+      strokeColor: "#000000",
+    },
+  });
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: 22.572645, lng: 88.363892 },
+    zoom: 10,
+  });
+  //display driver location
+  new google.maps.Marker({
+    position: driverpos,
+    map: map,
+    title: `Driver`,
+    draggable: false,
+    icon: "../icons/caricon.png",
+    animation: google.maps.Animation.DROP,
+  });
+  directionsRenderer.setMap(map);
+  const request = {
+    origin: source,
+    destination: destination,
+    travelMode: "DRIVING",
+  };
+
+  directionsService.route(request, function (result, status) {
+    if (status === "OK") {
+      directionsRenderer.setDirections(result);
+      // const distance = result.routes[0].legs[0].distance.text;
+      // const source = startMarker.getPosition().toJSON();
+      // const destination = destinationMarker.getPosition().toJSON();
+      // showCarsPanel(source, destination, distance);
+    } else {
+      console.error("Directions request failed with status:", status);
+    }
   });
 }
 

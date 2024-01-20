@@ -164,7 +164,7 @@ function removemarkerfrompanelitems() {
 
 //sendNotification to driver
 async function sendRequest(source, destination) {
-  const userId = 1;
+  const username = localStorage.getItem("name");
   try {
     await fetch(`${baseurl}/users/requestRide`, {
       method: "POST",
@@ -172,7 +172,7 @@ async function sendRequest(source, destination) {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        userId,
+        username,
         startLocation: JSON.stringify(source),
         destinationLocation: JSON.stringify(destination),
       }),
