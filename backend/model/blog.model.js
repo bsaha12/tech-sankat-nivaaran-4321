@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const blogSchemaSchema = mongoose.Schema(
+const blogSchema= mongoose.Schema(
   {
     image:{type: String},
     blogname:{type: String, required: true},
