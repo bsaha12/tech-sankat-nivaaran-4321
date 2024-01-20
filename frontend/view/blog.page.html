@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card with Data Fetching</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+
+        #cardsContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* card */
+        .card {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            border: 1px solid gold;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: black;
+            color: white;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .card button {
+            margin-top: 10px;
+            padding: 8px;
+            cursor: pointer;
+            border: 1px solid gold;
+            color: gold;
+            background-color: black;
+            border-radius: 4px;
+        }
+
+        .edit-btn {
+            background-color: gold;
+            color: black;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+        }
+
+
+        #newBlogBtn {
+            margin-top: 20px;
+            padding: 12px;
+            cursor: pointer;
+            border: 2px solid gold;
+            color: gold;
+            background-color: black;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<button id="newBlogBtn" onclick="newBlog()">New Blog</button>
+
+<div id="cardsContainer"></div>
+
+<script>
+    const personsData = [
+        { name: "John Doe", company: { catchPhrase: "Sample Comment 1" } },
+        { name: "Jane Smith", company: { catchPhrase: "Sample Comment 2" } },
+        { name: "Jane Smith", company: { catchPhrase: "Sample Comment 2" }},
+        { name: "Jane Smith", company: { catchPhrase: "Sample Comment 2" }}
+    ];
+
+    personsData.forEach(person => {
+        createCard(person);
+    });
+
+    function createCard(data) {
+        const cardsContainer = document.getElementById('cardsContainer');
+
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        // Create elements for the card content
+        const cardImage = document.createElement('img');
+        const cardName = document.createElement('h2');
+        const cardDescription = document.createElement('p');
+        const editButton = document.createElement('button');
+        const deleteButton = document.createElement('button');
+
+    
+        cardImage.src = 'https://via.placeholder.com/150';  
+        cardName.textContent = data.name;
+        cardDescription.textContent = data.company.catchPhrase;
+        editButton.textContent = 'Edit';
+        deleteButton.textContent = 'Delete';
+
+        editButton.addEventListener('click', () => editComment(data));
+        deleteButton.addEventListener('click', () => deleteComment(data));
+
+        // Append elements to the card
+        card.appendChild(cardImage);
+
+        // Create a container 
+        const textContainer = document.createElement('div');
+        textContainer.appendChild(cardName);
+        textContainer.appendChild(cardDescription);
+        card.appendChild(textContainer);
+
+        card.appendChild(editButton);
+        card.appendChild(deleteButton);
+
+        // Append
+        cardsContainer.appendChild(card);
+    }
+
+    //  function for edit
+    function editComment(data) {
+        console.log("Edit button clicked for", data.name);
+    }
+
+    // delete
+    function deleteComment(data) {
+    
+        console.log("Delete button clicked for", data.name);
+    }
+
+    // new blog 
+    function newBlog() {
+
+        console.log("New Blog button clicked");
+    }
+</script>
+
+</body>
+</html>
