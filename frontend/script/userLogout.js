@@ -15,7 +15,7 @@ function goToProfile() {
 function logout() {
     const accessToken = localStorage.getItem("token");
 
-    fetch(`http://localhost:8080/users/logout`, {
+    fetch(`https://wild-jade-fish-cap.cyclic.app/users/logout`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

@@ -1,4 +1,4 @@
-const baseURL = `http://localhost:8080/`
+const baseURL = `https://wild-jade-fish-cap.cyclic.app/`
 
 // // side bar photo
 // const profile = document.getElementById("profile");

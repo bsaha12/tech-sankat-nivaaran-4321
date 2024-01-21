@@ -119,7 +119,7 @@ async function showCarsPanel(source, destination, distance) {
   }
 }
 
-const baseurl = "http://localhost:8080";
+const baseurl = "https://wild-jade-fish-cap.cyclic.app";
 async function addcars(source, destination, distance) {
   try {
     const carspanel = document.getElementById("cars-panel");
@@ -184,8 +184,9 @@ async function sendRequest(source, destination) {
         destinationLocation: JSON.stringify(destination),
       }),
 
-      // location.href
+      
     });
+    window.location.href = "../view/index.html"
   } catch (error) {
     console.log(error);
   }

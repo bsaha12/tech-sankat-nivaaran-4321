@@ -1,4 +1,4 @@
-const baseurl = "http://localhost:8080";
+const baseurl = "https://wild-jade-fish-cap.cyclic.app";
 const username = localStorage.getItem("name") || "shraddha";
 async function getuserdata() {
   try {
