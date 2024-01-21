@@ -20,10 +20,10 @@ document.getElementById("openModalButton").addEventListener("click", function() 
     });
     
     document.getElementById("ridersignin").addEventListener("click", function() {
-      window.location.href = "/frontend/view/login.html";
+      window.location.href = "./view/login.html";
   });
   document.getElementById("driversignin").addEventListener("click", function() {
-    window.location.href = "/frontend/view/driverlogin.html";
+    window.location.href = "./view/driverlogin.html";
 });
     
     document.querySelector(".modal .close").addEventListener("click", function() {
