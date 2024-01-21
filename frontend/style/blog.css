@@ -1,0 +1,104 @@
+/* Add your styles here */
+body {
+    background-color: black;
+    color: gold;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: gold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.blog-card {
+    border: 2px solid gold;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: black;
+    color: gold;
+    border-radius: 10px;
+    display: flex; 
+    align-items: center; 
+}
+
+.blog-image {
+    max-width: 70px;
+    height: auto;
+    border-radius: 50%; 
+    overflow: hidden;
+    margin-right: 10px; 
+}
+
+.blog-content {
+    flex-grow: 1; 
+}
+
+.blog-buttons {
+    display: flex;
+    gap: 10px; 
+    margin-top: 10px; 
+}
+
+/* Style for the popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    padding: 20px;
+    border: 2px solid gold;
+    z-index: 1000;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+}
+
+label {
+    color: gold; 
+}
+
+input,
+textarea {
+    color: black; 
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #ffd700; 
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px; 
+}
+
+button:hover {
+    background-color: black;
+    color: gold;
+}
+
+@media screen and (max-width: 600px) {
+
+    .popup {
+        width: 90%;
+    }
+
+    .blog-image {
+        max-width: 50px; 
+    }
+
+    .blog-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

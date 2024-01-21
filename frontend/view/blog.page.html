@@ -3,153 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card with Data Fetching</title>
+    <title>Blog Page</title>
     <style>
         body {
-            background-color: black;
-            color: white;
+            background-color: #e4d9c5;
+            color: #3a3a3a;
             font-family: 'Arial', sans-serif;
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100vh;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-
-        #cardsContainer {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        /* card */
-        .card {
-            display: flex;
-            flex-direction: column;
-            width: 300px;
-            border: 1px solid gold;
-            border-radius: 8px;
-            padding: 16px;
-            margin: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: black;
-            color: white;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
-        }
-
-        .card button {
-            margin-top: 10px;
-            padding: 8px;
-            cursor: pointer;
-            border: 1px solid gold;
-            color: gold;
-            background-color: black;
-            border-radius: 4px;
-        }
-
-        .edit-btn {
-            background-color: gold;
-            color: black;
-        }
-
-        .delete-btn {
-            background-color: #f44336;
-            color: white;
-        }
-
-
-        #newBlogBtn {
+        h1 {
+            color: #b69a2d;
+            text-align: center;
             margin-top: 20px;
-            padding: 12px;
+        }
+
+        .blog-card {
+            border: 2px solid #b69a2d;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            color: #3a3a3a;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .blog-image {
+            max-width: 70px;
+            height: auto;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .blog-content {
+            flex-grow: 1;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffffff;
+            padding: 20px;
+            border: 2px solid #b69a2d;
+            z-index: 1000;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+
+        label, input, textarea {
+            color: #b69a2d;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input, textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            color: #3a3a3a;
+        }
+
+        button {
+            background-color: #2d2d2d; 
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
             cursor: pointer;
-            border: 2px solid gold;
-            color: gold;
-            background-color: black;
-            border-radius: 6px;
-            font-size: 16px;
+            display: block;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #3a3a3a; 
+            color: #ffffff;
+        }
+
+        hr {
+            border: 0.5px solid #b69a2d;
+            margin: 15px 0;
+        }
+
+        @media screen and (max-width: 600px) {
+            .popup {
+                width: 90%;
+            }
+
+            .blog-image {
+                max-width: 50px;
+            }
         }
     </style>
 </head>
 <body>
+    <h1 style="color: #2d2d2d; padding-top:30px; padding-bottom: 25px ;">Welcome to Our Blog Page</h1>
 
-<button id="newBlogBtn" onclick="newBlog()">New Blog</button>
+    <button onclick="openAddBlogPopup()" style="margin-bottom: 35px;">Add New Blog</button>
 
-<div id="cardsContainer"></div>
+    <div id="addBlogPopup" class="popup">
+        <label for="newBlogName"> Name:</label>
+        <input type="text" id="newBlogName">
 
-<script>
-    const personsData = [
-        { name: "John Doe", company: { catchPhrase: "Sample Comment 1" } },
-        { name: "Jane Smith", company: { catchPhrase: "Sample Comment 2" } },
-        { name: "Jane Smith", company: { catchPhrase: "Sample Comment 2" }},
-        { name: "Jane Smith", company: { catchPhrase: "Sample Comment 2" }}
-    ];
+        <label for="newBlogBody">Your Comment:</label>
+        <textarea id="newBlogBody"></textarea>
 
-    personsData.forEach(person => {
-        createCard(person);
-    });
+        <label for="newBlogImage">Blog Image URL:</label>
+        <input type="text" id="newBlogImage">
 
-    function createCard(data) {
-        const cardsContainer = document.getElementById('cardsContainer');
+        <button onclick="addNewBlog()">Add Blog</button>
+        <button onclick="closeAddBlogPopup()">Close</button>
+    </div>
 
-        const card = document.createElement('div');
-        card.className = 'card';
+    <div id="blogList"></div>
 
-        // Create elements for the card content
-        const cardImage = document.createElement('img');
-        const cardName = document.createElement('h2');
-        const cardDescription = document.createElement('p');
-        const editButton = document.createElement('button');
-        const deleteButton = document.createElement('button');
+    <script>
+        const baseURL = 'http://localhost:8080/blog/';
 
-    
-        cardImage.src = 'https://via.placeholder.com/150';  
-        cardName.textContent = data.name;
-        cardDescription.textContent = data.company.catchPhrase;
-        editButton.textContent = 'Edit';
-        deleteButton.textContent = 'Delete';
+        async function fetchBlogs() {
+            try {
+                const response = await fetch(`${baseURL}`);
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.statusText}`);
+                }
 
-        editButton.addEventListener('click', () => editComment(data));
-        deleteButton.addEventListener('click', () => deleteComment(data));
+                const blogs = await response.json();
+                sortBlogsByDate(blogs);
 
-        // Append elements to the card
-        card.appendChild(cardImage);
+                renderBlogs(blogs);
+            } catch (error) {
+                console.error('Error fetching blogs:', error);
+            }
+        }
 
-        // Create a container 
-        const textContainer = document.createElement('div');
-        textContainer.appendChild(cardName);
-        textContainer.appendChild(cardDescription);
-        card.appendChild(textContainer);
+        function sortBlogsByDate(blogs) {
+            blogs.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        }
 
-        card.appendChild(editButton);
-        card.appendChild(deleteButton);
+        function renderBlogs(blogs) {
+            const blogListDiv = document.getElementById('blogList');
 
-        // Append
-        cardsContainer.appendChild(card);
-    }
+            if (!blogs || blogs.length === 0) {
+                blogListDiv.innerHTML = '<p>No blogs available.</p>';
+                return;
+            }
 
-    //  function for edit
-    function editComment(data) {
-        console.log("Edit button clicked for", data.name);
-    }
+            blogListDiv.innerHTML = '';
 
-    // delete
-    function deleteComment(data) {
-    
-        console.log("Delete button clicked for", data.name);
-    }
+            for (const blog of blogs) {
+                const blogItem = document.createElement('div');
+                blogItem.classList.add('blog-card');
 
-    // new blog 
-    function newBlog() {
+                const blogimage = document.createElement('img');
+                blogimage.classList.add('blog-image');
+                blogimage.src = blog.image;
+                blogItem.appendChild(blogimage);
 
-        console.log("New Blog button clicked");
-    }
-</script>
+                const blogContent = document.createElement('div');
+                blogContent.classList.add('blog-content');
 
+                const blogName = document.createElement('h2');
+                blogName.textContent = blog.blogname;
+                blogContent.appendChild(blogName);
+
+                const blogBody = document.createElement('p');
+                blogBody.textContent = blog.body;
+                blogContent.appendChild(blogBody);
+
+                blogItem.appendChild(blogContent);
+
+                const hrElement = document.createElement('hr');
+                blogItem.appendChild(hrElement);
+
+                blogListDiv.appendChild(blogItem);
+            }
+        }
+
+        function openAddBlogPopup() {
+            document.getElementById('addBlogPopup').style.display = 'block';
+        }
+
+        function closeAddBlogPopup() {
+            document.getElementById('addBlogPopup').style.display = 'none';
+        }
+
+        async function addNewBlog() {
+            const newBlogName = document.getElementById('newBlogName').value;
+            const newBlogBody = document.getElementById('newBlogBody').value;
+            const newBlogImage = document.getElementById('newBlogImage').value;
+
+            await fetch(`${baseURL}add`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    blogname: newBlogName,
+                    body: newBlogBody,
+                    image: newBlogImage,
+                }),
+            });
+
+            closeAddBlogPopup();
+            fetchBlogs();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchBlogs();
+        });
+    </script>
 </body>
 </html>
