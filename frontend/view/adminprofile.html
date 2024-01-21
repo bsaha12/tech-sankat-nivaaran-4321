@@ -239,8 +239,8 @@ img {
                       <label for="newadminname">Admin Name:</label>
                       <input type="text" name="newadminname" id="newadminname" placeholder="Admin Name">
                 
-                      <label for="newEmail">Email:</label>
-                      <input type="text" name="newEmail" id="newEmail" placeholder="Email">
+                      <!-- <label for="newEmail">Email:</label>
+                      <input type="text" name="newEmail" id="newEmail" placeholder="Email"> -->
                 
                       <label for="newPhone">Phone Number:</label>
                       <input type="text" name="newPhone" id="newPhone" placeholder="Phone Number">
@@ -265,7 +265,7 @@ img {
  async function uploadFile() {
     const profileImageInput = document.getElementById('profileImage');
     const newadminnameInput = document.getElementById('newadminname');
-    const newEmailInput = document.getElementById('newEmail');
+    // const newEmailInput = document.getElementById('newEmail');
     const newPhoneInput = document.getElementById('newPhone');
     const newDesignationInput = document.getElementById('newDesignation');
     const newdateofBirthInput = document.getElementById('newdateofBirth');
@@ -275,11 +275,14 @@ img {
     const formData = new FormData(uploadForm);
 
     try {
-        const response = await fetch(`${baseURL}users/profile`, {
+        const response = await fetch("https://wild-jade-fish-cap.cyclic.app/users/profile1", {
             method: 'PATCH',
+            // mode: 'no-cors',
             body: formData,
             headers: {
-                "Authorization": `Bearer ${localStorage.getItem("token")}`
+                "Authorization": `Bearer ${localStorage.getItem("token")}`,
+                // 'Content-Type': 'application/json',
+
             },
         });
 
