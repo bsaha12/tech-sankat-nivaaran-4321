@@ -4,7 +4,7 @@ const userSchema = mongoose.Schema(
     image: {
       type: String,
     },
-    adminname: {
+    name: {
       type: String,
     },
     username: {
@@ -21,7 +21,7 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    phoneNumber: {
+    phone: {
       type: Number,
       validate: {
         validator: function (v) {
@@ -31,7 +31,7 @@ const userSchema = mongoose.Schema(
           `${props.value} is not a valid 10-digit phone number!`,
       },
     },
-    dateofBirth: {
+    birthday: {
       type: Date,
 
     },
@@ -49,6 +49,9 @@ const userSchema = mongoose.Schema(
       default: Date.now,
 //       immutable: true,
     },
+    name: String,
+    bio: String,
+    website: String,
   },
   {
     versionKey: false,
