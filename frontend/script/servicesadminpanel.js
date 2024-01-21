@@ -1,4 +1,4 @@
-const baseURL = `https://wild-jade-fish-cap.cyclic.app`
+const baseURL = `https://wild-jade-fish-cap.cyclic.app/`
 
 
 let currentPage = 1;
@@ -7,7 +7,7 @@ let paginationWrapper = document.getElementById("pagination");
 
 function getData() {
     
-    fetch(`${baseURL}/carData/`, {
+    fetch(`${baseURL}carData/`, {
       headers: {
         "Content-type": "application/json",
       //   authorization: `Bearer ${localStorage.getItem("token")}`,

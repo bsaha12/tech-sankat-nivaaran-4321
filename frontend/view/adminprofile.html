@@ -261,7 +261,7 @@ img {
       </main>
     </div>
     <script>
-    const baseURL = `http://localhost:8080/`
+    const baseURL = `https://wild-jade-fish-cap.cyclic.app/`
  async function uploadFile() {
     const profileImageInput = document.getElementById('profileImage');
     const newadminnameInput = document.getElementById('newadminname');
@@ -275,7 +275,7 @@ img {
     const formData = new FormData(uploadForm);
 
     try {
-        const response = await fetch('http://localhost:8080/users/profile', {
+        const response = await fetch(`${baseURL}users/profile`, {
             method: 'PATCH',
             body: formData,
             headers: {
