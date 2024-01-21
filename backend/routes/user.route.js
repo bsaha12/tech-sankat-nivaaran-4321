@@ -125,7 +125,7 @@ const upload = multer({ storage: storage });
  *                   description: Error message
  */
 userRouter.patch(
-  "/profile",
+  "/profile1",
   authenticateToken,
   upload.single("profileImage"),
   async (req, res) => {
@@ -146,7 +146,7 @@ userRouter.patch(
         {
           $set: {
             adminname: newadminname,
-            // email: newEmail,
+            email: newEmail,
             phoneNumber: newPhone,
             designation: newDesignation,
             image: imageUrl.replace(/\\/g, "/"),
