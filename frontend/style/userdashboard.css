@@ -114,6 +114,9 @@
 .cars-panel-border-color {
   border: 3px solid black;
 }
+.dashboard-opacity{
+  opacity: 0.3;
+}
 
 @media only screen and (max-width: 600px) {
   #container {
@@ -121,7 +124,7 @@
     flex-direction: column-reverse;
     align-items: center;
     box-sizing: border-box;
-    padding: 2rem 4rem;
+    padding: 0 ;
   }
   #map {
     width: 100%;

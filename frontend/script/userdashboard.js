@@ -120,6 +120,7 @@ async function showCarsPanel(source, destination, distance) {
 }
 
 const baseurl = "https://wild-jade-fish-cap.cyclic.app";
+// const baseurl = "http://localhost:8080";
 async function addcars(source, destination, distance) {
   try {
     const carspanel = document.getElementById("cars-panel");
@@ -152,6 +153,13 @@ async function addcars(source, destination, distance) {
     bookbtn.innerHTML = `Choose Ride`;
     bookbtn.addEventListener("click", () => {
       sendRequest(source, destination);
+      const section = document.querySelector("#popup");
+      const container = document.querySelector("#container");
+      setTimeout(() => {
+        section.classList.add("active");
+        section.classList.remove("contact-invisible");
+        container.classList.add("dashboard-opacity");
+      }, 4000);
     });
     carspanel.append(bookbtn);
   } catch (error) {
@@ -170,7 +178,7 @@ function removemarkerfrompanelitems() {
 
 //sendNotification to driver
 async function sendRequest(source, destination) {
-  const username = localStorage.getItem("name");
+  const username = localStorage.getItem("name")|| "shradhha" ;
   try {
     await fetch(`${baseurl}/users/requestRide`, {
       method: "POST",
@@ -186,7 +194,7 @@ async function sendRequest(source, destination) {
 
       
     });
-    window.location.href = "../view/index.html"
+    // window.location.href = "../view/index.html"
   } catch (error) {
     console.log(error);
   }
