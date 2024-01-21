@@ -245,7 +245,7 @@ footer .container{
   justify-content: space-between;
   margin: 100px auto 50px;
 }
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 800px){
 
   .row1{
       text-align: center;
@@ -253,12 +253,18 @@ footer .container{
   .col-2, .col-3, .col-4{
       flex-basis: 100%;
   }
+  .card{
+    display: flex;
+    flex-direction: column;
+    width: 5rem;
+  }
 
 }
 
       @media (max-width: 1024px) {
         .card {
           width: calc(50% - 40px);
+          
         }
       }
       @media (min-width: 1024px) {

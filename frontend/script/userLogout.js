@@ -32,7 +32,7 @@ function logout() {
         })
         .then((result) => {
             console.log(result.msg);
-            location.href = 'index.html';
+            location.href = '../index.html';
         })
         .catch((error) => {
             console.error(error);

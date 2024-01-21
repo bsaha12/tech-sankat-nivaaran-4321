@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/footer.css">
     <title>Blog Page</title>
     <style>
         body {
-            background-color: #e4d9c5;
+            
             color: #3a3a3a;
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -29,6 +30,9 @@
             border-radius: 10px;
             display: flex;
             align-items: center;
+            /* padding-left: 20px; */
+            margin-left: 50px;
+            margin-right: 50px;
         }
 
         .blog-image {
@@ -44,12 +48,13 @@
         }
 
         .popup {
+            margin-top: 20px;
             display: none;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #ffffff;
+            background-color: #696666;
             padding: 20px;
             border: 2px solid #b69a2d;
             z-index: 1000;
@@ -73,7 +78,7 @@
             color: #3a3a3a;
         }
 
-        button {
+        #btn1 {
             background-color: #2d2d2d; 
             color: #ffffff;
             border: none;
@@ -85,7 +90,7 @@
             width: 100%;
         }
 
-        button:hover {
+        #btn1:hover {
             background-color: #3a3a3a; 
             color: #ffffff;
         }
@@ -103,13 +108,31 @@
             .blog-image {
                 max-width: 50px;
             }
+            #externalContent{
+        margin-top: 2rem;
+    }
+    body h1{
+        font-size: 2rem;
+    }
+    .blog-content h2{
+        font-size: 1.4rem;
+    }
+    .blog-card img{
+        height: 5rem;
+        width: 5rem;
+    }
         }
     </style>
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
 </head>
-<body>
+<body style="background-color: #e4d9c5">
+    <div id="externalContent"></div>
     <h1 style="color: #2d2d2d; padding-top:30px; padding-bottom: 25px ;">Welcome to Our Blog Page</h1>
 
-    <button onclick="openAddBlogPopup()" style="margin-bottom: 35px;">Add New Blog</button>
+    <button id="btn1" onclick="openAddBlogPopup()" style="margin-bottom: 35px;">Add New Blog</button>
 
     <div id="addBlogPopup" class="popup">
         <label for="newBlogName"> Name:</label>
@@ -121,14 +144,81 @@
         <label for="newBlogImage">Blog Image URL:</label>
         <input type="text" id="newBlogImage">
 
-        <button onclick="addNewBlog()">Add Blog</button>
-        <button onclick="closeAddBlogPopup()">Close</button>
+        <button id="btn1" onclick="addNewBlog()">Add Blog</button>
+        <button id="btn1" onclick="closeAddBlogPopup()">Close</button>
     </div>
 
     <div id="blogList"></div>
-
+        <!-- brands -->
+        <div class="brands1">
+            <div class="small-container11">
+              <div class="row1">
+                <div class="col-51">
+                  <img src="../images/logo-godrej.png" />
+                </div>
+                <div class="col-51">
+                  <img src="../images/logo-oppo.png" />
+                </div>
+                <div class="col-51">
+                  <img src="../images/logo-coca-cola.png" />
+                </div>
+                <div class="col-51">
+                  <img src="../images/logo-paypal.png" />
+                </div>
+                <div class="col-51">
+                  <img src="../images/logo-philips.png" />
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <!-- footer -->
+          <div class="footer">
+            <div class="container111">
+              <div class="row1">
+                <div class="footer-col-1">
+                  <h3>Download Our App</h3>
+                  <p>Download App for Android and ios mobile phone.</p>
+                  <div class="app-logo">
+                    <img src="../images/play-store.png" />
+                    <img src="../images/app-store.png" />
+                  </div>
+                </div>
+                <div class="footer-col-2">
+                  <img src="../images/output-onlinepngtools (1).png" />
+                  <p>
+                    Our Purpose is we ignite opportunity by setting the world in
+                    motion
+                  </p>
+                </div>
+                <div class="footer-col-3">
+                  <h3>Useful Links</h3>
+                  <ul>
+                    <li>Coupons</li>
+                    <li>Blog Post</li>
+                    <li>Return Policy</li>
+                    <li>Join Affiliate</li>
+                  </ul>
+                </div>
+                <div class="footer-col-4">
+                  <h3>Follow Us</h3>
+                  <ul>
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>Instagram</li>
+                    <li>Youtube</li>
+                  </ul>
+                </div>
+              </div>
+              <hr />
+              <p class="copyright">
+                <i class="fa-regular fa-copyright"></i> RideShareX Made with
+                <i class="heart fa-solid fa-heart"></i> tech-Sankat-Nivran
+              </p>
+            </div>
+          </div>
     <script>
-        const baseURL = 'http://localhost:8080/blog/';
+        const baseURL = 'https://wild-jade-fish-cap.cyclic.app/blog/';
 
         async function fetchBlogs() {
             try {
@@ -222,5 +312,10 @@
             fetchBlogs();
         });
     </script>
+    <script src="../script/joinhtml.js"></script>
+    <!-- <script src="../script/userLogout.js"></script> -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+  
 </body>
 </html>

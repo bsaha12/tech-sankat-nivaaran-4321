@@ -121,28 +121,38 @@
 @media only screen and (max-width: 600px) {
   #container {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
     box-sizing: border-box;
     padding: 0 ;
   }
+  #externalContent{
+    padding-bottom: 60px;
+  }
+  .user {
+    justify-content: center;
+  }
   #map {
     width: 100%;
-    height: 400px;
+    height: 700px;
     margin-bottom: 20px;
   }
   #search {
     width: 100%;
     justify-content: center;
+    border-radius: 0%;
+    font-size: 1rem;
   }
   #search input {
     width: 80%;
-    height: 4rem;
+    height: 2rem;
   }
   #search #confirm {
     width: 80%;
     margin-bottom: 20px;
-    height: 4rem;
+    height: 2rem;
+    font-size: 1rem;
+    /* border-radius: 0%; */
   }
   #cars-panel {
     width: 80%;

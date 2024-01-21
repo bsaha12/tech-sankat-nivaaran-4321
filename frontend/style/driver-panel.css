@@ -10,6 +10,7 @@ body {
 .container1 {
   display: flex;
   flex-wrap: wrap; /* Enable flex items to wrap onto multiple lines */
+  background-color: #f2f2f2;
 }
 
 #map-container {
@@ -68,7 +69,7 @@ body {
 #ride-list li button{
   border: none; ;
   height: 100%;
-  width: 4rem;
+  width: 6rem;
   border-radius: 1rem;
   font-weight: bold;
   background-color: #dbd9d9;
@@ -119,12 +120,13 @@ body {
     /* Change the order for mobile view */
   }
   #ride-list li button{
-    width: 8rem;
+    width: 9rem;
   }
   #ride-list li{
-    font-size: 2rem;
+    font-size: 0.8rem;
   }
   #ride-requests h2{
     font-size: 2rem;
   }
+
 }
