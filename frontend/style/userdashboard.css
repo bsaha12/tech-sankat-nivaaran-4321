@@ -150,7 +150,7 @@
     font-family: "Merriweather", serif;
   }
 }
-#container1 h2{
+#container1 h2 {
   font-size: 24px;
   color: rgb(5, 6, 6);
   margin-left: 10px;
@@ -171,8 +171,8 @@
   height: 80px;
   width: 80px;
   display: inline-block;
-  margin: 0 auto .5rem auto;
-  border: 3px solid #899DC1;
+  margin: 0 auto 0.5rem auto;
+  border: 3px solid #899dc1;
 }
 
 .profile h4 {
@@ -181,6 +181,6 @@
 }
 
 .profile small {
-  color: #899DC1;
+  color: #899dc1;
   font-weight: 600;
 }

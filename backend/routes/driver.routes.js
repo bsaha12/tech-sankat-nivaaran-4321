@@ -218,7 +218,7 @@ driverroute.get("/", async (req, res) => {
       page: page,
       limit: limit,
       totalDrivers: totalDrivers,
-      totalPages: totalPages
+      totalPages: totalPages,
     });
 
     console.log(drivers);
@@ -230,7 +230,9 @@ driverroute.get("/", async (req, res) => {
 function broadcastNewRideRequest(rideRequest, drivers) {
   drivers.forEach((driverWs) => {
     if (driverWs.readyState === WebSocket.OPEN) {
-      driverWs.send(JSON.stringify({ type: "newRideRequest", data: rideRequest }));
+      driverWs.send(
+        JSON.stringify({ type: "newRideRequest", data: rideRequest })
+      );
     }
   });
 }
@@ -329,7 +331,6 @@ driverroute.post("/logout", authLogout, (req, res) => {
   res.status(200).json({ message: "Logout successful" });
 });
 
-
 // update
 // driverroute.patch("/update/:id", async (req, res) => {
 //   const { id } = req.params;
@@ -352,31 +353,31 @@ driverroute.post("/logout", authLogout, (req, res) => {
 //   }
 // });
 
-
 //update
 driverroute.patch("/update/:id", async (req, res) => {
   const { id } = req.params;
-  const payload=req.body
+  const payload = req.body;
 
   try {
-    if(payload.driverId===req.body.driverId){
-    const updatedDriver = await DriverModel.findByIdAndUpdate({ _id:id},payload);
-res.status(200).json({ message: "Driver updated successfully", driver: updatedDriver });
-  }
-      else {
+    if (payload.driverId === req.body.driverId) {
+      const updatedDriver = await DriverModel.findByIdAndUpdate(
+        { _id: id },
+        payload
+      );
+      res
+        .status(200)
+        .json({
+          message: "Driver updated successfully",
+          driver: updatedDriver,
+        });
+    } else {
       res.status(404).json({ message: "Driver not found" });
     }
-  }  
-    catch (error) {
+  } catch (error) {
     console.error("Update failure:", error);
     res.status(400).json({ message: "Update failure", error });
   }
 });
-
-
-
-
-
 
 // delete
 driverroute.delete("/delete/:id", async (req, res) => {
@@ -386,7 +387,12 @@ driverroute.delete("/delete/:id", async (req, res) => {
     const deletedDriver = await DriverModel.findByIdAndDelete(id);
 
     if (deletedDriver) {
-      res.status(200).json({ message: "Driver deleted successfully", driver: deletedDriver });
+      res
+        .status(200)
+        .json({
+          message: "Driver deleted successfully",
+          driver: deletedDriver,
+        });
     } else {
       res.status(404).json({ message: "Driver not found" });
     }
@@ -396,8 +402,7 @@ driverroute.delete("/delete/:id", async (req, res) => {
   }
 });
 
-
 module.exports = {
   driverroute,
-  broadcastNewRideRequest
+  broadcastNewRideRequest,
 };

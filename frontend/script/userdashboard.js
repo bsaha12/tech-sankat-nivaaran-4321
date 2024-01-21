@@ -4,26 +4,6 @@ const header1 = document.createElement("h4");
 header1.innerText = `Hello ${localStorage.getItem("name")}!`;
 parent.append(header1);
 
-// const profile = document.getElementById("profile");
-// const profilePhoto = document.getElementById("profileimg");
-
-// const imagephoto = document.createElement("img");
-// imagephoto.src = localStorage.getItem("image") || "../images/default.jpg";
-
-// const adminname = document.createElement("h4");
-// adminname.innerText = localStorage.getItem("name");
-
-// const position = document.createElement("small");
-// position.innerText = localStorage.getItem("position") || "admin";
-
-// profilePhoto.append(imagephoto);
-// profile.append(profilePhoto, adminname, position);
-// const Welcome = document.getElementById("Welcome");
-// Welcome.innerText = "Welcome to SwiftNote";
-// parent.append(Welcome);
-
-
-
 function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 20.5937, lng: 78.9629 },
@@ -139,14 +119,12 @@ async function showCarsPanel(source, destination, distance) {
   }
 }
 
-// showCarsPanel();
-let baseurl = "http://localhost:8080";
-
+const baseurl = "http://localhost:8080";
 async function addcars(source, destination, distance) {
   try {
     const carspanel = document.getElementById("cars-panel");
     carspanel.innerHTML = "";
-    const res = await fetch(`http://localhost:8080/carData`);
+    const res = await fetch(`${baseurl}/carData`);
     const { cars_data: cars } = await res.json();
     cars.forEach((item, i, arr) => {
       const { image, name, price } = item;
@@ -159,7 +137,6 @@ async function addcars(source, destination, distance) {
         bookbutton.innerHTML = `Request ${name}`;
         removemarkerfrompanelitems();
         paneldiv.classList.add("cars-panel-border-color");
-        sendnotificationToDriver(source, destination);
       });
       const carimage = document.createElement("img");
       carimage.src = image;
@@ -173,6 +150,9 @@ async function addcars(source, destination, distance) {
     const bookbtn = document.createElement("button");
     bookbtn.id = "book-ride";
     bookbtn.innerHTML = `Choose Ride`;
+    bookbtn.addEventListener("click", () => {
+      sendRequest(source, destination);
+    });
     carspanel.append(bookbtn);
   } catch (error) {
     console.log(error);
@@ -180,7 +160,6 @@ async function addcars(source, destination, distance) {
 }
 
 // removing markers
-// removemarkerfrompanelitems();
 function removemarkerfrompanelitems() {
   const panelItems = document.getElementsByClassName("cars-panel-item");
   const panelItemsarray = Array.prototype.slice.call(panelItems);
@@ -190,5 +169,24 @@ function removemarkerfrompanelitems() {
 }
 
 //sendNotification to driver
-async function sendnotificationToDriver(source, destination) {}
+async function sendRequest(source, destination) {
+  const username = localStorage.getItem("name");
+  try {
+    await fetch(`${baseurl}/users/requestRide`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        username,
+        startLocation: JSON.stringify(source),
+        destinationLocation: JSON.stringify(destination),
+      }),
 
+      // location.href
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
