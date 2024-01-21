@@ -1,28 +1,5 @@
 const baseURL = `http://localhost:8080/`
 
-// side bar photo
-const profile = document.getElementById("profile");
-const profilePhoto = document.getElementById("profileimg");
-
-const imagephoto = document.createElement("img");
-imagephoto.src = localStorage.getItem("image") || "../images/default.jpg";
-
-const adminname = document.createElement("h4");
-adminname.innerText = localStorage.getItem("name");
-
-const position = document.createElement("small");
-position.innerText = localStorage.getItem("position") || "admin";
-
-profilePhoto.append(imagephoto);
-profile.append(profilePhoto, adminname, position);
-
-// navBar photo
-const profilePhoto1 = document.getElementById("profileimg1");
-
-const imagephoto1 = document.createElement("img");
-imagephoto1.src = localStorage.getItem("image") || "../images/default.jpg";
-
-profilePhoto1.append(imagephoto1);
 
 let currentPage = 1;
 const itemsPerPage = 10;
@@ -98,7 +75,7 @@ function getData() {
         const actionsCell = document.createElement("td");
         actionsCell.classList.add("actions");
   
-        const editIcon = createIcon('la', 'la-edit', () => editUser(driver._id));
+        const editIcon = createIcon('la', 'la-edit', () => editUser(service._id));
         const deleteIcon = createIcon("la", "la-trash-alt", () =>
           deleteUser(service._id)
         );
@@ -157,7 +134,6 @@ function getData() {
           }
         })
         .then((data) => {
-          // Handle success
           getData();
         })
         .catch((err) => console.error("Error during delete operation:", err.message));
@@ -196,4 +172,100 @@ logoutButton.addEventListener('click', (e) => {
     .catch((error) => {
         console.error(error);
     });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const openModalBtn = document.getElementById("openModalBtn");
+  const addRecordModal = new bootstrap.Modal(document.getElementById("addRecordModal"));
+  const addRecordForm = document.getElementById("addRecordForm");
+
+  openModalBtn.addEventListener("click", function () {
+    addRecordModal.show();
+  });
+
+  addRecordForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const image = document.getElementById("image").value;
+    const name = document.getElementById("name").value;
+    const description = document.getElementById("description").value;
+    const reason = document.getElementById("reason").value;
+    const type = document.getElementById("type").value;
+
+    fetch(`${baseURL}carData/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ image, name, description, reason, type }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Record added successfully:", data);
+
+      addRecordModal.hide();
+      window.location.reload();
+    })
+    .catch(error => {
+      console.error("Error adding record:", error);
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const openModalBtn = document.getElementById("openModalBtn");
+  const addRecordModal = new bootstrap.Modal(document.getElementById("addRecordModal"));
+  const addRecordForm = document.getElementById("addRecordForm");
+
+  openModalBtn.addEventListener("click", function () {
+    addRecordForm.reset();
+    addRecordModal.show();
+  });
+  let userId = null;
+  window.editUser = function (id) {
+    userId = id;
+    fetch(`${baseURL}carData/car/${userId}`)
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("image").value = data.image;
+        document.getElementById("name").value = data.name;
+        document.getElementById("description").value = data.description;
+        document.getElementById("reason").value = data.reason;
+        document.getElementById("type").value = data.type;
+
+        addRecordModal.show();
+      })
+      .catch(error => {
+        console.error("Error fetching user data for editing:", error);
+      });
+  };
+
+  const editButton = document.getElementById("editbtn") 
+  editButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    const image = document.getElementById("image").value;
+    const name = document.getElementById("name").value;
+    const description = document.getElementById("description").value;
+    const reason = document.getElementById("reason").value;
+    const type = document.getElementById("type").value;
+
+    fetch(`${baseURL}carData/update/${userId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ image, name, description, reason, type }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Record updated successfully:", data);
+
+        addRecordModal.hide();
+        window.location.reload();
+      })
+      .catch(error => {
+        console.error("Error updating record:", error);
+      });
+  });
 });

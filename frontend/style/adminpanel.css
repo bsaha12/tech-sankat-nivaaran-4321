@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;600&display=swap');
 
 :root {
-    --main-color: #22BAA0;
+    --main-color: #ad9551;
     --color-dark: #34425A;
     --text-grey: #B0B0B0;
 }
@@ -74,7 +74,7 @@
 
 /* Handle on hover */
 .side-content::-webkit-scrollbar-thumb:hover {
-  background: #b30000; 
+  background: #878383; 
 }
 
 .profile {
@@ -429,7 +429,7 @@ table thead tr {
 table thead th {
     padding: 1rem 0rem;
     text-align: left;
-    color: #444;
+    color: #161616;
     font-size: .9rem;
 }
 
@@ -592,10 +592,15 @@ html[data-bs-theme="light"] .theme-toggle .fa-sun {
     margin: 5px;
     cursor: pointer;
   }
-  
+  .add button:hover {
+    background-color: #0c0d0d;
+    border-color: #1a1c1c;
+    cursor: pointer;
+  }
   #pagination button:hover {
-    background-color: #2980b9;
-    border-color: #2980b9;
+    background-color: #0c0d0d;
+    border-color: #1a1c1c;
+    cursor: pointer;
   }
   
   #pagination button.active {
@@ -621,10 +626,209 @@ html[data-bs-theme="light"] .theme-toggle .fa-sun {
   }
   
   .las.la-power-off {
-    /* You may need to include a font library (like Font Awesome) for the icon styles */
     font-size: 18px;
   }
+#addRecordModal {
+    /* text-align: center; */
+  }
+  
+  #addRecordForm {
+    max-width: 400px;
+    margin: auto;
+    
+  }
+  
+  #addRecordForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+  }
+  #role option{
+    display: block;
+    margin-bottom: 5px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+  }
+  #role{
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
 
+  
+  #addRecordForm input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .modal-footer {
+    justify-content: center;
+  }
+  #addbtn{
+    background-color: var(--main-color);
+    border: var(--main-color);
+  }
+  #addbtn:hover{
+    background-color: black;
+    border: black;
+  }
+
+  /* Add this CSS to create rounded cards with circular progress indicators */
+
+/* .cards-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+  }
+  
+  .card {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #fff;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .card-head h2 {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  
+  .card-progress {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    background-color: #eee;
+  }
+  
+  .card-progress:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    background: linear-gradient(90deg, #3498db 50%, transparent 50%);
+    transform: rotate(-45deg);
+    transform-origin: 0% 100%;
+    width: 100%;
+    height: 100%;
+  } */
+  .cards-container {
+    display: flex;
+    justify-content: space-around;
+    /* margin: 20px; */
+  }
+  
+  .card1 {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #fff;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px; /* Added margin for better separation on small screens */
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .card-head h2 {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  
+  .card-progress {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    background-color: #eee;
+  }
+  
+  .card-progress:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    background: linear-gradient(90deg, var(--main-color) 50%, transparent 50%);
+    transform: rotate(-45deg);
+    transform-origin: 0% 100%;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Responsive Styles */
+  @media only screen and (max-width: 600px) {
+    .cards-container {
+      flex-direction: column; /* Stack cards vertically on small screens */
+    }
+  
+    .card {
+        width: 250px;
+        height: 130px;
+        border-radius: 0%;
+        padding: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        background-color: #fff;
+        transition: transform 0.2s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px; /* Added margin for better separation on small screens */
+      }
+  }
+  
 
 
 

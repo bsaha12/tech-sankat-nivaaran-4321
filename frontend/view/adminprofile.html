@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1"
+    />
+    <title>Admin Dashboard | Keyframe Effects</title>
+    <link rel="stylesheet" href="../style/adminpanel.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+    />
+    <style>
+        body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.container {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+  margin-bottom: 14px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+img {
+  /* margin-top: 20px; */
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+    </style>
+  </head>
+  <body>
+    <input type="checkbox" id="menu-toggle" />
+    <div class="sidebar">
+      <div class="side-header">
+        <img
+          style="width: 110%; margin-top: 20px"
+          src="../images/output-onlinepngtools.png"
+          alt=""
+        />
+      </div>
+
+      <div class="side-content">
+        <div id="profile" class="profile">
+          <div id="profileimg" class="profile-img bg-img"></div>
+        </div>
+
+        <div class="side-menu">
+          <ul>
+            <li>
+              <a href="adminpanel.html">
+                <span class="las la-home"></span>
+                <small>Dashboard</small>
+              </a>
+            </li>
+
+            <li>
+              <a href="usersAdminpanel.html">
+                <span class="las la-user-friends"></span>
+                <small>Users</small>
+              </a>
+            </li>
+            <li>
+              <a href="driverAdminpanel.html">
+                <span class="las la-taxi"></span>
+                <small>Drivers</small>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <span class="las la-envelope"></span>
+                <small>Mailbox</small>
+              </a>
+            </li>
+            <li>
+              <a href="servicesAdminpanel.html">
+                <span class="las la-clipboard-list"></span>
+                <small>Services</small>
+              </a>
+            </li>
+            <li>
+              <a href="../view/adminprofile.html" class="active">
+                <span class="las la-user-alt" ></span>
+                <small>Profile</small>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <span class="las la-tasks"></span>
+                <small>Tasks</small>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <header>
+        <div class="header-content">
+          <label for="menu-toggle">
+            <span class="las la-bars"></span>
+          </label>
+
+          <div class="header-menu">
+            <label for="">
+              <span class="las la-search"></span>
+            </label>
+
+            <div class="notify-icon">
+              <span class="las la-envelope"></span>
+              <span class="notify"></span>
+            </div>
+
+            <div class="notify-icon">
+              <span class="las la-bell"></span>
+              <span class="notify"></span>
+            </div>
+
+            <div class="user">
+              <div id="profileimg1" class="client-img bg-img"></div>
+
+              <button id="logoutButton">
+                <span class="las la-power-off"></span>
+                <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <div class="page-header">
+          <h1>Dashboard</h1>
+          <small>Home / Drivers</small>
+        </div>
+
+        <div class="page-content">
+          <!-- <div class="analytics">
+
+                    <div class="card">
+                        <div class="card-head">
+                            <h2>107,200</h2>
+                            <span class="las la-user-friends"></span>
+                        </div>
+                        <div class="card-progress">
+                            <small>User activity this month</small>
+                            <div class="card-indicator">
+                                <div class="indicator one" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head">
+                            <h2>340,230</h2>
+                            <span class="las la-eye"></span>
+                        </div>
+                        <div class="card-progress">
+                            <small>Page views</small>
+                            <div class="card-indicator">
+                                <div class="indicator two" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head">
+                            <h2>$653,200</h2>
+                            <span class="las la-shopping-cart"></span>
+                        </div>
+                        <div class="card-progress">
+                            <small>Monthly revenue growth</small>
+                            <div class="card-indicator">
+                                <div class="indicator three" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head">
+                            <h2>47,500</h2>
+                            <span class="las la-envelope"></span>
+                        </div>
+                        <div class="card-progress">
+                            <small>New E-mails received</small>
+                            <div class="card-indicator">
+                                <div class="indicator four" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> -->
+
+                <div class="container">
+                    <h2>User Profile Update</h2>
+                
+                    <form id="uploadForm" enctype="multipart/form-data">
+                      <label for="profileImage">Profile Image:</label>
+                      <input type="file" name="profileImage" id="profileImage" accept="image/*">
+                      
+                      <label for="newadminname">Admin Name:</label>
+                      <input type="text" name="newadminname" id="newadminname" placeholder="Admin Name">
+                
+                      <label for="newEmail">Email:</label>
+                      <input type="text" name="newEmail" id="newEmail" placeholder="Email">
+                
+                      <label for="newPhone">Phone Number:</label>
+                      <input type="text" name="newPhone" id="newPhone" placeholder="Phone Number">
+                
+                      <label for="newDesignation">Designation:</label>
+                      <input type="text" name="newDesignation" id="newDesignation" placeholder="Designation">
+                
+                      <label for="newdateofBirth">Date of Birth:</label>
+                      <input type="date" name="newdateofBirth" id="newdateofBirth" placeholder="Date of Birth">
+                
+                      <button type="button" onclick="uploadFile()">Update Profile</button>
+                    </form>
+                
+                    <img id="uploadedImage" src="" alt="Uploaded Image">
+                  </div>
+                
+        </div>
+      </main>
+    </div>
+    <script>
+    const baseURL = `http://localhost:8080/`
+ async function uploadFile() {
+    const profileImageInput = document.getElementById('profileImage');
+    const newadminnameInput = document.getElementById('newadminname');
+    const newEmailInput = document.getElementById('newEmail');
+    const newPhoneInput = document.getElementById('newPhone');
+    const newDesignationInput = document.getElementById('newDesignation');
+    const newdateofBirthInput = document.getElementById('newdateofBirth');
+    const uploadForm = document.getElementById('uploadForm');
+    const uploadedImage = document.getElementById('uploadedImage');
+
+    const formData = new FormData(uploadForm);
+
+    try {
+        const response = await fetch('http://localhost:8080/users/profile', {
+            method: 'PATCH',
+            body: formData,
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            },
+        });
+
+        if (response.ok) {
+          
+            const result = await response.json();
+            const imageUrl = result.image;
+            
+            // Display the uploaded image
+            uploadedImage.src = imageUrl;
+        } else {
+            console.error('Profile update failed');
+        }
+    } catch (error) {
+        console.error('Error updating profile:', error);
+    }
+}
+
+
+    </script>
+    <script src="../script/profilephto.js"></script>
+  </body>
+</html>

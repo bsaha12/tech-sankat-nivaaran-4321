@@ -1,6 +1,28 @@
 const baseURL = `http://localhost:8080/`
 
+// side bar photo
+// const profile = document.getElementById("profile");
+// const profilePhoto = document.getElementById("profileimg");
 
+// const imagephoto = document.createElement("img");
+// imagephoto.src = localStorage.getItem("image") || "../images/default.jpg";
+
+// const adminname = document.createElement("h4");
+// adminname.innerText = localStorage.getItem("name");
+
+// const position = document.createElement("small");
+// position.innerText = localStorage.getItem("position") || "admin";
+
+// profilePhoto.append(imagephoto);
+// profile.append(profilePhoto, adminname, position);
+
+// // navBar photo
+// const profilePhoto1 = document.getElementById("profileimg1");
+
+// const imagephoto1 = document.createElement("img");
+// imagephoto1.src = localStorage.getItem("image") || "../images/default.jpg";
+
+// profilePhoto1.append(imagephoto1);
 
 let currentPage = 1;
 const itemsPerPage = 10;
@@ -8,28 +30,30 @@ let paginationWrapper = document.getElementById("pagination");
 
 function getData() {
   fetch(
-    `${baseURL}driver/?page=${currentPage}&perPage=${itemsPerPage}`,
+    `${baseURL}users/riders?page=${currentPage}&perPage=${itemsPerPage}`,
     {
       headers: {
         "Content-type": "application/json",
+        "Authorization":`Bearer ${localStorage.getItem("token")}`
       },
     }
   )
     .then((res) => res.json())
     .then((data) => {
-      console.log(data.drivers_data);
-      displayUsers(data);
-      createPaginationControls(data.totalDrivers);
+      console.log(data.users_data);
+      displayAdmin(data);
+      createPaginationControls(data.totalAdmin);
     })
     .catch((err) => console.log(err));
 }
 
-function displayUsers(data) {
+function displayAdmin(data) {
     
   const tableBody = document.querySelector("tbody");
-  const drivers = data.drivers_data;
+  console.log(data)
+  const admins = data.users_data;
   tableBody.innerHTML = "";
-  drivers.forEach((driver, index) => {
+  admins.forEach((admin, index) => {
     
       const newRow = document.createElement("tr");
       const displayedIndex = (currentPage - 1) * itemsPerPage + index + 1; // Calculate the correct index
@@ -49,42 +73,41 @@ function displayUsers(data) {
       imageDiv.classList.add("client-img", "bg-img");
 
       const userImage = document.createElement("img");
-      userImage.src = driver.image || "../images/default.jpg";
+      userImage.src = admin.image || "../images/default.jpg";
 
       const infoDiv = document.createElement("div");
       infoDiv.classList.add("client-info");
 
       const userName = document.createElement("h4");
-      userName.textContent = driver.drivername;
+      userName.textContent = admin.adminname;
 
       const userEmail = document.createElement("small");
-      userEmail.textContent = driver.email;
+      userEmail.textContent = admin.email;
 
       const usernameCell = document.createElement("td");
-      usernameCell.textContent = driver.username;
+      usernameCell.textContent = admin.username;
 
       const mobileNoCell = document.createElement("td");
-      mobileNoCell.textContent = driver.phoneNumber;
+      mobileNoCell.textContent = admin.phoneNumber;
 
       const regDateCell = document.createElement("td");
-      regDateCell.textContent = driver.registeredDate;
+      regDateCell.textContent = admin.registeredDate;
 
-      const experienceCell = document.createElement("td");
-      if (driver.experience !== undefined && driver.experience !== null) {
-        experienceCell.textContent = `${driver.experience} years`;
-    } else {
-        experienceCell.textContent = "not defined";
-    }
+      const roleCell = document.createElement("td");
+      roleCell.textContent = admin.role;
 
-      const totalridesCell = document.createElement("td");
-      totalridesCell.textContent = driver.totalrides;
+      const designationCell = document.createElement("td");
+      designationCell.textContent = admin.designation;
+
+      const DoBCell = document.createElement("td");
+      DoBCell.textContent = admin.dateofBirth;
 
       const actionsCell = document.createElement("td");
       actionsCell.classList.add("actions");
 
       // const editIcon = createIcon('la', 'la-edit', () => editUser(driver._id));
       const deleteIcon = createIcon("la", "la-trash-alt", () =>
-        deleteUser(driver._id)
+        deleteUser(admin._id)
       );
       const ellipsisIcon = createIcon("las", "la-ellipsis-v");
 
@@ -101,8 +124,9 @@ function displayUsers(data) {
         usernameCell,
         mobileNoCell,
         regDateCell,
-        experienceCell,
-        totalridesCell,
+        roleCell,
+        designationCell,
+        DoBCell,
         actionsCell
       );
 
@@ -142,7 +166,7 @@ function editUser(userId) {
 
 function deleteUser(userId) {
   if (confirm("Are you sure you want to delete this user?")) {
-    fetch(`${baseURL}driver/delete/${userId}`, {
+    fetch(`${baseURL}users/delete/${userId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -200,3 +224,71 @@ logoutButton.addEventListener('click', (e) => {
 });
 
 
+document.addEventListener("DOMContentLoaded", function () {
+    const table = document.getElementById("userTable");
+
+    if (table) {
+        const headers = table.querySelectorAll("th[data-sort]");
+
+        headers.forEach(header => {
+            header.addEventListener("click", () => {
+                const sortOrder = header.getAttribute("data-sort-order") || "asc";
+                const sortBy = header.getAttribute("data-sort");
+
+                // Make a request to the backend API with the sort parameters
+                fetchData(sortBy, sortOrder)
+                    .then(data => {
+                        // Update the table with the sorted data
+                        updateTable(table, data);
+
+                        // Toggle the sort order for the clicked column
+                        header.setAttribute("data-sort-order", sortOrder === "asc" ? "desc" : "asc");
+                    })
+                    .catch(error => {
+                        console.error("Error fetching data:", error);
+                    });
+            });
+        });
+    }
+});
+
+function fetchData(sortBy, sortOrder) {
+    const url = `${baseURL}users/admin?sortBy=${sortBy}&sortOrder=${sortOrder}`;
+
+    return fetch(url, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization":`Bearer ${localStorage.getItem("token")}`
+            // Include any necessary headers, such as authentication headers
+        },
+    })
+        .then(response => response.json())
+        .then(data => data.users_data)
+        .catch(error => {
+            throw error;
+        });
+}
+
+// Function to update the table with the sorted data
+function updateTable(table, data) {
+    const tbody = table.querySelector("tbody");
+
+    if (tbody) {
+        tbody.innerHTML = "";
+
+        data.forEach(item => {
+            const row = document.createElement("tr");
+
+            // Create and append td elements for each property in your data
+            // Modify this part according to your data structure
+            Object.values(item).forEach(value => {
+                const cell = document.createElement("td");
+                cell.textContent = value;
+                row.appendChild(cell);
+            });
+
+            tbody.appendChild(row);
+        });
+    }
+}
