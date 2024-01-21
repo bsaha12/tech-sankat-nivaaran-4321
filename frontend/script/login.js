@@ -73,7 +73,13 @@ async function loginUser() {
       localStorage.setItem("name", username);
       localStorage.setItem("role", data.role);
       localStorage.setItem("image", data.image);
-      location.href = "../view/userdashboard.html"
+      if(data.role == "admin" && data.role == "super-admin"){
+        location.href = "../view/adminpanel.html"
+      }
+      else{
+        location.href = "../view/userdashboard.html"
+      }
+      
 
     } else {
       checkCredentials("Invalid Credentials");
