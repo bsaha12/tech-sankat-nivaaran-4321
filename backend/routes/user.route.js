@@ -215,10 +215,11 @@ userRouter.post("/requestRide", async (req, res) => {
       destinationLocation: destinationLocation,
     });
     await newRideRequest.save();
-    broadcastNewRideRequest({ userId, startLocation, destinationLocation });
+    
     res.status(200).json({ message: "Ride request sent successfully" });
   } catch (error) {
     res.status(500).json({ error });
+    console.log(error)
   }
 });
 

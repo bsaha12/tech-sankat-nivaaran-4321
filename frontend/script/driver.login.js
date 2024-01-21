@@ -18,7 +18,7 @@ register_btn.addEventListener("click", registerUser);
 login_btn.addEventListener("click", loginUser);
 
 // BaseURL
-const baseURL = "http://localhost:8080";
+const baseURL = "https://wild-jade-fish-cap.cyclic.app";
 
 // handling registration
 async function registerUser() {

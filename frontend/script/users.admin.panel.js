@@ -1,28 +1,5 @@
-const baseURL = `http://localhost:8080/`
+const baseURL = `https://wild-jade-fish-cap.cyclic.app/`
 
-// side bar photo
-// const profile = document.getElementById("profile");
-// const profilePhoto = document.getElementById("profileimg");
-
-// const imagephoto = document.createElement("img");
-// imagephoto.src = localStorage.getItem("image") || "../images/default.jpg";
-
-// const adminname = document.createElement("h4");
-// adminname.innerText = localStorage.getItem("name");
-
-// const position = document.createElement("small");
-// position.innerText = localStorage.getItem("position") || "admin";
-
-// profilePhoto.append(imagephoto);
-// profile.append(profilePhoto, adminname, position);
-
-// // navBar photo
-// const profilePhoto1 = document.getElementById("profileimg1");
-
-// const imagephoto1 = document.createElement("img");
-// imagephoto1.src = localStorage.getItem("image") || "../images/default.jpg";
-
-// profilePhoto1.append(imagephoto1);
 
 let currentPage = 1;
 const itemsPerPage = 10;
