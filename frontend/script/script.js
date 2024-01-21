@@ -20,10 +20,10 @@ document.getElementById("openModalButton").addEventListener("click", function() 
     });
     
     document.getElementById("ridersignin").addEventListener("click", function() {
-      window.location.href = "../view/login.html";
+      window.location.href = "/frontend/view/login.html";
   });
   document.getElementById("driversignin").addEventListener("click", function() {
-    window.location.href = "../view/driverlogin.html";
+    window.location.href = "/frontend/view/driverlogin.html";
 });
     
     document.querySelector(".modal .close").addEventListener("click", function() {
@@ -97,7 +97,7 @@ function displayService(data) {
     const booknow = document.createElement('a');
     booknow.classList.add("btn-yellow")
     booknow.innerText = 'Book Now'
-    booknow.href = "../view/login.html"
+    booknow.href = "./view/login.html"
     
     innerBox.append(name, image,  description, reason, type, booknow);
         tarrifContainer.append(innerBox);
