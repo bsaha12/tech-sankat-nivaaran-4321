@@ -49,7 +49,7 @@ const userSchema = mongoose.Schema(
       default: Date.now,
 //       immutable: true,
     },
-    name: String,
+   
     bio: String,
     website: String,
   },

@@ -1,37 +1,5 @@
 const baseURL = `https://wild-jade-fish-cap.cyclic.app/`
 
-// // side bar photo
-// const profile = document.getElementById("profile");
-// const profilePhoto = document.getElementById("profileimg");
-
-// const imagephoto = document.createElement("img");
-// if(!imagephoto1.image){
-//   imagephoto1.src ="../images/default.jpg";
-// }else{
-//   imagephoto1.src = localStorage.getItem(`../${imagephoto1.image}`) 
-// }
-
-// const adminname = document.createElement("h4");
-// adminname.innerText = localStorage.getItem("name");
-
-// const position = document.createElement("small");
-// position.innerText = localStorage.getItem("position") || "admin";
-
-// profilePhoto.append(imagephoto);
-// profile.append(profilePhoto, adminname, position);
-
-
-
-// // navBar photo
-// const profilePhoto1 = document.getElementById("profileimg1");
-
-// const imagephoto1 = document.createElement("img");
-// if(!imagephoto1.image){
-//   imagephoto1.src ="../images/default.jpg";
-// }else{
-//   imagephoto1.src = localStorage.getItem(`../${imagephoto1.image}`) 
-// }
-// profilePhoto1.append(imagephoto1);
 
 let currentPage = 1;
 const itemsPerPage = 10;
@@ -64,7 +32,7 @@ function displayAdmin(data) {
   const admins = data.users_data;
   tableBody.innerHTML = "";
   admins.forEach((admin, index) => {
-    
+    console.log(admin)
       const newRow = document.createElement("tr");
       const displayedIndex = (currentPage - 1) * itemsPerPage + index + 1; // Calculate the correct index
 
@@ -96,8 +64,8 @@ function displayAdmin(data) {
       infoDiv.classList.add("client-info");
 
       const userName = document.createElement("h4");
-      userName.textContent = admin.adminname;
-
+      userName.textContent = admin.name;
+      console.log(admin.name)
       const userEmail = document.createElement("small");
       userEmail.textContent = admin.email;
 
@@ -105,7 +73,7 @@ function displayAdmin(data) {
       usernameCell.textContent = admin.username;
 
       const mobileNoCell = document.createElement("td");
-      mobileNoCell.textContent = admin.phoneNumber;
+      mobileNoCell.textContent = admin.phone;
 
       const regDateCell = document.createElement("td");
       regDateCell.textContent = admin.registeredDate;
@@ -117,7 +85,7 @@ function displayAdmin(data) {
       designationCell.textContent = admin.designation;
 
       const DoBCell = document.createElement("td");
-      DoBCell.textContent = admin.dateofBirth;
+      DoBCell.textContent = admin.birthday;
 
       const actionsCell = document.createElement("td");
       actionsCell.classList.add("actions");
@@ -323,29 +291,31 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
 
     const image = document.getElementById("image").value;
-    const adminname = document.getElementById("name").value;
+    const name = document.getElementById("name").value;
     const username = document.getElementById("username").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    const phoneNumber = document.getElementById("mobile").value;
+    const number = document.getElementById("mobile").value;
     const role = document.getElementById("role").value;
     const designation = document.getElementById("designation").value;
-    const dateofBirth = document.getElementById("dateofbirth").value;
+    const birthday = document.getElementById("dateofbirth").value;
     // const type = document.getElementById("type").value;
-
+    console.log(name)
+    console.log(birthday)
     fetch(`${baseURL}users/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ image, adminname, username, email, password, phoneNumber, role, designation, dateofBirth }),
+      body: JSON.stringify({ image, name, username, email, password, number, role, designation, birthday }),
     })
+
     .then(response => response.json())
     .then(data => {
       console.log("Record added successfully:", data);
 
       addRecordModal.hide();
-      window.location.reload();
+      // window.location.reload();
     })
     .catch(error => {
       console.error("Error adding record:", error);
