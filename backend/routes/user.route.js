@@ -449,12 +449,12 @@ userRouter.post("/register", async (req, res) => {
       } else {
         const user = await new UserModel({
           image,
-          adminname,
+          name,
           username,
           email,
           password: hash,
-          phoneNumber,
-          dateofBirth,
+          number,
+          birthday,
           designation,
           role,
         });
