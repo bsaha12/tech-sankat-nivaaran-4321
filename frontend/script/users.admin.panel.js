@@ -56,7 +56,7 @@ function displayAdmin(data) {
       infoDiv.classList.add("client-info");
 
       const userName = document.createElement("h4");
-      userName.textContent = admin.adminname;
+      userName.textContent = admin.name;
 
       const userEmail = document.createElement("small");
       userEmail.textContent = admin.email;
@@ -65,7 +65,7 @@ function displayAdmin(data) {
       usernameCell.textContent = admin.username;
 
       const mobileNoCell = document.createElement("td");
-      mobileNoCell.textContent = admin.phoneNumber;
+      mobileNoCell.textContent = admin.number;
 
       const regDateCell = document.createElement("td");
       regDateCell.textContent = admin.registeredDate;
@@ -74,10 +74,10 @@ function displayAdmin(data) {
       roleCell.textContent = admin.role;
 
       const designationCell = document.createElement("td");
-      designationCell.textContent = admin.designation;
+      designationCell.textContent = admin.bio;
 
       const DoBCell = document.createElement("td");
-      DoBCell.textContent = admin.dateofBirth;
+      DoBCell.textContent = admin.birthday;
 
       const actionsCell = document.createElement("td");
       actionsCell.classList.add("actions");
