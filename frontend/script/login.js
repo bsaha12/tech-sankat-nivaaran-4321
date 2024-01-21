@@ -66,14 +66,18 @@ async function loginUser() {
       body: JSON.stringify({ username, password }),
     });
     if (res.status == 200) {
+
       const data = await res.json();
       console.log(data)
       localStorage.setItem("token", data.token);
-      localStorage.setItem("name", username)
+      localStorage.setItem("name", username);
+      localStorage.setItem("role", data.role);
+      localStorage.setItem("image", data.image);
       location.href = "../view/userdashboard.html"
     } else {
       checkCredentials("Invalid Credentials");
     }
+
   } else {
     checkCredentials("Empty Fields!!");
   }

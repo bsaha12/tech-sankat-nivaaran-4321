@@ -41,7 +41,7 @@
 <body>
 
     <!-- Button trigger modal -->
-    <button type="button" id="openModalButton" class="btn btn-primary">
+    <!-- <button type="button" id="openModalButton" class="btn btn-primary">
         Open Modal
     </button>
     
@@ -71,8 +71,47 @@
         if (event.target.id === "customModal") {
             document.getElementById("customModal").style.display = "none";
         }
-    });
-    </script>
+    }); -->
+
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="fileInput" id="fileInput" accept="image/*">
+        <button type="button" onclick="uploadFile()">Upload</button>
+      </form>
+      
+      <!-- Display uploaded image -->
+      <img id="uploadedImage" src="" alt="Uploaded Image">
+      
+      <!-- Add this to your JavaScript -->
+      <script>
+        async function uploadFile() {
+          const fileInput = document.getElementById('fileInput');
+          const uploadForm = document.getElementById('uploadForm');
+          const uploadedImage = document.getElementById('uploadedImage');
+      
+          const formData = new FormData(uploadForm);
+          formData.append('userId', '123'); // Example: Add any additional data you want to send
+      
+          try {
+            const response = await fetch('http://localhost:8080/upload', {
+              method: 'POST',
+              body: formData,
+            });
+      
+            if (response.ok) {
+              const result = await response.json();
+              const imageUrl = result.imageUrl;
+      
+              // Display the uploaded image
+              uploadedImage.src = imageUrl;
+            } else {
+              console.error('File upload failed');
+            }
+          } catch (error) {
+            console.error('Error uploading file:', error);
+          }
+        }
+      </script>
+    <!-- </script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
 </body>
 </html>
