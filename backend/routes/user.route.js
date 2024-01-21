@@ -427,12 +427,12 @@ userRouter.get(
 userRouter.post("/register", async (req, res) => {
   const {
     image,
-    adminname,
+    name,
     username,
     email,
     password,
-    phoneNumber,
-    dateofBirth,
+    number,
+    birthday,
     designation,
     role,
   } = req.body;
