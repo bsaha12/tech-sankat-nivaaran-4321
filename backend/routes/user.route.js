@@ -133,7 +133,7 @@ userRouter.patch(
       const userId = req.user.userId;
       const {
         newadminname,
-        newEmail,
+        // newEmail,
         newPhone,
         newDesignation,
         newdateofBirth,
@@ -145,12 +145,12 @@ userRouter.patch(
         userId,
         {
           $set: {
-            adminname: newadminname,
-            email: newEmail,
-            phoneNumber: newPhone,
+            name: newadminname,
+            // email: newEmail,
+            phone: newPhone,
             designation: newDesignation,
             image: imageUrl.replace(/\\/g, "/"),
-            dateofBirth: newdateofBirth,
+            birthday: newdateofBirth,
           },
         },
         { new: true }
