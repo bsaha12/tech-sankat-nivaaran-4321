@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ul.id = "ride-list";
       ridediv.innerHTML = "";
       ridediv.append(h2, ul);
-      // getrequests();
+      getrequests();
     } else if (newStatus === "Unavailable") {
       flag = false;
       ridediv.innerHTML = "";
@@ -41,7 +41,7 @@ let flag = false;
 var driver_lat = 22.572645;
 var driver_lng = 88.363892;
 var driverpos = { lat: driver_lat, lng: driver_lng };
-const baseurl = "https://wild-jade-fish-cap.cyclic.app";
+const baseurl = "https://wild-jade-fish-cap.cyclic.app/";
 async function getrequests() {
   try {
     const res = await fetch(`${baseurl}/users/rides`, {
@@ -182,13 +182,13 @@ function roadmap({ source, destination }) {
 }
 
 // function always listening for riders
-async function lookRiders() {
-  try {
-    setInterval(() => {
-      if (flag) getrequests();
-    }, 10000);
-  } catch (error) {
-    console.log(error);
-  }
-}
-lookRiders();
+// async function lookRiders() {
+//   try {
+//     setInterval(() => {
+//       if (flag) getrequests();
+//     }, 10000);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+// lookRiders();

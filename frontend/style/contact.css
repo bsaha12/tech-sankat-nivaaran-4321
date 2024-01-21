@@ -10,15 +10,16 @@ body {
   background-color: #01141f;
   color: white;
 }
-#container {
+#container1 {
   width: 100%;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 30px 8%;
+  background-color: #01141f;
 }
-#container .row {
+#container1 .row {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -223,8 +224,9 @@ textarea::-webkit-scrollbar-thumb {
   }
 }
 @media (max-width: 900px) {
-  #container .row {
+  #container1 .row {
     flex-wrap: wrap;
+    margin-top: 50px;
   }
   .row section.left,
   .row section.right {

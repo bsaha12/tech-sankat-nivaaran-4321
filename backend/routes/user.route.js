@@ -180,7 +180,7 @@ userRouter.post("/login",async(req,res)=>{
                 bcrypt.compare(password,user.password,(err,result)=>{
                         if(result){
                                 const token=jwt.sign({userId:user._id,name:user.name},"masai",{expiresIn:"7d"});
-                                // localStorage.setItem("role":user.role)
+                                // localStorage.setItem("role",user.role)
                                 // localStorage.setItem("image"=user.image)
                                 res.status(200).json({msg:"Logged in successfully",token, role, image});
                         }else{

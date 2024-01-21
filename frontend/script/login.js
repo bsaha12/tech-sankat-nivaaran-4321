@@ -72,8 +72,8 @@ async function loginUser() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("name", username);
       localStorage.setItem("role", data.role);
-      localStorage.setItem("image", data.image);
-      if(data.role == "admin" && data.role == "super-admin"){
+      console.log(data)
+      if(data.role === "admin" || data.role === "super-admin"){
         location.href = "../view/adminpanel.html"
       }
       else{
