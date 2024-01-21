@@ -1,59 +1,58 @@
-const mongoose = require("mongoose");
 const express = require("express");
-const {BlogModel}=require("../model/blog.model");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const { BlogModel } = require("../model/blog.model");
 
+const blogroute = express.Router();
 
-const blogroute=express.Router();
-
-//posting blog
-blogroute.post("/add",async(req,res)=>{
-    const payoad=req.body;
-    try{
-        const newblog=new BlogModel(req.body)
-        await newblog.save();
-        res.status(200).json({message:"thank you for your feedback"});
-    }catch(err){
-        res.status(400).json({message:err});
+blogroute.post("/add", async (req, res) => {
+    try {
+        const newBlog = new BlogModel(req.body);
+        await newBlog.save();
+        res.status(201).json({ message: "Blog added successfully" });
+    } catch (err) {
+        res.status(400).json({ message: "Failed to add blog", error: err.message });
     }
-})
+});
 
-//read
-blogroute.get("/",async(req,res)=>{
-
-    try{
-        const allblog=await BlogModel.find()
-        res.status(200).json(allblog);
-    }catch(err){
-        res.status(400).json(err);
+blogroute.get("/", async (req, res) => {
+    try {
+        const allBlogs = await BlogModel.find().sort({ createdAt: -1 });
+        res.status(200).json(allBlogs);
+    } catch (err) {
+        res.status(500).json({ message: "Internal Server Error", error: err.message });
     }
-})
+});
 
-//update
-blogroute.patch("/update/:updateid",async(req,res)=>{
+blogroute.patch("/update/:updateid", async (req, res) => {
     const updateId = req.params.updateid;
     const updatePayload = req.body;
-    try{
-       const updateblog=await BlogModel.findByIdAndUpdate(updateId,updatePayload)
-       res.status(200).json({message:"update sucessfull"});
-    }catch(err){
-        res.status(400).json(err);
-    }
-})
+    try {
+        const updatedBlog = await BlogModel.findByIdAndUpdate(updateId, updatePayload, { new: true });
 
-//delete
-blogroute.delete("/delete/:deleteid",async(req,res)=>{
+        if (!updatedBlog) {
+            return res.status(404).json({ message: "Blog not found" });
+        }
+
+        res.status(200).json({ message: "Blog updated successfully", updatedBlog });
+    } catch (err) {
+        res.status(400).json({ message: "Failed to update blog", error: err.message });
+    }
+});
+
+blogroute.delete("/delete/:deleteid", async (req, res) => {
     const deleteId = req.params.deleteid;
-    try{
-       const updateblog=await BlogModel.findByIdAndDelete(deleteId)
-       res.status(200).json({message:"delete sucessfull"});
-    }catch(err){
-        res.status(400).json(err);
+    try {
+        const deletedBlog = await BlogModel.findByIdAndDelete(deleteId);
+
+        if (!deletedBlog) {
+            return res.status(404).json({ message: "Blog not found" });
+        }
+
+        res.status(200).json({ message: "Blog deleted successfully" });
+    } catch (err) {
+        res.status(400).json({ message: "Failed to delete blog", error: err.message });
     }
-})
+});
 
-
-module.exports={
+module.exports = {
     blogroute
-}
+};
