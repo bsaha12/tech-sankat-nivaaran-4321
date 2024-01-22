@@ -15,7 +15,7 @@ const swaggerUi = require("swagger-ui-express");
 
 const app = express();
 // multer
-app.use('frontend/view/uploads/', express.static(path.join(__dirname, 'uploads')));
+app.use('frontend/uploads/', express.static(path.join(__dirname, 'uploads')));
 
 
 
