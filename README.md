@@ -4,7 +4,6 @@ Welcome to RideShareX! We've crafted this platform during our Unit 5 Construct W
 
 Explore our platform:
 - [Live Link](https://moonlit-trifle-686331.netlify.app/)
-- [Swagger Document](https://jealous-umbrella-moth.cyclic.app/apidocs/)
 
 ## Tech Stack
 
@@ -33,6 +32,8 @@ Explore our platform:
 ![Footer Page](https://github.com/bsaha12/tech-sankat-nivaaran-4321/assets/131662969/354e045b-9982-4241-a12e-1133788d8db3)
 
 ### Responsiveness
+Our website, RideShareX, is designed with responsiveness in mind to provide a seamless experience across various screen sizes and devices. We have utilized responsive design techniques, including flexible grid layouts and media queries, to ensure that the content adapts appropriately to different screen resolutions.
+
 ![Responsiveness](https://github.com/bsaha12/tech-sankat-nivaaran-4321/assets/131662969/b69484d7-67c8-4258-a4d3-a16c48d0eb9f)
 
 # Team Members
@@ -40,3 +41,29 @@ Explore our platform:
 - [Deepak Kumar](https://github.com/DEEPAK101020)
 - [Shraddha Gawde](https://github.com/shraddha-gawde)
 - [Supriya Singh](https://github.com/Supriyasingh2)
+
+
+## API Documentation
+
+For detailed information on using our API, including available endpoints and any required authentication, refer to our - [Swagger Document](https://jealous-umbrella-moth.cyclic.app/apidocs/).
+
+## Contribution Guidelines
+
+We welcome contributions from the community! If you'd like to contribute to RideShareX, please follow these guidelines:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix: `git checkout -b feature/new-feature`.
+3. Make your changes and commit them: `git commit -m 'Add new feature'`.
+4. Push to the branch: `git push origin feature/new-feature`.
+5. Submit a pull request.
+
+Please ensure your code adheres to our coding standards and includes tests when applicable.
+
+## License
+
+RideShareX is licensed under the [MIT License](LICENSE). See the [LICENSE](LICENSE) file for details.
+
+---
+
+Feel free to reach out if you have any questions or need further assistance. Happy coding!
+
