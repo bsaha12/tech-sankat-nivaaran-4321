@@ -7,10 +7,13 @@ function setActiveLink(link) {
     // Add the 'active' class to the clicked nav-link
     link.classList.add('active');
 }
-
+function goProfile() {
+    window.location.href = "../view/adminprofile.html";
+}
 function goToProfile() {
     window.location.href = "../view/profile.html";
 }
+
 
 function logout() {
     const accessToken = localStorage.getItem("token");

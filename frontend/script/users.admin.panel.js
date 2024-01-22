@@ -193,7 +193,7 @@ logoutButton.addEventListener('click', (e) => {
     })
     .then((result) => {
         console.log(result.msg); 
-        location.href = '../view/index.html';
+        location.href = '../index.html';
     })
     .catch((error) => {
         console.error(error);
