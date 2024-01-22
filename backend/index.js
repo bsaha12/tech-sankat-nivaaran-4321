@@ -37,7 +37,7 @@ const options = {
         url: "http://localhost:8080",
       },
       {
-        url: "https://wild-jade-fish-cap.cyclic.app",
+        url: "https://jealous-umbrella-moth.cyclic.app",
       },
     ],
   },
