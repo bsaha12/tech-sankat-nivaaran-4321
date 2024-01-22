@@ -13,7 +13,7 @@ const baseURL = `https://jealous-umbrella-moth.cyclic.app/`
 
     try {
         const response = await fetch("https://jealous-umbrella-moth.cyclic.app/users/profile1", {
-            method: 'PATCH',
+            method: 'PUT',
             // mode: 'no-cors',
             body: formData,
             headers: {
