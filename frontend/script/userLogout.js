@@ -15,7 +15,7 @@ function goToProfile() {
 function logout() {
     const accessToken = localStorage.getItem("token");
 
-    fetch(`https://wild-jade-fish-cap.cyclic.app/users/logout`, {
+    fetch(`https://jealous-umbrella-moth.cyclic.app/users/logout`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

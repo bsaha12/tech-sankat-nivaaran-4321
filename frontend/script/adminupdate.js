@@ -1,4 +1,4 @@
-const baseURL = `https://wild-jade-fish-cap.cyclic.app/`
+const baseURL = `https://jealous-umbrella-moth.cyclic.app/`
  async function uploadFile() {
     const profileImageInput = document.getElementById('profileImage');
     const newadminnameInput = document.getElementById('newadminname');
@@ -12,7 +12,7 @@ const baseURL = `https://wild-jade-fish-cap.cyclic.app/`
     const formData = new FormData(uploadForm);
 
     try {
-        const response = await fetch("https://wild-jade-fish-cap.cyclic.app/users/profile1", {
+        const response = await fetch("https://jealous-umbrella-moth.cyclic.app/users/profile1", {
             method: 'PATCH',
             // mode: 'no-cors',
             body: formData,

@@ -1,4 +1,4 @@
-const baseURL = `https://wild-jade-fish-cap.cyclic.app/`
+const baseURL = `https://jealous-umbrella-moth.cyclic.app/`
 
 
 let currentPage = 1;
@@ -201,7 +201,7 @@ logoutButton.addEventListener('click', (e) => {
     })
     .then((result) => {
         console.log(result.msg); 
-        location.href = '../view/index.html';
+        location.href = './index.html';
     })
     .catch((error) => {
         console.error(error);

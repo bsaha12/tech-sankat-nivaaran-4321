@@ -1,4 +1,4 @@
-const baseurl = "https://wild-jade-fish-cap.cyclic.app";
+const baseurl = "https://jealous-umbrella-moth.cyclic.app";
 const username = localStorage.getItem("name") || "shraddha";
 async function getuserdata() {
   try {

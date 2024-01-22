@@ -39,7 +39,7 @@ document.getElementById("openModalButton").addEventListener("click", function() 
 
 function getData() {
     
-  fetch("https://wild-jade-fish-cap.cyclic.app/carData/", {
+  fetch("https://jealous-umbrella-moth.cyclic.app/carData/", {
     headers: {
       "Content-type": "application/json",
     //   authorization: `Bearer ${localStorage.getItem("token")}`,
