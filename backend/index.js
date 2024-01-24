@@ -22,7 +22,7 @@ app.use('frontend/uploads/', express.static(path.join(__dirname, 'uploads')));
 //middlewares
 app.use(cors());
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://moonlit-trifle-686331.netlify.app');
+  // res.header('Access-Control-Allow-Origin', 'https://moonlit-trifle-686331.netlify.app');
  res.header('Access-Control-Allow-Origin','http://127.0.0.1:5501')
   next();
 });
