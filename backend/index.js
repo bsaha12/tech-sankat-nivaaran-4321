@@ -21,7 +21,6 @@ app.use('frontend/uploads/', express.static(path.join(__dirname, 'uploads')));
 
 //middlewares
 app.use(cors());
-
 app.use(express.json());
 
 // swagger UI
@@ -34,9 +33,9 @@ const options = {
       version: "1.0.0",
     },
     servers: [
-      // {
-      //   url: "http://localhost:8080",
-      // },
+      {
+        url: "http://localhost:8080",
+      },
       {
         url: "https://jealous-umbrella-moth.cyclic.app",
       },
