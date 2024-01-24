@@ -133,7 +133,7 @@ userRouter.put(
       const userId = req.user.userId;
       const {
         newadminname,
-        // newEmail,
+        newBio,
         newPhone,
         newDesignation,
         newdateofBirth,
@@ -145,12 +145,12 @@ userRouter.put(
         userId,
         {
           $set: {
-            name: newadminname,
-            // email: newEmail,
-            phone: newPhone,
-            designation: newDesignation,
             image: imageUrl.replace(/\\/g, "/"),
+            name: newadminname,
+            phone: newPhone,
+            bio: newBio,
             birthday: newdateofBirth,
+            designation: newDesignation,
           },
         },
         { new: true }
