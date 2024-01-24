@@ -235,34 +235,36 @@ button:hover {
                 </div> -->
 
                 <div class="container">
-                    <h2>User Profile Update</h2>
-                
-                    <form id="uploadForm" enctype="multipart/form-data">
-                      <label for="profileImage">Profile Image:</label>
-                      <input type="file" name="profileImage" id="profileImage" accept="image/*">
-                      
-                      <label for="newadminname">Admin Name:</label>
-                      <input type="text" name="newadminname" id="newadminname" placeholder="Admin Name">
-                
-                      <!-- <label for="newEmail">Email:</label>
-                      <input type="text" name="newEmail" id="newEmail" placeholder="Email"> -->
-                
-                      <label for="newPhone">Phone Number:</label>
-                      <input type="text" name="newPhone" id="newPhone" placeholder="Phone Number">
-                
-                      <label for="newDesignation">Designation:</label>
-                      <input type="text" name="newDesignation" id="newDesignation" placeholder="Designation">
-                
-                      <label for="newdateofBirth">Date of Birth:</label>
-                      <input type="date" name="newdateofBirth" id="newdateofBirth" placeholder="Date of Birth">
-                
-                      <button type="button" onclick="uploadFile()">Update Profile</button>
-                    </form>
-                
-                    <img id="uploadedImage" src="" alt="Uploaded Image">
-                  </div>
-                
-        </div>
+                  <h2>User Profile Update</h2>
+            
+                  <form id="uploadForm" enctype="multipart/form-data">
+                    <label for="profileImage">Profile Image:</label>
+                    <input type="file" name="profileImage" id="profileImage" accept="image/*">
+            
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" placeholder="Name">
+            
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" name="phone" id="phone" placeholder="Phone Number">
+            
+                    <label for="birthday">Date of Birth:</label>
+                    <input type="date" name="birthday" id="birthday" placeholder="Date of Birth">
+            
+                    <label for="designation">Designation:</label>
+                    <input type="text" name="designation" id="designation" placeholder="Designation">
+            
+                    <label for="bio">Bio:</label>
+                    <textarea name="bio" id="bio" placeholder="Bio"></textarea>
+            
+                    <label for="website">Website:</label>
+                    <input type="text" name="website" id="website" placeholder="Website">
+            
+                    <button type="button" onclick="uploadFile()">Update Profile</button>
+                  </form>
+            
+                  <img id="uploadedImage" src="" alt="Uploaded Image">
+                </div>
+            
       </main>
     </div>
     <script>
