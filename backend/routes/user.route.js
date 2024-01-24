@@ -124,51 +124,86 @@ const upload = multer({ storage: storage });
  *                   type: string
  *                   description: Error message
  */
-userRouter.patch(
-  "/profile1",
-  authenticateToken,
-  upload.single("profileImage"),
-  async (req, res) => {
-    try {
-      const userId = req.user.userId;
-      const {
-        newadminname,
-        // newEmail,
-        newPhone,
-        newDesignation,
-        newdateofBirth,
-      } = req.body;
+// userRouter.patch(
+//   "/profile1",
+//   authenticateToken,
+//   upload.single("profileImage"),
+//   async (req, res) => {
+//     try {
+//       const userId = req.user.userId;
+//       const {
+//         newadminname,
+//         // newEmail,
+//         newPhone,
+//         newDesignation,
+//         newdateofBirth,
+//       } = req.body;
 
-      const imageUrl = req.file ? req.file.path : null;
+//       const imageUrl = req.file ? req.file.path : null;
 
-      const updatedUser = await UserModel.findByIdAndUpdate(
-        userId,
-        {
-          $set: {
-            name: newadminname,
-            // email: newEmail,
-            phone: newPhone,
-            designation: newDesignation,
-            image: imageUrl.replace(/\\/g, "/"),
-            birthday: newdateofBirth,
-          },
+//       const updatedUser = await UserModel.findByIdAndUpdate(
+//         userId,
+//         {
+//           $set: {
+//             name: newadminname,
+//             // email: newEmail,
+//             phone: newPhone,
+//             designation: newDesignation,
+            
+//             birthday: newdateofBirth,
+//           },
+//         },
+//         { new: true }
+//       );
+
+//       if (!updatedUser) {
+//         return res.status(404).json({ error: "User not found" });
+//       }
+
+//       res.status(200).json(updatedUser);
+//     } catch (error) {
+//       console.error(error);
+//       res
+//         .status(500)
+//         .json({ error: "Internal Server Error", details: error.message });
+//     }
+//   }
+// );
+
+
+router.patch('/profile1', upload.single('profileImage'), async (req, res) => {
+  try {
+    const userId = req.user.userId;
+    const { name, phone, birthday, designation, bio, website } = req.body;
+
+    const imageUrl = req.file ? req.file.path : null;
+
+    const updatedUser = await UserModel.findByIdAndUpdate(
+      userId,
+      {
+        $set: {
+          image: imageUrl.replace(/\\/g, "/"),
+          name,
+          phone,
+          birthday,
+          designation,
+          bio,
+          website,
         },
-        { new: true }
-      );
+      },
+      { new: true }
+    );
 
-      if (!updatedUser) {
-        return res.status(404).json({ error: "User not found" });
-      }
-
-      res.status(200).json(updatedUser);
-    } catch (error) {
-      console.error(error);
-      res
-        .status(500)
-        .json({ error: "Internal Server Error", details: error.message });
+    if (!updatedUser) {
+      return res.status(404).json({ error: 'User not found' });
     }
+
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
-);
+});
 
 // get own profile
 userRouter.get("/profile", authenticateToken, async (req, res) => {
