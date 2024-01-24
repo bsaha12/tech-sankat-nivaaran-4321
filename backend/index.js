@@ -37,7 +37,7 @@ const options = {
         url: "http://localhost:8080",
       },
       {
-        url: "https://jealous-umbrella-moth.cyclic.app",
+        url: "https://tech-sankat-nivaaran-4321.onrender.com",
       },
     ],
   },

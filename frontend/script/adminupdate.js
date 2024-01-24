@@ -1,4 +1,4 @@
-const baseURL = `https://jealous-umbrella-moth.cyclic.app/`
+const baseURL = `https://tech-sankat-nivaaran-4321.onrender.com/`
  async function uploadFile() {
     const profileImageInput = document.getElementById('profileImage');
     const newadminnameInput = document.getElementById('newadminname');
@@ -12,7 +12,7 @@ const baseURL = `https://jealous-umbrella-moth.cyclic.app/`
     const formData = new FormData(uploadForm);
 
     try {
-        const response = await fetch("https://jealous-umbrella-moth.cyclic.app/users/profile1", {
+        const response = await fetch("https://tech-sankat-nivaaran-4321.onrender.com/users/profile1", {
             method: 'PUT',
             // mode: 'no-cors',
             body: formData,

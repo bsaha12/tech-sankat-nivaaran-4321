@@ -41,7 +41,7 @@ let flag = false;
 var driver_lat = 22.572645;
 var driver_lng = 88.363892;
 var driverpos = { lat: driver_lat, lng: driver_lng };
-const baseurl = "https://jealous-umbrella-moth.cyclic.app";
+const baseurl = "https://tech-sankat-nivaaran-4321.onrender.com";
 async function getrequests() {
   try {
     const res = await fetch(`${baseurl}/users/rides`, {

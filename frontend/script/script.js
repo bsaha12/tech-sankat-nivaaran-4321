@@ -39,7 +39,7 @@ document.getElementById("openModalButton").addEventListener("click", function() 
 
 function getData() {
     
-  fetch("https://jealous-umbrella-moth.cyclic.app/carData/", {
+  fetch("https://tech-sankat-nivaaran-4321.onrender.com/carData/", {
     headers: {
       "Content-type": "application/json",
     //   authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -18,7 +18,7 @@ function goToProfile() {
 function logout() {
     const accessToken = localStorage.getItem("token");
 
-    fetch(`https://jealous-umbrella-moth.cyclic.app/users/logout`, {
+    fetch(`https://tech-sankat-nivaaran-4321.onrender.com/users/logout`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
