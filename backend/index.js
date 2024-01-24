@@ -20,11 +20,10 @@ app.use('frontend/uploads/', express.static(path.join(__dirname, 'uploads')));
 
 
 //middlewares
-// app.use(cors());
+app.use(cors());
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://moonlit-trifle-686331.netlify.app');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
+ 
   next();
 });
 app.use(express.json());
