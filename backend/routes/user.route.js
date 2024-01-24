@@ -163,7 +163,7 @@ userRouter.put(
       res.status(200).json(updatedUser);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "Internal Server Error" });
+      res.status(500).json({ error: "Internal Server Error", details: error.message });
     }
   }
 );
