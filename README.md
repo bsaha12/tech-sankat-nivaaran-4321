@@ -1,10 +1,9 @@
-# RideShareX
-<p>We've developed a website during our Unit 5 Construct Week, allowing users to book cab rides with a single click. Our inspiration for this project was the Uber application, aiming to provide a user-friendly and efficient experience.</p>
+# About RideShareX
 
-<a href="https://moonlit-trifle-686331.netlify.app/">Live link</a>
-<br>
-<a href="https://jealous-umbrella-moth.cyclic.app/apidocs/">swagger document</a>
-<br>
+Welcome to RideShareX! We've crafted this platform during our Unit 5 Construct Week, offering users the convenience of one-click cab bookings. Drawing inspiration from the user-friendly design of the Uber application, our goal is to provide an efficient and enjoyable experience.
+
+Explore our platform:
+- [Live Link](https://moonlit-trifle-686331.netlify.app/)
 
 ## Tech Stack
 
@@ -15,36 +14,56 @@
 - **Express**
 - **MongoDB**
 
-<br>
+## Screenshots
 
-<p>About us</p>
-  
-![WhatsApp Image 2024-01-22 at 1 19 01 PM](https://github.com/bsaha12/tech-sankat-nivaaran-4321/assets/131662969/5f7b8b98-2449-4b2a-997d-a374d6995156)
+### Home Page
+![Home Page](https://github.com/bsaha12/tech-sankat-nivaaran-4321/assets/131662969/7ad19d2d-c9dd-4a39-bc39-c89522e3ebc3)
 
-<p>Home page</p>
+### Driver Page
+![Driver Page](https://github.com/bsaha12/tech-sankat-nivaaran-4321/assets/131662969/5829156e-dd5a-44cb-b77c-92d9bdcdc33e)
 
-![WhatsApp Image 2024-01-22 at 1 59 50 PM](https://github.com/bsaha12/tech-sankat-nivaaran-4321/assets/131662969/7ad19d2d-c9dd-4a39-bc39-c89522e3ebc3)
+### Blog Page
+![Blog Page](https://github.com/bsaha12/tech-sankat-nivaaran-4321/assets/131662969/f1afb70e-46ce-445c-9c67-af05b098a5fe)
 
+### Rider Page
+![Rider Page](https://github.com/bsaha12/tech-sankat-nivaaran-4321/assets/131662969/d76cbd1a-8886-48bc-b56c-76eb6f6d4e41)
 
-<p>Driver page</p>
+### Footer Page
+![Footer Page](https://github.com/bsaha12/tech-sankat-nivaaran-4321/assets/131662969/354e045b-9982-4241-a12e-1133788d8db3)
 
-![WhatsApp Image 2024-01-22 at 1 18 14 PM](https://github.com/bsaha12/tech-sankat-nivaaran-4321/assets/131662969/5829156e-dd5a-44cb-b77c-92d9bdcdc33e)
+### Responsiveness
+Our website, RideShareX, is designed with responsiveness in mind to provide a seamless experience across various screen sizes and devices. We have utilized responsive design techniques, including flexible grid layouts and media queries, to ensure that the content adapts appropriately to different screen resolutions.
 
-<p>Blog page</p>
+![Responsiveness](https://github.com/bsaha12/tech-sankat-nivaaran-4321/assets/131662969/b69484d7-67c8-4258-a4d3-a16c48d0eb9f)
 
-
-![WhatsApp Image 2024-01-22 at 1 20 13 PM](https://github.com/bsaha12/tech-sankat-nivaaran-4321/assets/131662969/f1afb70e-46ce-445c-9c67-af05b098a5fe)
-
-
-<p>Rider page</p>
-
-
-![WhatsApp Image 2024-01-22 at 1 21 37 PM](https://github.com/bsaha12/tech-sankat-nivaaran-4321/assets/131662969/d76cbd1a-8886-48bc-b56c-76eb6f6d4e41)
-
-<p>Footer page</p>
-
-![WhatsApp Image 2024-01-22 at 1 22 29 PM](https://github.com/bsaha12/tech-sankat-nivaaran-4321/assets/131662969/354e045b-9982-4241-a12e-1133788d8db3)
+# Team Members
+- [Bhaskar Saha](https://github.com/bsaha12)
+- [Deepak Kumar](https://github.com/DEEPAK101020)
+- [Shraddha Gawde](https://github.com/shraddha-gawde)
+- [Supriya Singh](https://github.com/Supriyasingh2)
 
 
+## API Documentation
 
-<p>Responsiveness</p>
+For detailed information on using our API, including available endpoints and any required authentication, refer to our - [Swagger Document](https://jealous-umbrella-moth.cyclic.app/apidocs/).
+
+## Contribution Guidelines
+
+We welcome contributions from the community! If you'd like to contribute to RideShareX, please follow these guidelines:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix: `git checkout -b feature/new-feature`.
+3. Make your changes and commit them: `git commit -m 'Add new feature'`.
+4. Push to the branch: `git push origin feature/new-feature`.
+5. Submit a pull request.
+
+Please ensure your code adheres to our coding standards and includes tests when applicable.
+
+## License
+
+RideShareX is licensed under the [MIT License](LICENSE). See the [LICENSE](LICENSE) file for details.
+
+---
+
+Feel free to reach out if you have any questions or need further assistance. Happy coding!
+
