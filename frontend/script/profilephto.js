@@ -3,7 +3,7 @@
 fetch(`${baseURL}users/profile`, {
   method: "GET",
   headers: {
-    "Authorization": `Bearer ${localStorage.getItem("token")}`,
+    "Authorization": `Bearer ${localStorage.getItem("token")}`, // Replace with your actual authentication token
     "Content-Type": "application/json",
   },
 })
