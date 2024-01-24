@@ -295,7 +295,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const username = document.getElementById("username").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    const number = document.getElementById("mobile").value;
+    const phone = document.getElementById("mobile").value;
     const role = document.getElementById("role").value;
     const designation = document.getElementById("designation").value;
     const birthday = document.getElementById("dateofbirth").value;
@@ -307,7 +307,7 @@ document.addEventListener("DOMContentLoaded", function () {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ image, name, username, email, password, number, role, designation, birthday }),
+      body: JSON.stringify({ image, name, username, email, password, phone, role, designation, birthday }),
     })
 
     .then(response => response.json())
@@ -315,7 +315,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Record added successfully:", data);
 
       addRecordModal.hide();
-      // window.location.reload();
+      window.location.reload();
     })
     .catch(error => {
       console.error("Error adding record:", error);
