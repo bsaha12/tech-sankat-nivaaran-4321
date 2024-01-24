@@ -283,7 +283,7 @@ button:hover {
         const formData = new FormData(uploadForm);
 
         try {
-          const response = await fetch("https://jealous-umbrella-moth.cyclic.app/users/profile1", {
+          const response = await fetch("http://localhost:8080/users/profile1", {
             method: 'PATCH',
             body: formData,
             headers: {

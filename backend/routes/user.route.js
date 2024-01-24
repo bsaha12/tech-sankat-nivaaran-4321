@@ -171,7 +171,7 @@ const upload = multer({ storage: storage });
 // );
 
 
-router.patch('/profile1', upload.single('profileImage'), async (req, res) => {
+userRouter.patch('/profile1', upload.single('profileImage'), async (req, res) => {
   try {
     const userId = req.user.userId;
     const { name, phone, birthday, designation, bio, website } = req.body;
