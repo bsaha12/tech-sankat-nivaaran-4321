@@ -124,7 +124,7 @@ const upload = multer({ storage: storage });
  *                   type: string
  *                   description: Error message
  */
-userRouter.patch(
+userRouter.put(
   "/profile1",
   authenticateToken,
   upload.single("profileImage"),

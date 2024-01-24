@@ -280,8 +280,8 @@ button:hover {
     const formData = new FormData(uploadForm);
 
     try {
-        const response = await fetch("https://localhost:8000/users/profile1", {
-            method: 'Patch',
+        const response = await fetch("https://tech-sankat-nivaaran-4321.onrender.com/users/profile1", {
+            method: 'PUT',
             // mode: 'no-cors',
             body: formData,
             headers: {

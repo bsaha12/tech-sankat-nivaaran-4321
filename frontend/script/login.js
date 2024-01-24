@@ -18,7 +18,7 @@ register_btn.addEventListener("click", registerUser);
 login_btn.addEventListener("click", loginUser);
 
 // BaseURL
-const baseURL = "https://tech-sankat-nivaaran-4321.onrender.com";
+const baseURL = "https://jealous-umbrella-moth.cyclic.app";
 
 // handling registration
 async function registerUser() {
