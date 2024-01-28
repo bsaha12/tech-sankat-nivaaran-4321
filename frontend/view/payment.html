@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style/payment_tailwindcss-colors.css" />
+    <link rel="stylesheet" href="../style/payment_style.css" />
+    <link rel="stylesheet" href="../style/popup.css" />
+    <title>Payment Page</title>
+  </head>
+  <body>
+    <!-- start: Payment -->
+    <section class="payment-section">
+      <div class="container">
+        <div class="payment-wrapper">
+          <div class="payment-left">
+            <div class="payment-header">
+              <div class="payment-header-icon">
+                <i class="ri-flashlight-fill"></i>
+              </div>
+              <div class="payment-header-title">Summary</div>
+              <p class="payment-header-description">
+                Please fill out payment details
+              </p>
+            </div>
+            <div class="payment-content">
+              <div class="payment-body">
+                <div class="payment-plan">
+                  <div class="payment-plan-type">XL</div>
+                  <div class="payment-plan-info">
+                    <div class="payment-plan-info-name">Type - Complete</div>
+                    <div class="payment-plan-info-price">₹569</div>
+                  </div>
+                  <a href="#" class="payment-plan-change">Change</a>
+                </div>
+                <div class="payment-summary">
+                  <div class="payment-summary-item">
+                    <div class="payment-summary-name">Additional fee</div>
+                    <div class="payment-summary-price">₹30</div>
+                  </div>
+                  <div class="payment-summary-item">
+                    <div class="payment-summary-name">Discount 20%</div>
+                    <div class="payment-summary-price">-₹100</div>
+                  </div>
+                  <div class="payment-summary-divider"></div>
+                  <div class="payment-summary-item payment-summary-total">
+                    <div class="payment-summary-name">Total</div>
+                    <div class="payment-summary-price">₹499</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="payment-right">
+            <form action="" class="payment-form">
+              <h1 class="payment-title">Payment Details</h1>
+              <div class="payment-method">
+                <input
+                  type="radio"
+                  name="payment-method"
+                  id="method-1"
+                  checked
+                />
+                <label for="method-1" class="payment-method-item">
+                  <img src="../images/visa.png" alt="" />
+                </label>
+                <input type="radio" name="payment-method" id="method-2" />
+                <label for="method-2" class="payment-method-item">
+                  <img src="../images/mastercard.png" alt="" />
+                </label>
+                <input type="radio" name="payment-method" id="method-3" />
+                <label for="method-3" class="payment-method-item">
+                  <img src="../images/paypal.png" alt="" />
+                </label>
+                <input type="radio" name="payment-method" id="method-4" />
+                <label for="method-4" class="payment-method-item">
+                  <img src="../images/stripe.png" alt="" />
+                </label>
+              </div>
+              <div class="payment-form-group">
+                <input
+                  type="email"
+                  placeholder=" "
+                  class="payment-form-control"
+                  id="email"
+                />
+                <label
+                  for="email"
+                  class="payment-form-label payment-form-label-required"
+                  >Email Address</label
+                >
+              </div>
+              <div class="payment-form-group">
+                <input
+                  type="text"
+                  placeholder=" "
+                  class="payment-form-control"
+                  id="card-number"
+                />
+                <label
+                  for="card-number"
+                  class="payment-form-label payment-form-label-required"
+                  >Card Number</label
+                >
+              </div>
+              <div class="payment-form-group-flex">
+                <div class="payment-form-group">
+                  <input
+                    type="date"
+                    placeholder=" "
+                    class="payment-form-control"
+                    id="expiry-date"
+                  />
+                  <label
+                    for="expiry-date"
+                    class="payment-form-label payment-form-label-required"
+                    >Expiry Date</label
+                  >
+                </div>
+                <div class="payment-form-group">
+                  <input
+                    type="text"
+                    placeholder=" "
+                    class="payment-form-control"
+                    id="cvv"
+                  />
+                  <label
+                    for="cvv"
+                    class="payment-form-label payment-form-label-required"
+                    >CVV</label
+                  >
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="payment-form-submit-button"
+                id="pay-confirm"
+              >
+                <i class="ri-wallet-line"></i> Pay
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end: Payment -->
+    <section
+      id="popup"
+      class="contact-invisible"
+      style="background-color: white"
+    >
+      <!-- <span class="overlay"></span> -->
+
+      <div class="modal-box">
+        <i class="fa-regular fa-circle-check"></i>
+        <h2>Payment Completed</h2>
+        <h3>Redirecting to home page..</h3>
+
+        <div class="buttons">
+          <button class="close-btn" id="popup-close">Ok, Close</button>
+        </div>
+      </div>
+    </section>
+    <script>
+      const pay_confirm = document.getElementById("pay-confirm");
+      const section = document.querySelector("#popup");
+      const container = document.querySelector(".container");
+      const closeBtn = document.querySelector("#popup .close-btn");
+
+      pay_confirm.addEventListener("click", (e) => {
+        e.preventDefault();
+        section.classList.add("active");
+        section.classList.remove("contact-invisible");
+        container.classList.add("payment-opacity");
+      });
+
+      closeBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        section.classList.add("contact-invisible");
+        section.classList.remove("active");
+        location.href = "../index.html";
+      });
+    </script>
+  </body>
+</html>
