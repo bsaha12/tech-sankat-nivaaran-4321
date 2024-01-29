@@ -133,10 +133,10 @@ userRouter.put(
       const userId = req.user.userId;
       const {
         newadminname,
-        newBio,
-        newPhone,
-        newDesignation,
-        newdateofBirth,
+        newbio,
+        newphone,
+        newdesignation,
+        newbirthday,
       } = req.body;
 
       const imageUrl = req.file ? req.file.path : null;
@@ -145,12 +145,12 @@ userRouter.put(
         userId,
         {
           $set: {
-            image: imageUrl.replace(/\\/g, "/"),
+            image: imageUrl,
             name: newadminname,
-            phone: newPhone,
-            bio: newBio,
-            birthday: newdateofBirth,
-            designation: newDesignation,
+            phone: newphone,
+            bio: newbio,
+            birthday: newbirthday,
+            designation: newdesignation,
           },
         },
         { new: true }
