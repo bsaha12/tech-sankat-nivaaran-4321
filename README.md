@@ -45,7 +45,7 @@ Our website, RideShareX, is designed with responsiveness in mind to provide a se
 
 ## API Documentation
 
-For detailed information on using our API, including available endpoints and any required authentication, refer to our - [Swagger Document](https://jealous-umbrella-moth.cyclic.app/apidocs/).
+For detailed information on using our API, including available endpoints and any required authentication, refer to our - [Swagger Document](https://tech-sankat-nivaaran-4321.onrender.com/apidocs/).
 
 ## Contribution Guidelines
 
