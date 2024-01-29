@@ -37,7 +37,7 @@ fetch(`${baseURL}users/profile`, {
     // if (!admin.image) {
       imagephoto1.src = "../images/default.jpg";
     // } else {
-      imagephoto1.src = `../${admin.image}`;
+      // imagephoto1.src = `../${admin.image}`;
     // }
     profilePhoto1.innerHTML = ""; // Clear the existing content
     profilePhoto1.append(imagephoto1);
