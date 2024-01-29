@@ -14,11 +14,11 @@ fetch(`${baseURL}users/profile`, {
     const profilePhoto = document.getElementById("profileimg");
 
     const imagephoto = document.createElement("img");
-    if (!admin.image) {
+    // if (!admin.image) {
       imagephoto.src = "../images/default.jpg";
-    } else {
-      imagephoto.src = `../${admin.image}`;
-    }
+    // } else {
+    //   imagephoto.src = `../${admin.image}`;
+    // }
 
     const adminname = document.createElement("h4");
     adminname.innerText = admin.username; // Assuming the property name is "name"
@@ -34,11 +34,11 @@ fetch(`${baseURL}users/profile`, {
     const profilePhoto1 = document.getElementById("profileimg1");
 
     const imagephoto1 = document.createElement("img");
-    if (!admin.image) {
+    // if (!admin.image) {
       imagephoto1.src = "../images/default.jpg";
-    } else {
+    // } else {
       imagephoto1.src = `../${admin.image}`;
-    }
+    // }
     profilePhoto1.innerHTML = ""; // Clear the existing content
     profilePhoto1.append(imagephoto1);
   })
