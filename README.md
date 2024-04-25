@@ -2,6 +2,7 @@
 
 Welcome to RideShareX! We've crafted this platform during our Unit 5 Construct Week, offering users the convenience of one-click cab bookings. Drawing inspiration from the user-friendly design of the Uber application, our goal is to provide an efficient and enjoyable experience.
 
+
 ## Project Type
 Fullstack
 
